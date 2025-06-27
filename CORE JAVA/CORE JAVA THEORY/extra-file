@@ -1,0 +1,23 @@
+(1) what is factory design pattern ?
+-> The Factory Design Pattern is a way to create objects in Java without telling the exact class name to the client (user).
+✅ Real-life Example:
+Imagine you go to a car factory and say: "I want a car." , You don’t say: "Make me a Honda or a Toyota."
+Note: The factory decides which car to build, depending on your request or need
+
+(2)  What is Abstract Factory Design Pattern?
+-> It is a factory of factories.
+-> It provides a way to create families of related objects without specifying their exact classes.
+✅ Simple Real-Life Example: 
+Imagine you have two companies:
+Apple (makes: Mac, iPhone)
+Samsung (makes: Galaxy Laptop, Galaxy Phone)
+Now, you want a factory that can give you both a phone and a laptop, but from the same brand.
+You don't ask:
+"Give me iPhone and Galaxy Laptop"
+Instead you say:
+"Give me a full product set from Apple"
+or
+"Give me a full product set from Samsung".
+That’s what Abstract Factory does.
+
+
