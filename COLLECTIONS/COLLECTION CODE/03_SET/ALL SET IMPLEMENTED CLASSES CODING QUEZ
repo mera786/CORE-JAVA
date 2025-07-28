@@ -1,1 +1,193 @@
 
+✅ HashSet Questions
+🟢 Easy
+Add elements and print the HashSet.
+
+Check if an element exists.
+
+Remove an element from the set.
+
+Iterate using enhanced for loop.
+
+Get the size of a HashSet.
+
+Convert HashSet to ArrayList.
+
+Add all elements from another collection.
+
+Clear the HashSet.
+
+Check if a HashSet is empty.
+
+Convert HashSet to array.
+
+🟡 Medium
+Remove duplicates from an array using HashSet.
+
+Find intersection of two arrays using HashSet.
+
+Count unique characters in a string.
+
+Check if two HashSets are equal.
+
+Filter elements based on a condition.
+
+Find union and difference between two sets.
+
+Check if a list has any duplicates.
+
+Count distinct words in a sentence.
+
+Generate all unique pairs from an array.
+
+Create a custom class and override equals() and hashCode() to work in HashSet.
+
+🔴 Hard
+Detect cycle in a graph using HashSet.
+
+Find all subsets of a set (power set).
+
+Group anagrams using HashSet.
+
+Longest consecutive sequence using HashSet.
+
+Word break problem using HashSet dictionary.
+
+Find all unique triplets that sum to zero.
+
+Remove duplicates from a stream of integers.
+
+Find elements that appear exactly once in an array.
+
+Implement custom Set behavior using HashSet as base.
+
+Track unique visitors in a high-throughput system.
+
+✅ LinkedHashSet Questions
+🟢 Easy
+Create a LinkedHashSet and add elements.
+
+Observe insertion order in LinkedHashSet.
+
+Remove element and maintain order.
+
+Iterate using iterator.
+
+Clone a LinkedHashSet.
+
+Convert LinkedHashSet to ArrayList.
+
+Use contains() to check for existence.
+
+Remove all elements.
+
+Convert list to LinkedHashSet to remove duplicates while keeping order.
+
+Check if set contains all elements from another set.
+
+🟡 Medium
+Merge two lists without duplicates using LinkedHashSet.
+
+Track recently visited pages using LinkedHashSet.
+
+Implement custom LRU cache using LinkedHashSet.
+
+Preserve order of first appearance from a stream.
+
+Count and preserve first non-repeating characters.
+
+Remove duplicates from a string while keeping order.
+
+Simulate cache with max capacity using LinkedHashSet.
+
+Convert ordered list of values into a unique linked set.
+
+Track event logs in order without repetition.
+
+Build a playlist without repeating songs and in original order.
+
+🔴 Hard
+Implement basic LRU using LinkedHashSet + capacity check.
+
+Combine unique characters from two strings, preserving first appearance.
+
+Build an autocomplete list from ordered user input history.
+
+Preserve order of first unique substring in stream.
+
+Implement a simple memory cache with expiry logic.
+
+Detect first non-repeating character in a stream.
+
+Optimize storage for frequent lookup of recent inputs.
+
+Track browsing history with forward/back tracking using LinkedHashSet.
+
+Remove duplicates from large data set with minimal memory and order preservation.
+
+Use LinkedHashSet to model "unique navigation path" in UI testing.
+
+✅ TreeSet Questions
+🟢 Easy
+Add elements to a TreeSet and print (observe sorting).
+
+Remove elements from a TreeSet.
+
+Use first() and last() methods.
+
+Check if an element exists.
+
+Iterate in sorted order.
+
+Get size and clear the set.
+
+Convert array to TreeSet.
+
+Add duplicate values and observe behavior.
+
+Use ceiling() and floor() methods.
+
+Print elements in descending order using descendingIterator().
+
+🟡 Medium
+Store and sort strings by length using custom comparator.
+
+Find closest value greater than or equal to a target.
+
+Implement leaderboard using TreeSet.
+
+Store custom objects with sorted order (e.g., students by marks).
+
+Maintain sorted log of access timestamps.
+
+Use subSet() to get a range.
+
+Track top 5 scores in real-time.
+
+Simulate event queue sorted by time.
+
+Build sorted list of words from a file.
+
+Implement task priority handler using TreeSet.
+
+🔴 Hard
+Merge multiple sorted arrays using TreeSet.
+
+Design price tracker with automatic sorting and duplicate skip.
+
+Use TreeSet for range sum queries.
+
+Remove all elements below a threshold.
+
+Maintain rolling sorted window of elements.
+
+Design auto-suggest sorted word system.
+
+Real-time stock ticker sorted by price.
+
+Custom object sorting by multiple fields (e.g., name, then ID).
+
+Implement interval tree logic with TreeSet.
+
+Simulate a min priority queue with dynamic priority updates.
+
