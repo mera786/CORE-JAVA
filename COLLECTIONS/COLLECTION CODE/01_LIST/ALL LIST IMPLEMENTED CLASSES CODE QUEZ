@@ -1,1 +1,334 @@
 
+                                                                       ✅ ArrayList Questions
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+🟢 Easy
+***********
+
+(1) Add elements to an ArrayList and print?
+
+Remove element by index.
+
+Search for an element.
+
+Reverse an ArrayList.
+
+Clone an ArrayList.
+
+Merge two ArrayLists.
+
+Remove duplicates using Set.
+
+Sort ArrayList of integers.
+
+Check if an element exists.
+
+Convert ArrayList to array.
+
+🟡 Medium
+Remove even/odd numbers from an ArrayList.
+
+Replace all occurrences of a value.
+
+Rotate ArrayList elements (circular shift).
+
+Find second largest/smallest element.
+
+Custom sort with comparator (e.g., sort by string length).
+
+Group elements by frequency.
+
+Find sublists with sum = k.
+
+Generate all permutations using ArrayList.
+
+Count frequency of elements.
+
+Remove all elements that occur more than once.
+
+🔴 Hard
+Find longest increasing subsequence using ArrayList.
+
+Merge overlapping intervals (custom class).
+
+Implement LRU cache using ArrayList.
+
+Rearrange elements alternatively (max, min).
+
+Detect cycle in ArrayList-based custom linked structure.
+
+Convert ArrayList to binary tree level-wise.
+
+Find all palindromic subsequences.
+
+Implement autocomplete suggestions from ArrayList.
+
+Implement dynamic sliding window max using ArrayList.
+
+Check if ArrayList forms a valid mountain array.
+
+
+✅ LinkedList Questions
+🟢 Easy
+Add elements at beginning/middle/end.
+
+Delete head/tail node.
+
+Search an element.
+
+Count nodes.
+
+Find middle node.
+
+Reverse the LinkedList.
+
+Check if LinkedList is empty.
+
+Get Nth node from start.
+
+Convert LinkedList to ArrayList.
+
+Compare two LinkedLists.
+
+🟡 Medium
+Remove all duplicates from sorted list.
+
+Detect loop using Floyd’s cycle detection.
+
+Find Nth node from end.
+
+Merge two sorted linked lists.
+
+Check if LinkedList is palindrome.
+
+Remove loop if present.
+
+Clone a linked list with random pointer.
+
+Group even and odd nodes separately.
+
+Rotate list by k nodes.
+
+Add two numbers represented by linked lists.
+
+🔴 Hard
+Flatten a multi-level linked list.
+
+Reverse nodes in k-group.
+
+Copy linked list with arbitrary pointers (deep copy).
+
+Implement LRU cache using doubly linked list.
+
+Detect and remove duplicate sublists.
+
+Sort linked list using merge sort.
+
+Rearrange list as alternating low-high pattern.
+
+Find intersection point of two linked lists.
+
+Reverse a sublist between given positions.
+
+Convert sorted linked list to balanced BST.
+
+✅ Vector Questions
+Similar to ArrayList, but thread-safe. You can reuse many ArrayList questions here with a multithreading twist.
+
+🟢 Easy
+Basic add/remove/get operations.
+
+Iterate using Enumeration.
+
+Convert to ArrayList.
+
+Check capacity vs size.
+
+Trim capacity to size.
+
+Use insertElementAt() method.
+
+Remove all elements using removeAllElements().
+
+Check if Vector contains element.
+
+Replace element at index.
+
+Clone a Vector.
+
+🟡 Medium
+Implement thread-safe stack using Vector.
+
+Compare Vector and ArrayList on performance.
+
+Multithreaded element addition and consistency check.
+
+Remove duplicates in synchronized context.
+
+Use setSize() to truncate/expand vector.
+
+Synchronize block on vector during iteration.
+
+Merge multiple vectors into one.
+
+Implement producer-consumer using Vector.
+
+Generate combinations using Vector.
+
+Custom sorting using comparator.
+
+🔴 Hard
+Build thread-safe LRU using Vector.
+
+Create undo/redo system using Vector.
+
+Implement custom blocking queue with Vector.
+
+Real-time multi-threaded logging using Vector.
+
+Batch processing with thread-safe flush.
+
+Implement memory paging simulator using Vector.
+
+Backtracking-based state manager.
+
+Time-series buffer (like price ticker).
+
+Simulate browser history with Vector.
+
+Rollback transaction manager with Vector.
+
+✅ Stack Questions
+🟢 Easy
+Push/pop/peek operations.
+
+Reverse a string using Stack.
+
+Check for balanced parentheses.
+
+Evaluate postfix expression.
+
+Remove middle element.
+
+Sort elements in a stack.
+
+Clone a stack.
+
+Convert infix to postfix.
+
+Implement two stacks in one array.
+
+Find next greater element.
+
+🟡 Medium
+Implement stack using queues.
+
+Design a min stack (getMin in O(1)).
+
+Decode a string with nested patterns (3[a2[c]]).
+
+Evaluate prefix expression.
+
+Simplify a Unix-style file path.
+
+Remove duplicate letters with stack logic.
+
+Implement text editor undo.
+
+Decode a compressed run-length string.
+
+Push all elements in reverse order.
+
+Implement expression parser.
+
+🔴 Hard
+Largest rectangle in histogram (using stack).
+
+Maximal area in binary matrix.
+
+Next greater frequency element.
+
+Stack-based sorting with constraints.
+
+Celebrity problem (stack approach).
+
+Implement backtracking system.
+
+Decode and expand compressed tree structures.
+
+Design browser with forward/back button.
+
+Push-pop sequence validator.
+
+Balanced parenthesis with wildcard (*)) handling.
+
+
+
+✅ Here are some coding question ideas:
+🟢 Easy (Basics + Usage)
+Create a CopyOnWriteArrayList and add elements.
+
+Iterate over CopyOnWriteArrayList using enhanced for-loop.
+
+Demonstrate removal and addition.
+
+Convert ArrayList to CopyOnWriteArrayList.
+
+Check size after multiple adds/removes.
+
+Add nulls and check behavior.
+
+Clone a CopyOnWriteArrayList.
+
+Use contains() and indexOf() methods.
+
+Sort the list using Collections.sort().
+
+Create from existing List using constructor.
+
+🟡 Medium (Threading + Internals)
+Write a multi-threaded program that reads and writes to CopyOnWriteArrayList.
+
+Compare behavior with ArrayList when modified during iteration.
+
+Show that modifying the list during iteration does not throw ConcurrentModificationException.
+
+Count frequency of elements added from multiple threads.
+
+Remove elements conditionally in a thread-safe way.
+
+Benchmark read vs write performance.
+
+Demonstrate that iterator is weakly consistent.
+
+Reverse the list using threads.
+
+Merge two CopyOnWriteArrayLists.
+
+Replace all elements conditionally.
+
+🔴 Hard (Advanced Concepts)
+Implement a thread-safe cache using CopyOnWriteArrayList.
+
+Simulate a notification system where readers poll without locking.
+
+Design a snapshot system for read-only backups.
+
+Track online users list in multi-threaded environment.
+
+Real-time analytics using CopyOnWriteArrayList for logs (read-heavy).
+
+Multi-threaded stream filtering and removal.
+
+Show difference in memory usage vs ArrayList under large writes.
+
+Create a wrapper class to switch between ArrayList and CopyOnWriteArrayList based on load.
+
+Find top K frequent elements in concurrent scenario.
+
+Thread-safe live leaderboard where ranking updates occur rarely.
+
+
+
+
