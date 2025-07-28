@@ -1,38 +1,159 @@
+✅ Core HashSet / Set Methods You Should Know:
 
-✅ HashSet Questions
+| Category   | Method                              | Purpose                                  |
+| ---------- | ----------------------------------- | ---------------------------------------- |
+| Add        | `add(E e)`                          | Add element to the set                   |
+| Bulk add   | `addAll(Collection<? extends E> c)` | Add all elements from another collection |
+| Remove     | `remove(Object o)`                  | Remove specific element                  |
+| Remove all | `removeAll(Collection<?> c)`        | Remove all matching elements             |
+| Retain     | `retainAll(Collection<?> c)`        | Keep only common elements                |
+| Contains   | `contains(Object o)`                | Check if element exists                  |
+| Size       | `size()`                            | Number of elements                       |
+| Is empty   | `isEmpty()`                         | Check if set is empty                    |
+| Clear      | `clear()`                           | Remove all elements                      |
+| To array   | `toArray()`                         | Convert set to array                     |
+| Clone      | `clone()` *(only in HashSet)*       | Shallow copy                             |
+| Equals     | `equals(Object o)`                  | Check if two sets are equal              |
+| HashCode   | `hashCode()`                        | Hash code for use in maps/sets           |
+| Iterator   | `iterator()`                        | Traverse elements                        |
+| Stream     | `stream()`                          | Java 8+ Stream support                   |
+
+✅ TreeSet Specific Features:
+| Category         | Method                                               | Purpose                                |
+| ---------------- | ---------------------------------------------------- | -------------------------------------- |
+| Sorted Access    | `first()` / `last()`                                 | Get smallest/largest element           |
+| Range Queries    | `headSet(to)` / `tailSet(from)` / `subSet(from, to)` | Get elements in range                  |
+| Closest Match    | `ceiling(e)` / `floor(e)`                            | Nearest equal or greater/smaller value |
+| Remove           | `pollFirst()` / `pollLast()`                         | Remove and return first/last element   |
+| Comparator       | `comparator()`                                       | Get custom comparator if used          |
+| Reverse Order    | `descendingIterator()` / `descendingSet()`           | Get reverse view                       |
+| Sorted Insertion | Automatic                                            | Keeps elements sorted                  |
+| Custom Order     | `new TreeSet<>(Comparator)`                          | Custom sorting logic                   |
+
+✅ Collections Class Utilities (Also Work with Sets):
+| Method                          | Purpose                                                              |
+| ------------------------------- | -------------------------------------------------------------------- |
+| `Collections.frequency()`       | Count how many times element appears (though less relevant for sets) |
+| `Collections.disjoint()`        | Check if two collections have no elements in common                  |
+| `Collections.unmodifiableSet()` | Create immutable view                                                |
+| `Collections.singleton()`       | Create set with a single element                                     |
+
+
+
+
+                                                                          ✅ HashSet Questions
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 🟢 Easy
-Add elements and print the HashSet.
+***********
 
-Check if an element exists.
+(1) Write a Java program to create a HashSet, add elements to it, and print all the elements.?
+Input: "Apple", "Banana", "Mango", "Orange"
+Output: [Banana, Apple, Orange, Mango]
 
-Remove an element from the set.
+(2) Write a Java program to check if a specific element exists in a HashSet.?
+Input: "Apple", "Banana", "Mango", "Orange"
+String tar = "Mango"
+Output: Element exists in the HashSet
 
-Iterate using enhanced for loop.
+(3) Write a Java program to remove a specific element from a HashSet.?
+Input: "Apple", "Banana", "Mango", "Orange"
+String tar= "Banana"
+Output: [Apple, Mango, Orange]
 
-Get the size of a HashSet.
+(4) How to get the size (number of elements) of a HashSet in Java?
+Input: 
+HashSet<String> fruits = new HashSet<>();
+fruits.add("Apple");
+fruits.add("Banana");
+fruits.add("Mango");
+Output: 3
 
-Convert HashSet to ArrayList.
+(5) How to convert a HashSet to an ArrayList in Java?
+Input:
+HashSet<String> set = new HashSet<>();
+set.add("Apple");
+set.add("Banana");
+set.add("Mango");
+Output: 
+ArrayList: [Apple, Banana, Mango]
 
-Add all elements from another collection.
+(6) How to add all elements from another collection to a HashSet in Java?
+Input:
+HashSet<String> set1 = new HashSet<>();
+set1.add("Apple");
+set1.add("Banana");
+ArrayList<String> list = new ArrayList<>();
+list.add("Mango");
+list.add("Orange");
+Output: 
+Updated HashSet: [Banana, Apple, Mango, Orange]
 
-Clear the HashSet.
+(7) How to clear all elements from a HashSet in Java?
+Input: 
+HashSet<String> set = new HashSet<>();
+set.add("Java");
+set.add("Python");
+set.add("C++");
+Output:
+Before clear: [Java, Python, C++]
+After clear: []
 
-Check if a HashSet is empty.
+(8) How to check if a HashSet is empty in Java?
+Input:
+HashSet<String> set = new HashSet<>();
+Output: The HashSet is empty.
 
-Convert HashSet to array.
+(9) How to convert a HashSet to an array in Java?
+Input:
+HashSet<String> set = new HashSet<>();
+set.add("apple");
+set.add("banana");
+set.add("orange");
+Output: banana orange apple 
+
+
 
 🟡 Medium
-Remove duplicates from an array using HashSet.
+**************
 
-Find intersection of two arrays using HashSet.
+(1) How to remove duplicates from an array using HashSet in Java?
+Input:
+int[] arr = {1, 2, 2, 3, 4, 4, 5};
+Output: [1, 2, 3, 4, 5]
 
-Count unique characters in a string.
+(2) How to find the intersection of two arrays using HashSet in Java?
+Input:
+int[] arr1 = {1, 2, 3, 4, 5};
+int[] arr2 = {3, 4, 5, 6, 7};
+Output: [3, 4, 5]
 
-Check if two HashSets are equal.
+(3) Write a Java program to count the number of unique characters present in a given string.?
+Input: 
+String str = "hello";
+Output: 4
 
-Filter elements based on a condition.
+(4) Write a program to check if two HashSets contain the same elements.?
+Input:
+HashSet<Integer> set1 = new HashSet<>(Arrays.asList(1, 2, 3));  
+HashSet<Integer> set2 = new HashSet<>(Arrays.asList(1, 2, 4));
+Output: Are both HashSets equal? false
 
-Find union and difference between two sets.
+(5) Write a Java program to filter out all even numbers from a HashSet and store them in a new HashSet ?
+Input:
+HashSet<Integer> numbers = new HashSet<>(Arrays.asList(10, 15, 20, 25, 30, 35));
+Output: Filtered even numbers: [10, 20, 30]
+
+(6) Find union and difference between two sets. ?
+Input:
+Set<Integer> set1 = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5));
+Set<Integer> set2 = new HashSet<>(Arrays.asList(4, 5, 6, 7, 8));
+Output:
+Union: [1, 2, 3, 4, 5, 6, 7, 8]
+Difference (set1 - set2): [1, 2, 3]
+Difference (set2 - set1): [6, 7, 8]
+
+
 
 Check if a list has any duplicates.
 
