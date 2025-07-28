@@ -1,0 +1,191 @@
+✅ HashMap Questions
+🟢 Easy
+Add key-value pairs to a HashMap.
+
+Retrieve a value using a key.
+
+Check if a key exists.
+
+Remove a key-value pair.
+
+Iterate through keys and values.
+
+Get size of the map.
+
+Clear all entries.
+
+Convert keys to a list.
+
+Check if the map is empty.
+
+Copy one map into another.
+
+🟡 Medium
+Count frequency of characters in a string.
+
+Count word frequency in a sentence.
+
+Find the first non-repeating character.
+
+Merge two maps by summing values.
+
+Group strings by their lengths.
+
+Group anagrams using a map.
+
+Find duplicate elements in an array.
+
+Store and retrieve Student objects using roll number.
+
+Count frequency of integers in an array.
+
+Create a map with default values for missing keys.
+
+🔴 Hard
+LRU cache using HashMap + LinkedList.
+
+Find subarrays with sum = K using prefix sum + map.
+
+Implement Trie using HashMap.
+
+Check if two strings are isomorphic using maps.
+
+Detect if two strings are anagrams using frequency map.
+
+Track frequency of API hits in a time window.
+
+Find top K frequent elements.
+
+Implement a phonebook using HashMap<String, List<String>>.
+
+Implement multilevel cache system using multiple maps.
+
+Store and retrieve nested JSON-like structures using HashMap.
+
+✅ LinkedHashMap Questions
+🟢 Easy
+Create a LinkedHashMap and add key-value pairs.
+
+Print entries in insertion order.
+
+Access values using keys.
+
+Remove and re-insert a key and see order change.
+
+Check if key/value exists.
+
+Clone a LinkedHashMap.
+
+Get all keys and values in insertion order.
+
+Convert LinkedHashMap to HashMap.
+
+Iterate using forEach.
+
+Convert to list of key-value pairs.
+
+🟡 Medium
+Maintain order of most recently accessed elements.
+
+Use LinkedHashMap to preserve order in frequency counter.
+
+Implement fixed-capacity LRU cache using LinkedHashMap (with removeEldestEntry()).
+
+Build a product recommendation list in user preference order.
+
+Track order of student submissions.
+
+Merge two maps while keeping the latest inserted entries.
+
+Track recently searched items.
+
+Count unique IP addresses and maintain insertion order.
+
+Reorder a map based on custom access order logic.
+
+Save order-sensitive game state using map.
+
+🔴 Hard
+Fully implement LRU cache using LinkedHashMap with eviction logic.
+
+Multi-threaded request tracker with ordered keys.
+
+Track session IDs and last access timestamps.
+
+Design a time-sensitive leaderboard.
+
+Implement undo feature using LinkedHashMap.
+
+Use as ordered dependency tracker.
+
+Merge log events from multiple sources by timestamp.
+
+Simulate navigation history with unique entries and recent order.
+
+Maintain recent login IPs per user (user → LinkedHashMap of IPs).
+
+Custom serialization of ordered entries to file.
+
+✅ TreeMap Questions
+🟢 Easy
+Create a TreeMap and add key-value pairs.
+
+Retrieve value by key.
+
+Print keys in sorted order.
+
+Get the smallest and largest keys.
+
+Use ceilingKey() and floorKey().
+
+Remove entries and maintain sort order.
+
+Iterate using entrySet().
+
+Check existence of a key.
+
+Print keys in descending order.
+
+Get sub-map using a key range.
+
+🟡 Medium
+Implement a numeric scoreboard using TreeMap<Integer, String>.
+
+Group students by marks and print top scorers.
+
+Use TreeMap to build a prefix directory.
+
+Simulate calendar event manager with time sorting.
+
+Implement stock price tracker sorted by time.
+
+Use comparator to sort by custom object fields.
+
+Range queries: Get all entries within a date range.
+
+Find the next closest deadline.
+
+Reverse the order using descendingMap().
+
+Schedule priority tasks based on time.
+
+🔴 Hard
+Implement a Range Map (e.g., price slabs) with TreeMap.
+
+Store employee data sorted by salary, then by name.
+
+Build an interval tree using TreeMap keys.
+
+Track dynamic inventory with range queries.
+
+Implement auto-suggest sorted by frequency.
+
+Range-based discount mapping (order total → discount).
+
+Create custom ranking system.
+
+Maintain transaction history sorted by timestamps.
+
+Use TreeMap for a version control system.
+
+Merge two TreeMaps with range overlap handling.
