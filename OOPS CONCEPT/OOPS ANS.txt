@@ -12186,4 +12186,5 @@ No , because when we do Parent p = new Child();  sop(p.color );  ans=> parent co
 \par
 \par
 }
+
  
