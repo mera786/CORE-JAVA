@@ -279,13 +279,17 @@ Q3. How many types of linkedlist ?
 
 
 
+() Vector :
+#################
+
+
+
 () Stack  :
 ################
 Q5. What is Stack in Java?
 👉 Legacy class (extends Vector), follows LIFO (Last In First Out).
 
-() Vector :
-#################
+
 
 
 
