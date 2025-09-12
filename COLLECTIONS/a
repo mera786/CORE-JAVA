@@ -1,0 +1,409 @@
+(1) Basics of Collections Framework :
+#######################################
+
+Q1. What is the Java Collections Framework?
+👉 A set of classes and interfaces in java.util package to store and manipulate groups of objects.
+
+Q2. Explain heirarcy of Collection ?
+############################################
+
+Iterable
+   |
+   --> Collection
+   |       |  
+   |       |-- List
+   |       |     |-- ArrayList
+   |       |     |-- LinkedList
+   |       |     |-- Vector
+   |       |            |-- Stack
+   |       |
+   |       |-- Set
+   |       |     |-- HashSet
+   |       |     |-- LinkedHashSet
+   |       |     |-- SortedSet (Interface)
+   |       |            |-- TreeSet
+   |       |
+   |       |-- Queue
+   |             |-- PriorityQueue
+   |             |-- Deque (Interface)
+   |                    |-- ArrayDeque
+   |
+
+
+Q3. Explain heirarcy of Map ?
+############################################
+
+Map (Interface)
+   |
+   |-- HashMap
+   |       |-- LinkedHashMap
+   |
+   |-- SortedMap (Interface)
+   |       |-- NavigableMap (Interface)
+   |               |-- TreeMap
+   |
+   |-- Hashtable
+   |-- WeakHashMap
+   |-- IdentityHashMap
+   |-- ConcurrentHashMap
+
+
+
+
+
+Q2. What is the difference between Collection and Collections?
+Collection → Root interface of the framework.
+Collections → Utility class with static methods (sort, reverse, shuffle, etc).
+
+Q3. Difference between Array and Collection?
+Array → Fixed size, index based datastructure, stores primitives & objects.
+Collection → Dynamic size, stores only objects.
+
+Q4. What are the main interfaces in Collections Framework?
+👉 List, Set, Queue, Deque, Map.
+
+Q5. Is Map part of Collection hierarchy?
+👉 No. Map is separate, but part of the framework.
+
+Q6. How to make a Collection thread-safe?
+👉 Collections.synchronizedList(new ArrayList<>())
+
+Q7. How to make a Collection immutable?
+👉 Collections.unmodifiableList(list)
+
+Q8. What is Hashing?
+👉 Hashing is a technique to convert an object (like String, Employee, Student) into a fixed-size integer value called a hash code, 
+which is used to quickly store and retrieve objects in data structures like HashMap, HashSet, and Hashtable.
+
+Q9. What is Collision in Hashing?
+👉 Collision occurs when two different keys produce the same hash code (same bucket index) in a hash-based collection like HashMap.and are mapped to the same bucket index.
+To resolve this, Java uses chaining (LinkedList) and from Java 8 onwards, it uses Red-Black Tree when collisions become frequent.
+
+Q10. Difference between Equals and hashcode method ?
+equals():
+- It is used to compare two objects for equality.
+- By default (from Object class), it compares memory addresses (reference equality).
+- But we can override it to compare content of objects (e.g., comparing id or name fields in a class)
+hashCode():
+- It returns an integer hash value representing the object’s memory address (by default).
+- Used mainly in hash-based collections like HashMap, HashSet, Hashtable to decide the bucket location.
+- When overridden, hashCode() must generate the same value for objects that are equal according to equals()
+
+Note:- if equals() return true , hashcode() must return the same value.
+
+Q11. suppose You do NOT override equals() and hashCode() ?
+👉 Since neither equals() nor hashCode() is overridden, Java uses the default implementations from Object class:
+equals() compares object references (p1 == p2)
+hashCode() is based on the object’s memory address
+✅ Result:
+Both p1 and p2 are considered different, even if they contain the same data → both get added to the set.
+
+Q12. suppose You override only equals() but NOT hashCode() ?
+🧠 What happens?
+equals() says the objects are equal based on data (like name and age)
+But hashCode() still gives different hash codes (default from Object)
+⚠️ Consequence:
+HashSet uses hashCode() first to locate bucket.
+Since hash codes are different → it puts them in different buckets → equals() is never even called.
+✅ Result:
+Still both objects are stored, even though logically they are equal.
+
+Q13. suppose You override only hashCode() but NOT equals() ?
+🧠 What happens?
+Both objects now have the same hash code (great!)
+But equals() still checks reference equality (from Object)
+✅ Result:
+Java finds the same bucket (due to same hash code)
+So both objects get added to the same bucket but as different entries.
+
+Q14. Difference between synchronized collection and concurrent collection ?
+Synchronized Collection:
+- Old-style collections → Vector, Hashtable, Collections.synchronizedList().
+- Whole collection locked → only one thread can access any method at a time.
+- Slow in multi-threading because of full lock.
+- Iterator is fail-fast → throws exception if modified by another thread.
+Concurrent Collection:
+- New collections (Java 5+) → ConcurrentHashMap, CopyOnWriteArrayList.
+- Partial locking / lock-free → multiple threads can work simultaneously.
+- Fast performance in multi-threading.
+- Iterator is fail-safe → works on a snapshot, no exception.
+
+Note: Jab tum synchronized collection (jaise Collections.synchronizedList()) use karte ho,tab har ek method (add, remove, get, etc.) 
+ek single lock (intrinsic lock) pe dependent hota hai. Matlab agar ek thread add() call kar raha hai, 
+toh poore list ka lock hold hota hai → doosra thread koi bhi method (get(), remove()) use nahi kar paayega tab tak.
+
+
+
+(2) Iterators  :
+########################
+
+Q1. What is Iterator in Java?
+👉 Used to traverse collections.
+
+Q2. Difference between Iterator and ListIterator?
+Iterator → works on all collections, forward only, Declaration : Iterator<E> itr = list.iterator(); , methods : hasNext(),next(),remove().
+ListIterator → works on List, both directions,Declaration : ListIterator<E> itr = list.listIterator(); , methods : hasNext(),next(),remove(),hashPrevious(),previous()
+
+Q3. What is Enumeration in Java?
+👉 Legacy cursor (used in Vector, Hashtable),  Declaration : Enumeration<String> en = list.elements(); , methods : hasMoreElementst(),nextElements().
+
+Q4. What is the difference between Fail-Fast and Fail-Safe Iterators?
+Fail-Fast → Throws ConcurrentModificationException (ArrayList, HashMap).
+Fail-Safe → Works on a copy (ConcurrentHashMap, CopyOnWriteArrayList).
+
+
+
+
+(3) ArrayList :
+##########################
+
+Q1. What is List in Java?
+👉 Ordered collection, allows duplicate elements.
+
+Q10. Difference between List & Set ?
+List :
+- A List is an ordered collection.
+- It keeps elements in the insertion order.
+- Duplicates are allowed in a List.
+- You can access elements by index (like list.get(0)).
+- It can store multiple null values.
+- Common implementations: ArrayList, LinkedList, Vector, Stack.
+- Use a List when you need order + duplicates.
+Set :
+- A Set is an unordered collection (does not guarantee insertion order).
+- Duplicates are not allowed in a Set.
+- You cannot access elements by index.
+- It allows only one null value (TreeSet does not allow null).
+- Common implementations: HashSet, LinkedHashSet, TreeSet.
+- Use a Set when you need unique elements only.
+
+
+Q2. What are the key features of arraylist ?
+ - Dynamic Size
+ - Ordered Collection :
+                      a. Maintains the insertion order.
+                      a. Elements can be accessed by their index.
+- Allows Duplicates :
+                      a. ArrayList can store duplicate elements.
+ - Allows null Values :
+                      a. You can store null as an element.
+ - Not Synchronized :
+                      a. ArrayList is not thread-safe. Use Collections.synchronizedList(list) if needed.
+
+Q3. Internal Working of ArrayList ?
+ - Data structure :
+                      a. Internally, ArrayList uses a dynamic array (not a fixed-size array). It means elements are stored contiguously in memory like a normal array
+ - Dynamic resizing :
+                      a. When ArrayList reaches its current capacity, it automatically increases the size.
+                      b. Default growth: new capacity = old capacity + (old capacity / 2) (approx 1.5 times).
+ - Adding elements :
+                      a. add(element) → adds at the end of the array.
+                      b. add(index, element) → shifts elements to the right to insert at given index.
+- Removing elements :
+                      a. remove(index) → shifts all elements to the left to fill the gap.
+                      b. This is O(n) operation in the worst case.
+ - Capacity vs Size :
+                      a. Capacity → total length of internal array.
+                      b. Size → number of elements actually present.
+                      c. Default constructor → 10 elements.
+
+
+
+
+Q2. Difference between ArrayList and LinkedList?
+ArrayList → Better for random access (O(1)), slower insert/delete(O(n)).
+LinkedList → Better for insert/delete(O(1)), slower access (O(n)).
+
+Q9. When to use ArrayList vs LinkedList?
+ArrayList → Best for read operations.
+LinkedList → Best for frequent insert/delete.
+
+Q3. Difference between Vector and ArrayList?
+Vector → Synchronized (thread-safe), Growth Rate 'Double' when run out of capacity, capacity() method provided.
+ArrayList → Not synchronized, faster, Growth Rate 50% when run out of capacity.
+
+Q4. How does CopyOnWriteArrayList work?
+👉 Creates a copy of the list for every modification → avoids ConcurrentModificationException.
+
+Q6. How to sort a List in Java?
+👉 Using Collections.sort(list) or list.sort(Comparator).
+
+Q7. How to convert Array to List?
+👉 Arrays.asList(array) or List.of(array) (Java 9+).
+
+Q8. How to convert List to Array?
+👉 list.toArray(new String[0])
+
+
+
+() LinkedList :
+#########################
+
+Q1. are the key features of LinkedList ?
+ - Dynamic Size
+ - Ordered Collection :
+                      a. Maintains the insertion order.
+                      a. Elements can be accessed in the same order as they were inserted.
+- Allows Duplicates :
+                      a. can store duplicate elements.
+ - Allows null Values :
+                      a. You can store null as an element.
+ - Not Synchronized :
+                      a. Linkedlist is not thread-safe. Use Collections.synchronizedList(linkedlist) if needed.
+- Implements List and Deque Interfaces : 
+                                      a. LinkedList implements List, Deque, Queue, and Serializable interfaces.
+                                      b. Can be used as a List, Queue, or Deque.
+
+
+Q2. explain internal working of linkedlist ?
+ - Datastructure :
+                a. LinkedList uses doubly-linked list internally (itself datastructure) where Each element (called a node) contains : Data, Next pointer, Previous pointer 
+- Adding elements :
+                a. add(element) → adds at the end by updating tail node.
+                b. addFirst(element) → adds at head.
+                c. addLast(element) → same as add(element).
+                d. No shifting required 
+- Accessing elements : 
+                a. get(index) → must traverse nodes from head or tail to reach index.
+                b. Time complexity: O(n) (slower than ArrayList for random access).
+- Removing elements :
+                a. remove(index) → traverse to node → update previous and next pointers → remove node.
+                b. Fast if removing first/last node, slower if removing from middle.
+- Memory usage :
+               a. Each node stores extra pointers (prev + next), so more memory than ArrayList.
+
+
+
+() Stack  :
+################
+Q5. What is Stack in Java?
+👉 Legacy class (extends Vector), follows LIFO (Last In First Out).
+
+() Vector :
+#################
+
+
+
+
+
+
+#######################################
+
+
+
+(3) Set  :
+###################################
+
+Q1. What is Set in Java?
+👉 Collection with no duplicate elements.
+
+Q2. Difference between HashSet, LinkedHashSet, and TreeSet?
+HashSet → Unordered, fastest.
+LinkedHashSet → Maintains insertion order.
+TreeSet → Sorted order, slower (uses TreeMap internally).
+
+Q3. How does HashSet work internally?
+👉 Uses HashMap internally (stores values as keys, dummy object as value).
+
+Q4. Can HashSet store null values?
+👉 Yes, only one null allowed.
+
+Q5. Can TreeSet store null?
+👉 No, throws NullPointerException for null insertion.
+
+Q6. Why does Set allow only unique elements in Java?
+When you add an element to a Set (like HashSet):
+- Java calls the element’s hashCode() method → to find the bucket.
+- Inside the bucket, it uses equals() method to check if an equal object already exists.
+- If exists → new element is rejected (not added).
+- If not exists → element is added.
+
+
+(4) Map  :
+################################
+
+Q1. What is Map in Java?
+👉 Collection, Stores data as key-value pairs (unique keys).
+
+Q2. Difference between HashMap and Hashtable?
+HashMap → Not synchronized, allows 1 null key & multiple null values.
+Hashtable → Synchronized, no null key or null value.
+
+Q3. Difference between HashMap and LinkedHashMap?
+HashMap → No order.
+LinkedHashMap → Maintains insertion order.
+
+Q4. Difference between HashMap and TreeMap?
+HashMap → Unordered.
+TreeMap → Sorted order (based on natural/comparator).
+
+Q5. Can we use any object as a key in HashMap?
+👉 Yes, but it must implement equals() and hashCode() properly.
+
+Q6. How does HashMap work internally?
+👉 Uses array of buckets + linked list/tree (since Java 8) → hashing + collision handling.
+
+Q7. What is ConcurrentHashMap?
+👉 Thread-safe version of HashMap, uses segment locking.
+
+Q8. What is IdentityHashMap?
+👉 Compares keys using == instead of .equals().
+
+Q9. What is WeakHashMap?
+👉 Stores keys as weak references → keys are GCed(Garbage Collected) when not referenced.
+
+Q10. When to use HashMap vs TreeMap?
+HashMap → Faster lookup, no order.
+TreeMap → Sorted data, slower.
+
+Q11. Why map is not a part of collection ?
+Map is not part of the Collection interface because it stores key-value pairs, not individual elements. The Collection interface is designed for groups of single objects.
+
+
+
+(5) Queue & Deque : 
+#######################
+
+Q1. What is Queue in Java?
+👉 Follows FIFO (First In First Out).
+
+Q2. Difference between PriorityQueue and LinkedList (as Queue)?
+PriorityQueue → Elements ordered by priority.
+LinkedList → Maintains insertion order.
+
+Q3. Can PriorityQueue store null values?
+👉 No, null is not allowed.
+
+Q4. What is Deque?
+👉 Double-ended queue → insert/delete from both ends (ArrayDeque, LinkedList).
+
+
+
+(6) Comparisons  :
+########################
+
+Q1. Why Comparable and Comparator interfaces required in java ?
+👉 We know that for primitive data types (like int, char, double) Java already provides Arrays.sort() or Collections.sort() to sort them easily because their natural order is already defined.
+But when we deal with custom objects (like Employee, Student, Product), Java doesn’t know how to compare two objects (by id? by name? by salary?) That’s why we need Comparable and Comparator interfaces.
+because They allow us to define our own sorting logic.
+
+Q2. Difference between Comparable and Comparator?
+Comparable → Natural ordering, compareTo(),java.lang(automatically imported),String/Integer/Date implements Comparable. 
+Comparator → Custom ordering, compare(),java.util (requires import)
+
+Q3. What does the return value of compareTo()/compare() indicate?
+- 0 if 1st parameter is = 2nd parameter.
+- negative, if 1st parameter is < 2nd parameter.
+- positive, if 1st parameter is > 2nd parameter.
+
+
+
+
+
+
+
+
+
+
+
+
