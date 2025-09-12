@@ -1,0 +1,99 @@
+(1) Basics of Collections Framework :
+                                   Q1. What is the Java Collections Framework?
+                                   Q2. Explain heirarcy of Collection ?
+                                   Q3. Explain heirarcy of Map ?
+                                   Q2. What is the difference between Collection and Collections?
+                                   Q3. Difference between Array and Collection?
+                                   Q4. What are the main interfaces in Collections Framework?
+                                   Q5. Is Map part of Collection hierarchy?
+                                   Q6. How to make a Collection thread-safe?
+                                   Q7. How to make a Collection immutable?
+                                   Q1.
+(2) Iterators  :
+                                   Q1. What is Iterator in Java?
+                                   Q2. Difference between Iterator and ListIterator?
+                                   Q3. What is Enumeration in Java?
+                                   Q4. What is the difference between Fail-Fast and Fail-Safe Iterators?
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+(3) List :
+                                   Q1. What is List in Java?
+                                   Q2. Difference between ArrayList and LinkedList?
+                                   Q3. Difference between Vector and ArrayList?
+                                   Q4. How does CopyOnWriteArrayList work?
+                                   Q5. What is Stack in Java?
+                                   Q6. How to sort a List in Java?
+                                   Q7. How to convert Array to List?
+                                   Q8. How to convert List to Array?
+                                   Q9. When to use ArrayList vs LinkedList?
+                                   Q10. Difference between List & Set ?
+(3) Set  :
+                                   Q1. What is Set in Java?
+                                   Q2. Difference between HashSet, LinkedHashSet, and TreeSet?
+                                   Q3. How does HashSet work internally?
+                                   Q4. Can HashSet store null values?
+                                   Q5. Can TreeSet store null?
+                                   Q1.
+                                   Q1.
+                                   Q1.
+(4) Map :
+                                   Q1. What is Map in Java?
+                                   Q2. Difference between HashMap and Hashtable?
+                                   Q3. Difference between HashMap and LinkedHashMap?
+                                   Q4. Difference between HashMap and TreeMap?
+                                   Q5. Can we use any object as a key in HashMap?
+                                   Q6. How does HashMap work internally?
+                                   Q7. What is ConcurrentHashMap?
+                                   Q8. What is IdentityHashMap?
+                                   Q9. What is WeakHashMap?
+                                   Q10. When to use HashMap vs TreeMap?
+                                   Q1.
+                                   Q1.
+                                   Q1.
+(5) Queue & Deque :
+                                   Q1. What is Queue in Java?
+                                   Q2. Difference between PriorityQueue and LinkedList (as Queue)?
+                                   Q3. Can PriorityQueue store null values?
+                                   Q4. What is Deque?
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+(6) Comparisons   :
+                                   Q1. Why Comparable and Comparator interfaces required in java ?
+                                   Q2. Difference between Comparable and Comparator?
+                                   Q3. What does the return value of compareTo()/compare() indicate?
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+(1) Basics of Collections Framework :
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+(1) Basics of Collections Framework :
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+(1) Basics of Collections Framework :
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
