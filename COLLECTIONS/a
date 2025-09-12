@@ -272,6 +272,11 @@ Q2. explain internal working of linkedlist ?
 - Memory usage :
                a. Each node stores extra pointers (prev + next), so more memory than ArrayList.
 
+Q3. How many types of linkedlist ?
+- Singly → less memory, one-direction.
+- Doubly → more memory, both directions.
+- Circular → last node connects back to head, useful for circular traversal.
+
 
 
 () Stack  :
