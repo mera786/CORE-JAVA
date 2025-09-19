@@ -160,7 +160,7 @@ Fail-Safe → Works on a copy (ConcurrentHashMap, CopyOnWriteArrayList).
 Q1. What is List in Java?
 👉 Ordered collection, allows duplicate elements.
 
-Q10. Difference between List & Set ?
+Q2. Difference between List & Set ?
 List :
 - A List is an ordered collection.
 - It keeps elements in the insertion order.
@@ -178,7 +178,7 @@ Set :
 - Use a Set when you need unique elements only.
 
 
-Q2. What are the key features of arraylist ?
+Q3. What are the key features of arraylist ?
  - Dynamic Size
  - Ordered Collection :
                       a. Maintains the insertion order.
@@ -190,7 +190,7 @@ Q2. What are the key features of arraylist ?
  - Not Synchronized :
                       a. ArrayList is not thread-safe. Use Collections.synchronizedList(list) if needed.
 
-Q3. Internal Working of ArrayList ?
+Q4. Explain Internal Working of ArrayList ?
  - Data structure :
                       a. Internally, ArrayList uses a dynamic array (not a fixed-size array). It means elements are stored contiguously in memory like a normal array
  - Dynamic resizing :
@@ -210,33 +210,33 @@ Q3. Internal Working of ArrayList ?
 
 
 
-Q2. Difference between ArrayList and LinkedList?
+Q5. Difference between ArrayList and LinkedList?
 ArrayList → Better for random access (O(1)), slower insert/delete(O(n)).
 LinkedList → Better for insert/delete(O(1)), slower access (O(n)).
 
-Q9. When to use ArrayList vs LinkedList?
+Q6. When to use ArrayList vs LinkedList?
 ArrayList → Best for read operations.
 LinkedList → Best for frequent insert/delete.
 
-Q3. Difference between Vector and ArrayList?
+Q7. Difference between Vector and ArrayList?
 Vector → Synchronized (thread-safe), Growth Rate 'Double' when run out of capacity, capacity() method provided.
 ArrayList → Not synchronized, faster, Growth Rate 50% when run out of capacity.
 
-Q4. How does CopyOnWriteArrayList work?
+Q8. How does CopyOnWriteArrayList work?
 👉 Creates a copy of the list for every modification → avoids ConcurrentModificationException.
 
-Q6. How to sort a List in Java?
+Q9. How to sort a List in Java?
 👉 Using Collections.sort(list) or list.sort(Comparator).
 
-Q7. How to convert Array to List?
+Q10. How to convert Array to List?
 👉 Arrays.asList(array) or List.of(array) (Java 9+).
 
-Q8. How to convert List to Array?
+Q11. How to convert List to Array?
 👉 list.toArray(new String[0])
 
 
 
-() LinkedList :
+(3.1) LinkedList :
 #########################
 
 Q1. are the key features of LinkedList ?
@@ -278,9 +278,59 @@ Q3. How many types of linkedlist ?
 - Circular → last node connects back to head, useful for circular traversal.
 
 
+Q4. Is LinkedList synchronized?
+👉 No. By default, it is not thread-safe. To make it synchronized →  Collections.synchronizedList(new LinkedList<>());
+
+Q5. How can you use LinkedList as a Queue, Deque, or Stack?
+Because LinkedList in Java implements List, Queue, and Deque interfaces, it can behave in multiple ways:
+👉 As Queue (FIFO):
+- offer() / add() → insert at the tail
+- poll() / remove() → remove from head
+- peek() → check the head element
+👉 As Deque (double-ended queue):
+- addFirst(), addLast() → insert at both ends
+- removeFirst(), removeLast() → remove from both ends
+👉 As Stack (LIFO):
+- push() (same as addFirst())
+- pop() (same as removeFirst())
+
+
+Q6. Why LinkedList uses Doubly Linked List instead of Singly?
+👉 Because doubly linked list makes:
+  - Removal faster (you can directly update prev & next).
+  - Traversal possible in both directions.
+  - Operations like getLast(), removeLast() efficient.
+
+
+Q7. Can you reverse a LinkedList in Java?
+👉 Yes:
+- Using Collections.reverse(list).
+- Or manually by traversing nodes and swapping next/prev pointers.
+
+
+Q8. Write code to remove duplicates from LinkedList.
+Set<Integer> set = new HashSet<>();
+Iterator<Integer> itr = list.iterator();
+while(itr.hasNext()) {
+    Integer val = itr.next();
+    if(!set.add(val)) {
+        itr.remove();
+    }
+}
+
+
+Q9. How does LinkedList remove() work internally?
+👉 When you call remove() in a LinkedList:
+- If removing the first element (index = 0):  The head pointer is moved to the next node.
+- If removing the last element:  The tail pointer is moved to the previous node.
+- If removing from the middle:  The list is traversed to that index, and the node is “unlinked” by connecting its previous node with its next node.  / LinkedList removes a node by adjusting the links of prev and next around it.
+
+
+
 
 () Vector :
 #################
+
 
 
 
