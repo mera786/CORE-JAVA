@@ -8,27 +8,47 @@
                                    Q5. Is Map part of Collection hierarchy?
                                    Q6. How to make a Collection thread-safe?
                                    Q7. How to make a Collection immutable?
-                                   Q1.
+
 (2) Iterators  :
                                    Q1. What is Iterator in Java?
                                    Q2. Difference between Iterator and ListIterator?
                                    Q3. What is Enumeration in Java?
                                    Q4. What is the difference between Fail-Fast and Fail-Safe Iterators?
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-(3) List :
+
+(3) ArrayList :
                                    Q1. What is List in Java?
-                                   Q2. Difference between ArrayList and LinkedList?
-                                   Q3. Difference between Vector and ArrayList?
-                                   Q4. How does CopyOnWriteArrayList work?
-                                   Q5. What is Stack in Java?
-                                   Q6. How to sort a List in Java?
-                                   Q7. How to convert Array to List?
-                                   Q8. How to convert List to Array?
-                                   Q9. When to use ArrayList vs LinkedList?
-                                   Q10. Difference between List & Set ?
+                                   Q2. Difference between List & Set ?
+                                   Q3. What are the key features of arraylist ?
+                                   Q4. Explain Internal Working of ArrayList ?
+                                   Q5. Difference between ArrayList and LinkedList?
+                                   Q6. When to use ArrayList vs LinkedList?
+                                   Q7. Difference between Vector and ArrayList?
+                                   Q8. How does CopyOnWriteArrayList work?
+                                   Q9. How to sort a List in Java?
+                                   Q10. How to convert Array to List?
+                                   Q11. How to convert List to Array?
+
+(3.1) LinkedList  : 
+                                   Q1. are the key features of LinkedList ?
+                                   Q2. explain internal working of linkedlist ?
+                                   Q3. How many types of linkedlist ?
+                                   Q4. Is LinkedList synchronized?
+                                   Q5. How can you use LinkedList as a Queue, Deque, or Stack?
+                                   Q6. Why LinkedList uses Doubly Linked List instead of Singly?
+                                   Q7. Can you reverse a LinkedList in Java?
+                                   Q8. Write code to remove duplicates from LinkedList.
+                                   Q9. How does LinkedList remove() work internally?
+
+
+(3.2) Vector  : 
+
+                                   Q1.
+                                   Q1.
+                                   Q1.
+
+(3.3) Stack   : 
+                                   Q1. What is Stack in Java?
+
 (3) Set  :
                                    Q1. What is Set in Java?
                                    Q2. Difference between HashSet, LinkedHashSet, and TreeSet?
