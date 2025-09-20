@@ -328,49 +328,132 @@ Q9. How does LinkedList remove() work internally?
 
 
 
-() Vector :
+(3.2) Vector :
 #################
 
+Q1. What is Vector in Java?
+👉 Vector is a legacy class (introduced in JDK 1.0) that implements List interface.
+It’s similar to ArrayList but synchronized (thread-safe).
+
+Q2. Key Features of Vector?
+- Dynamic array (grows automatically).
+- Maintains insertion order.
+- Allows duplicates & null values.
+- Synchronized (thread-safe).
+- Random access (O(1) for get/set).
+
+Q3. Difference between ArrayList and Vector?
+- ArrayList → Not synchronized (faster).
+- Vector → Synchronized (slower).
+- Both grow dynamically, but Vector increases capacity 100% (doubles), while ArrayList grows by 50%.
+
+Q4. Is Vector synchronized?
+👉 Yes. All methods of Vector are synchronized, making it thread-safe for multi-threaded environments.
+
+Q5. When to use Vector?
+👉 Use Vector when you need a thread-safe list.
+👉 Otherwise, prefer ArrayList for better performance.
+
+Q6. How does Vector grow internally?
+👉 When Vector is full and a new element is added:
+ - If capacityIncrement > 0 → grows by that amount. means
+     Whenever you run out of space, increase capacity by this fixed number. Vector<Integer> v = new Vector<>(3, 2);
+     where Initial capacity = 3 and capacityIncrement = 2
+- If capacityIncrement = 0 (default case) means 
+     Then Vector grows by doubling its size. Vector<Integer> v = new Vector<>(3);
+     where Initial capacity = 3 and capacityIncrement = 0 (default)
+
+Q8. Can Vector store heterogeneous objects?
+👉 Yes, but only if you don’t use generics.   : Vector v = new Vector(); // no generics
+👉 With generics, it enforces type-safety.
+
+Q9. How to make Vector unsynchronized?
+👉 By wrapping with Collections.synchronizedList(new ArrayList<>()) we usually make an ArrayList synchronized.
+But Vector is already synchronized → No need to make unsynchronized explicitly, but you can copy elements into an ArrayList for better performance.
+
+Q10. How does Vector’s remove() work internally?
+👉 Same as ArrayList:
+- Shifts all elements after the removed index one step left.
+- Decreases size by 1.
+- Time complexity = O(n).
 
 
 
-() Stack  :
+(3.3) Stack  :
 ################
-Q5. What is Stack in Java?
-👉 Legacy class (extends Vector), follows LIFO (Last In First Out).
+
+Q1. What is Stack in Java?
+👉 Stack is a legacy class (introduced in JDK 1.0) that extends Vector and implements the LIFO (Last-In-First-Out) principle.
+
+Q2. Key Features of Stack?
+- Extends Vector (so it is synchronized).
+- Follows LIFO order (last element inserted is first removed).
+- Provides additional methods: push(), pop(), peek(), search(), empty().
+
+Q3. Difference between Stack and Vector?
+- Vector → General-purpose dynamic array (no restriction on how you use it.)
+- Stack → Special type of Vector, designed for LIFO operations.
+
+Q4. Tell Commonly used Stack methods?
+- push(E item) → Add element to top.
+- pop() → Remove and return top element.
+- peek() → View top element without removing.
+- empty() → Check if stack is empty.
+- search(Object o) → Find element position (1-based index from top).
+
+Q5. Can you implement Stack using LinkedList?
+👉 Yes. Use addFirst() and removeFirst() of LinkedList to mimic push() and pop().
+
+Q6. How does Stack’s pop() work internally?
+👉 Internally calls removeElementAt(size() - 1) of Vector, which removes the last element.
+👉 Time complexity = O(1).
+
+Q7. Can Stack store null values and duplicates?
+👉 Yes, Stack allows both null values and duplicates (because it’s based on Vector).
+
+Q8. When should you use Stack in real projects?
+👉 Rarely. In modern Java, ArrayDeque or LinkedList is preferred for stack operations (better performance, less overhead).
 
 
 
 
 
-
-
-
-#######################################
-
-
-
-(3) Set  :
+(4) HashSet  :
 ###################################
 
 Q1. What is Set in Java?
-👉 Collection with no duplicate elements.
+👉 HashSet is a collection class / data structure that ensures uniqueness of elements.
 
-Q2. Difference between HashSet, LinkedHashSet, and TreeSet?
-HashSet → Unordered, fastest.
-LinkedHashSet → Maintains insertion order.
-TreeSet → Sorted order, slower (uses TreeMap internally).
+Q2. Key Features of HashSet?
+- Stores unique elements only (no duplicates).
+- Unordered → Does not guarantee insertion order.
+- Allows one null element.
+- Time complexity: add, remove, contains = O(1) average.
 
 Q3. How does HashSet work internally?
-👉 Uses HashMap internally (stores values as keys, dummy object as value).
+👉 HashSet uses a HashMap internally.
+- When you call add(e), it stores e as the key in HashMap with a dummy value (PRESENT).
+- Hashing ensures uniqueness.
 
-Q4. Can HashSet store null values?
+
+Q4. When to use HashSet?
+👉 Use HashSet when you need to store unique elements with fast lookups, and the order of elements does not matter. It is ideal for eliminating duplicates and performing quick existence checks.
+
+Q5. Difference between HashSet, LinkedHashSet, and TreeSet?
+| Feature                  | HashSet                                                        | LinkedHashSet                               | TreeSet                                              |
+| ------------------------ | -------------------------------------------------------------- | ------------------------------------------- | ---------------------------------------------------- |
+| **Order**                | Unordered                                                      | Maintains insertion order                   | Sorted (natural order or via Comparator)             |
+| **Performance**          | Fastest (O(1) average for add, remove, contains)               | Slightly slower than HashSet (O(1) average) | Slower (O(log n) for add, remove, contains)          |
+| **Underlying Structure** | HashMap                                                        | HashMap + linked list                       | TreeMap (Red-Black tree)                             |
+| **Null Elements**        | Allows one null                                                | Allows one null                             | Does **not allow** null                              |
+| **Use Case**             | When you need fast lookup and uniqueness, order doesn’t matter | When insertion order matters                | When sorted order matters, like ranges or navigation |
+
+
+Q6. Can HashSet store null values?
 👉 Yes, only one null allowed.
 
-Q5. Can TreeSet store null?
-👉 No, throws NullPointerException for null insertion.
 
-Q6. Why does Set allow only unique elements in Java?
+Q7. Why does Set allow only unique elements in Java?
 When you add an element to a Set (like HashSet):
 - Java calls the element’s hashCode() method → to find the bucket.
 - Inside the bucket, it uses equals() method to check if an equal object already exists.
@@ -378,15 +461,162 @@ When you add an element to a Set (like HashSet):
 - If not exists → element is added.
 
 
-(4) Map  :
+Q8. What happens when you add a custom object to HashSet without overriding hashCode() and equals()?
+- HashSet uses hashCode() to determine the bucket and equals() to check duplicates.
+- If you don’t override them, default Object methods are used, so even logically same objects are treated as different.
+- Result → duplicates may exist in HashSet for custom objects.
+
+Q9. How does HashSet handle collisions internally?
+- HashSet uses a HashMap internally.
+- If two elements have the same hashCode(), they go into the same bucket.
+- In Java 8+, buckets use a linked list or balanced tree (Red-Black tree) if too many collisions occur.
+- HashSet still ensures uniqueness by using equals() to compare elements within the bucket.
+
+Q10. What is the default capacity and load factor of HashSet?
+- Default capacity = 16
+- Default load factor = 0.75
+- When size exceeds capacity × load factor, rehashing occurs (capacity roughly doubles) to maintain O(1) lookup performance.
+
+Q11. Is HashSet thread-safe? How to make it thread-safe?
+- HashSet is not synchronized, so concurrent modification can cause issues.
+- Ways to make it thread-safe:
+    a. Collections.synchronizedSet(new HashSet<>())
+    b. ConcurrentHashMap.newKeySet()
+
+
+
+(4.1) LinkedHashSet  :
+###################################
+
+Q1. What is LinkedHashSet?
+👉 LinkedHashSet is a subclass of HashSet that maintains insertion order using a LinkedHashMap internally.
+
+Q2. Key Features of LinkedHashSet?
+- Stores unique elements (no duplicates).
+- Maintains insertion order.
+- Allows one null element.
+- Slightly slower than HashSet (because of maintaining order).
+
+Q3. Explain internal working of LinkedHashSet ?
+LinkedHashSet is implemented using a HashMap internally, with a doubly linked list to maintain insertion order. 
+That’s why operations like add, remove, and contains are O(1) on average, but a bit slower than HashSet due to the linked list overhead.
+
+Q4. Difference between HashSet and LinkedHashSet?
+- HashSet → No order.
+- LinkedHashSet → Maintains insertion order.
+- Internal Structure : hashset -> HashMap , linkedhashset -> HashMap + Doubly Linked List
+
+
+Q5. When to use LinkedHashSet?
+👉 Use when you need unique elements but also want to preserve insertion order.
+
+Q6. Can LinkedHashSet contain null?
+ Yes, it allows one null element.
+
+
+
+
+(4.2) TreeSet  :
+###################################
+
+Q1. What is TreeSet in Java?
+👉 TreeSet is a collection that stores unique elements in sorted order.
+👉 It is implemented using a TreeMap (Red-Black Tree) internally.
+
+Q2. Key Features of TreeSet?
+- Stores unique elements only.
+- Maintains ascending order by default.
+- Does not allow null (NullPointerException for null).
+- Time complexity: add, remove, contains = O(log n).
+
+Q3. Explain Internal Working of TreeSet ?
+- Underlying Data Structure :
+                  a. TreeSet is backed by a TreeMap, which internally uses a Red-Black Tree (a self-balancing binary search tree).
+                  b. Each element in the TreeSet is stored as a key in the TreeMap (values are dummy objects internally).
+- Ordering of Elements :
+                  a. TreeSet automatically sorts elements in natural order (ascending) if the elements implement Comparable.
+                  b. You can also provide a custom order using a Comparator at the time of TreeSet creation.
+                  c. Sorting happens dynamically as elements are inserted.
+
+
+Q4. How does TreeSet maintain order?
+👉 TreeSet uses a Red-Black Tree (self-balancing binary search tree).
+👉 Elements are ordered using natural ordering (Comparable) or a custom Comparator.
+
+Q5. When to use TreeSet?
+👉 Use TreeSet when you need a sorted set of unique elements.
+
+Q6. Can TreeSet store null?
+👉 No, throws NullPointerException for null insertion.
+
+
+(5) HashMap  :
 ################################
 
 Q1. What is Map in Java?
-👉 Collection, Stores data as key-value pairs (unique keys).
+👉 Map is a collection that stores data as key-value pairs.
+👉 Keys are unique, values can be duplicate
 
-Q2. Difference between HashMap and Hashtable?
-HashMap → Not synchronized, allows 1 null key & multiple null values.
-Hashtable → Synchronized, no null key or null value.
+Q2. What is HashMap in Java?
+👉 HashMap is the most popular Map implementation that stores key-value pairs in a hash table.
+
+Q3. Key Features of HashMap?
+- Unordered (no guarantee of order).
+- One null key allowed, multiple null values allowed.
+- Not synchronized (not thread-safe).
+- Time complexity: put/get/remove = O(1) average.
+
+
+Q4. Explain Internal working of HashMap ?
+- A HashMap in Java is part of the java.util package and is the most commonly used implementation of the Map interface. 
+  It stores data in the form of key-value pairs and allows one null key and multiple null values. Internally, HashMap is based on the hash table (hashtable = an array of buckets {linked list of entries (key-value pairs).} concept, 
+  where hashing is used to calculate the index of a bucket for storing entries.
+- When we call put(key, value), first the hashCode() method of the key is invoked. This hash code is then processed by a hashing function 
+  to calculate the bucket index in an internal array of buckets. Each bucket may contain multiple entries due to collisions. 
+  To handle collisions, HashMap uses a LinkedList in Java 7 and a combination of LinkedList + Red-Black Tree from Java 8 onwards. 
+  If two keys map to the same bucket, the keys are compared using the equals() method. If keys are equal, the old value is replaced; 
+  if not, a new node is added to the bucket.
+- When we call get(key), HashMap recalculates the bucket index using the key’s hashCode, then searches the bucket. If it is a LinkedList,
+  it iterates and compares keys using equals(). If it is a Tree, it uses tree search (O(log n)). Once the key is found, the associated value is returned; 
+  otherwise, null is returned.
+
+Q5. Suppose I create a HashMap with initial capacity 16 and load factor 0.75. After how many insertions will it resize?
+ - hash map has an internal array size, which by default is 16, when the number of elements (key-value) pairs grows and exceeds a certain load factor (0.75) ,
+   hash map automatically resizes the array to hold  more data, this process called rehashing. the default size of array is 16 , so when more than 12 elements 
+   (16 * 0.75) are inserted , the hash map will resize during rehashing the array size will be double, and then all existing entries will be rehashed if no collusion time complexity O(1) otherwise log(n). 
+- 👉 Answer: At 16 × 0.75 = 12 elements.
+
+Q6. If the same key with the same value is added again, will it create a duplicate entry or not?
+👉 Scenario 1: Same key, same value inserted twice
+Input:
+map.put(1, "Apple");
+map.put(1, "Apple");
+Explanation:
+You are inserting the same key 1 with the same value "Apple" twice.
+In Java's HashMap, keys must be unique.
+So the second put() will overwrite the existing entry, but since the value is the same, nothing actually changes.
+becasue It uses hashCode() to find the bucket, then equals() to compare the key.
+Since the key already exists, it updates the existing entry.
+Output:
+{1=Apple}
+But when it compares them, equals() says they're different → both are added
+
+
+Q7. What happens if you insert the same key with a different value in a HashMap?
+👉 Scenario 2: Same key, different value inserted
+Input:
+map.put(1, "Apple");
+map.put(1, "Banana");
+Explanation:
+The second put() uses the same key 1 but with a different value "Banana".
+This replaces the old value ("Apple") with the new one ("Banana").
+Output:
+{1=Banana}
+
+
+Q8. Difference between HashMap and Hashtable?
+HashMap → Not synchronized, allows 1 null key & multiple null values, Usage Today in most cases.
+Hashtable → Synchronized, no null key or null value. legacy Rarely used.
 
 Q3. Difference between HashMap and LinkedHashMap?
 HashMap → No order.
