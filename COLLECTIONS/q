@@ -41,25 +41,68 @@
 
 
 (3.2) Vector  : 
+                                   Q1. What is Vector in Java?
+                                   Q2. Key Features of Vector?
+                                   Q3. Difference between ArrayList and Vector?
+                                   Q4. Is Vector synchronized?
+                                   Q5. When to use Vector?
+                                   Q6. How does Vector grow internally?
+                                   Q8. Can Vector store heterogeneous objects?
+                                   Q9. How to make Vector unsynchronized?
+                                   Q10. How does Vector’s remove() work internally?
 
-                                   Q1.
-                                   Q1.
-                                   Q1.
 
 (3.3) Stack   : 
                                    Q1. What is Stack in Java?
+                                   Q2. Key Features of Stack?
+                                   Q3. Difference between Stack and Vector?
+                                   Q4. Tell Commonly used Stack methods?
+                                   Q5. Can you implement Stack using LinkedList?
+                                   Q6. How does Stack’s pop() work internally?
+                                   Q7. Can Stack store null values and duplicates?
+                                   Q8. When should you use Stack in real projects?
 
-(3) Set  :
+
+(4) HashSet  :
                                    Q1. What is Set in Java?
-                                   Q2. Difference between HashSet, LinkedHashSet, and TreeSet?
+                                   Q2. Key Features of HashSet?
                                    Q3. How does HashSet work internally?
-                                   Q4. Can HashSet store null values?
-                                   Q5. Can TreeSet store null?
-                                   Q1.
-                                   Q1.
-                                   Q1.
-(4) Map :
+                                   Q4. When to use HashSet?
+                                   Q5. Difference between HashSet, LinkedHashSet, and TreeSet?
+                                   Q6. Can HashSet store null values?
+                                   Q7. Why does Set allow only unique elements in Java?
+                                   Q8. What happens when you add a custom object to HashSet without overriding hashCode() and equals()?
+                                   Q9. How does HashSet handle collisions internally?
+                                   Q10. What is the default capacity and load factor of HashSet?
+                                   Q11. Is HashSet thread-safe? How to make it thread-safe?
+(4.1) LinkedHashSet  :
+                                   Q1. What is LinkedHashSet?
+                                   Q2. Key Features of LinkedHashSet?
+                                   Q3. Explain internal working of LinkedHashSet ?
+                                   Q4. Difference between HashSet and LinkedHashSet?
+                                   Q5. When to use LinkedHashSet?
+                                   Q6. Can LinkedHashSet contain null?
+(4.2) TreeSet  :
+                                   Q1. What is TreeSet in Java?
+                                   Q2. Key Features of TreeSet?
+                                   Q3. Explain Internal Working of TreeSet ?
+                                   Q4. How does TreeSet maintain order?
+                                   Q5. When to use TreeSet?
+                                   Q6. Can TreeSet store null?
+(5) HashMap :
                                    Q1. What is Map in Java?
+                                   Q2. What is HashMap in Java?
+                                   Q3. Key Features of HashMap?
+                                   Q4. Explain Internal working of HashMap ?
+                                   Q5. Suppose I create a HashMap with initial capacity 16 and load factor 0.75. After how many insertions will it resize?
+                                   Q6. If the same key with the same value is added again, will it create a duplicate entry or not?
+                                   Q7. What happens if you insert the same key with a different value in a HashMap?
+                                   Q8. Difference between HashMap and Hashtable?
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
+                                   Q1.
                                    Q2. Difference between HashMap and Hashtable?
                                    Q3. Difference between HashMap and LinkedHashMap?
                                    Q4. Difference between HashMap and TreeMap?
