@@ -14,6 +14,7 @@
                                    Q2. Difference between Iterator and ListIterator?
                                    Q3. What is Enumeration in Java?
                                    Q4. What is the difference between Fail-Fast and Fail-Safe Iterators?
+                                   
 
 (3) ArrayList :
                                    Q1. What is List in Java?
@@ -98,65 +99,43 @@
                                    Q6. If the same key with the same value is added again, will it create a duplicate entry or not?
                                    Q7. What happens if you insert the same key with a different value in a HashMap?
                                    Q8. Difference between HashMap and Hashtable?
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q2. Difference between HashMap and Hashtable?
-                                   Q3. Difference between HashMap and LinkedHashMap?
+                                   Q9. Difference between HashMap and LinkedHashMap?
+                                   Q10. Difference between HashMap and TreeMap?
+                                   Q11. Can we use any object as a key in HashMap?
+                                   Q12. What is ConcurrentHashMap?
+                                   Q13. Explain Difference between HashMap and ConcurrentHashMap ?
+                                   Q14. What is IdentityHashMap?
+                                   Q15. What is WeakHashMap?
+                                   Q16. When to use HashMap vs TreeMap?
+                                   Q17. Why map is not a part of collection ?
+                                   Q18. WHAT WAS CHANGED IN JAVA 8, INTERMS OF INTERNAL WORKING OF HASHMAP? 
+(5.1) LinkedHashMap :
+                                   Q1. What is LinkedHashMap?
+                                   Q2. Key Features of LinkedHashMap?
+                                   Q3. Explain Internal Working of LinkedHashMap ?
+(5.2) TreeMap :
+                                   Q1. What is TreeMap?
+                                   Q2. Key Features of TreeMap?
+                                   Q3. Explain Internal working of TreeMap ?
                                    Q4. Difference between HashMap and TreeMap?
-                                   Q5. Can we use any object as a key in HashMap?
-                                   Q6. How does HashMap work internally?
-                                   Q7. What is ConcurrentHashMap?
-                                   Q8. What is IdentityHashMap?
-                                   Q9. What is WeakHashMap?
-                                   Q10. When to use HashMap vs TreeMap?
-                                   Q1.
-                                   Q1.
-                                   Q1.
-(5) Queue & Deque :
+(5.3) HashTable :
+                                   Q1. What is Hashtable?
+                                   Q2. Key Features of Hashtable?
+                                   Q3. Internal Working of HashTable ?
+                                   Q4. Difference between Hashtable and ConcurrentHashMap?
+(5.4) ConcurrentHashMap : 
+                                   Q1. What is ConcurrentHashMap?
+                                   Q2. Key Features of ConcurrentHashMap?
+                                   Q3. Explain Internal working of concurrentHashMap ?
+
+(6) Queue & Deque :
                                    Q1. What is Queue in Java?
                                    Q2. Difference between PriorityQueue and LinkedList (as Queue)?
                                    Q3. Can PriorityQueue store null values?
                                    Q4. What is Deque?
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-(6) Comparisons   :
+
+(7) Comparisons   :
                                    Q1. Why Comparable and Comparator interfaces required in java ?
                                    Q2. Difference between Comparable and Comparator?
                                    Q3. What does the return value of compareTo()/compare() indicate?
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-(1) Basics of Collections Framework :
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-(1) Basics of Collections Framework :
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-(1) Basics of Collections Framework :
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
-                                   Q1.
+                               
