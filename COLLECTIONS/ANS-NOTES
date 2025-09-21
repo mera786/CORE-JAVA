@@ -154,6 +154,7 @@ Fail-Safe → Works on a copy (ConcurrentHashMap, CopyOnWriteArrayList).
 
 
 
+
 (3) ArrayList :
 ##########################
 
@@ -618,39 +619,135 @@ Q8. Difference between HashMap and Hashtable?
 HashMap → Not synchronized, allows 1 null key & multiple null values, Usage Today in most cases.
 Hashtable → Synchronized, no null key or null value. legacy Rarely used.
 
-Q3. Difference between HashMap and LinkedHashMap?
+Q9. Difference between HashMap and LinkedHashMap?
 HashMap → No order.
 LinkedHashMap → Maintains insertion order.
 
-Q4. Difference between HashMap and TreeMap?
+Q10. Difference between HashMap and TreeMap?
 HashMap → Unordered.
 TreeMap → Sorted order (based on natural/comparator).
 
-Q5. Can we use any object as a key in HashMap?
+Q11. Can we use any object as a key in HashMap?
 👉 Yes, but it must implement equals() and hashCode() properly.
 
-Q6. How does HashMap work internally?
-👉 Uses array of buckets + linked list/tree (since Java 8) → hashing + collision handling.
-
-Q7. What is ConcurrentHashMap?
+Q12. What is ConcurrentHashMap?
 👉 Thread-safe version of HashMap, uses segment locking.
 
-Q8. What is IdentityHashMap?
+
+Q13. Explain Difference between HashMap and ConcurrentHashMap ?
+| Feature                          | **HashMap**                                                                                   | **ConcurrentHashMap**                                                                                                          |
+| -------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Thread Safety**                | ❌ Not thread-safe. Multiple threads modifying it can cause issues (data loss, infinite loop). | ✅ Thread-safe. Designed for multi-threaded environments.                                                                       |
+| **Null keys/values**             | Allows **1 null key** and multiple null values.                                               | Does **not allow null keys** or null values.                                                                                   |
+| **Locking Mechanism**            | No locking at all.                                                                            | Uses fine-grained locking: <br>• Java 7 → Segment-level locking <br>• Java 8+ → Bucket-level locking + CAS (Compare-And-Swap). |
+| **Performance in Single Thread** | Faster (no locking overhead).                                                                 | Slightly slower due to synchronization overhead.                                                                               |
+| **Iteration**                    | Fail-Fast → throws `ConcurrentModificationException` if modified while iterating.             | Weakly Consistent → iteration doesn’t throw exception, may or may not reflect recent updates.                                  |
+| **Usage**                        | Best for single-threaded applications or read-mostly operations.                              | Best for multi-threaded applications where multiple threads update the map concurrently.                                       |
+
+
+Q14. What is IdentityHashMap?
 👉 Compares keys using == instead of .equals().
 
-Q9. What is WeakHashMap?
+Q15. What is WeakHashMap?
 👉 Stores keys as weak references → keys are GCed(Garbage Collected) when not referenced.
 
-Q10. When to use HashMap vs TreeMap?
+Q16. When to use HashMap vs TreeMap?
 HashMap → Faster lookup, no order.
 TreeMap → Sorted data, slower.
 
-Q11. Why map is not a part of collection ?
+Q17. Why map is not a part of collection ?
 Map is not part of the Collection interface because it stores key-value pairs, not individual elements. The Collection interface is designed for groups of single objects.
 
+Q18. WHAT WAS CHANGED IN JAVA 8, INTERMS OF INTERNAL WORKING OF HASHMAP? 
+In Java 7 and earlier, HashMap used array + LinkedList for storing entries. In case of collisions, multiple entries were stored in a LinkedList in the same bucket,
+which could degrade performance to O(n). In Java 8, a major improvement was introduced: when the number of entries in a bucket exceeds 8, the LinkedList is converted to a balanced Red-Black Tree, 
+reducing worst-case lookup time from O(n) to O(log n). If entries reduce below 6, it is converted back to a LinkedList. This ensures more consistent performance.
 
 
-(5) Queue & Deque : 
+(5.1) LinkedHashMap  :
+################################
+
+Q1. What is LinkedHashMap?
+👉 A subclass of HashMap that maintains insertion order using a doubly linked list.
+
+Q2. Key Features of LinkedHashMap?
+- Preserves insertion order.
+- Allows one null key & multiple null values.
+- Slightly slower than HashMap (because it maintains order).
+
+Q3. Explain Internal Working of LinkedHashMap ?
+LinkedHashMap is a subclass of HashMap that maintains order of elements. Internally, 
+it uses the same hash table concept as HashMap, but each entry is also part of a doubly linked list. 
+The doubly linked list maintains either insertion order or access order depending on the constructor. On put(),
+a new entry is added both to the hash table bucket and at the end of the linked list.
+
+
+(5.2) TreeMap  :
+################################
+
+Q1. What is TreeMap?
+👉 A Map that stores key-value pairs in sorted order of keys using a Red-Black Tree.
+
+Q2. Key Features of TreeMap?
+- Keys are sorted by natural order or custom Comparator.
+- Does not allow null key (NullPointerException), but allows multiple null values.
+- Time complexity: put/get/remove = O(log n).
+
+Q3. Explain Internal working of TreeMap ?
+TreeMap in Java is implemented using a Red-Black Tree (a self-balancing BST). Each node contains key, value, left/right child pointers, parent pointer, and color (Red/Black). 
+On put(), the key is placed according to BST rules, and then the tree is rebalanced using rotations and recoloring to maintain Red-Black properties. 
+On get(), TreeMap traverses from root comparing keys until the node is found. Iteration happens in in-order traversal of the tree,
+so keys are always returned in sorted order. The time complexity for put, get, and remove is O(log n).
+
+Q4.Difference between HashMap and TreeMap?
+HashMap → Unordered, O(1).
+TreeMap → Sorted by keys, O(log n).
+
+
+(5.3) HashTable : 
+#######################
+
+Q1. What is Hashtable?
+👉 Legacy class (JDK 1.0) that stores key-value pairs in hash table, implement map interface.
+
+Q2. Key Features of Hashtable?
+- Synchronized (thread-safe).
+- No null keys, no null values allowed.
+- Slower compared to HashMap.
+
+Q3. Internal Working of HashTable ?
+Hashtable uses an array of buckets internally, where each bucket is a linked list (or tree in Java 8+). 
+On insertion, it uses the key’s hashCode() to find the bucket and equals() to check for duplicates. If the key already exists,
+value is updated; otherwise, a new entry is linked. All methods are synchronized, making it thread-safe but slower than HashMap.
+
+Q4. Difference between Hashtable and ConcurrentHashMap?
+Hashtable → Entire table locked, slower.
+ConcurrentHashMap → Uses segment/bucket-level locking, faster in concurrency.
+
+
+(5.4) ConcurrentHashMap : 
+############################
+
+Q1. What is ConcurrentHashMap?
+👉 A thread-safe version of HashMap designed for concurrency.
+
+Q2. Key Features of ConcurrentHashMap?
+- Thread-safe, but uses fine-grained locking (better performance).
+- Does not allow null keys or null values.
+- Introduced in Java 5.
+
+Q3. Explain Internal working of concurrentHashMap ?
+ConcurrentHashMap is a thread-safe Map implementation optimized for high concurrency. 
+In Java 7, it used segmented locks—map divided into segments, each with its own lock, so multiple threads can update different segments concurrently. 
+In Java 8, segments were removed and finer-grained concurrency was introduced: each bucket uses CAS (Compare-And-Swap) for atomic insertions, 
+and bucket-level locking is applied only when collisions occur and linked lists or trees are modified. Reads are mostly non-blocking. 
+Buckets with many entries are converted to red-black trees to maintain O(log n) performance. 
+Iterators are weakly consistent and don’t throw ConcurrentModificationException.
+
+
+
+
+(6) Queue & Deque : 
 #######################
 
 Q1. What is Queue in Java?
@@ -668,7 +765,7 @@ Q4. What is Deque?
 
 
 
-(6) Comparisons  :
+(7) Comparisons  :
 ########################
 
 Q1. Why Comparable and Comparator interfaces required in java ?
