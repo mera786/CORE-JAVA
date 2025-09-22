@@ -249,6 +249,41 @@ Non-Primitive Data Types :
 - can be assign to null to indicate no object reference.
 
 
+Q31. Explain Difference between Stack and heap Memeory ?
+👉 Both stack and heap memory are parts of the RAM (Random Access Memory) used by a Java program to manage memory during execution 
+Stack Memory :
+---------------
+- What it stores:
+   a. Primitive variables (like int, char, boolean)
+   b. References to objects (not the object itself)
+- How it works:
+   a. LIFO (Last In First Out) → last thing added is removed first
+- Life cycle:
+   a. Memory is automatically managed. When method ends, variables are removed.
+Heap Memory :
+----------------
+ - What it stores:
+       a. Objects (like new Car(), String, arrays)
+ - How it works:
+       a. Objects live in heap memory until no references point to them
+ - Life cycle:
+       a. Managed by Garbage Collector (GC)
+
+Q32. What is Unreachable Code Error?
+In Java, unreachable code is code that can never be executed because the control will never reach it. Java compiler gives an error for such code because it’s useless.
+eg- 
+void test() {
+    return;
+    System.out.println("Hello"); // ❌ Unreachable
+}
+
+Q33. Can we create more than one main method in the same class?
+No, main method should exact one with same signature for JVM but through overloading concept we can create. but jvm will not call directly, need manual to call 
+
+
+
+
+
 
 
     CONSTRUCTOR  :
@@ -267,6 +302,130 @@ DEFAULT/ NON-PARAMETERIZED:
 - It is automatically created by the compiler if no other constructor is defined. 
 PARAMETRIZED : 
 - It is used to initialize the objects with user defined values. 
+
+Q3. Explain Constructor Overloading ?
+- Definition: When a class has multiple constructors with different parameters.
+- Key: Same class, same constructor name, different parameter list.
+- Purpose: To initialize objects in different ways.
+
+Q4. What is constructor chaining ?
+When one constructor calls another constructor To reuse constructor code and avoid duplication. Two Types of Constructor Chaining :
+- Within the same class: Use this()
+- From parent class: Use super()
+Note:- First statement in constructor must be this() or super() if used with some other statement but cannot use both in the same constructor. otherwise give compile time error. 
+
+Q5. Can Constructor Inherited/override ?
+Constructor is not inherited, so subclass cannot override superclass constructor.
+
+Q6. Does Constructor return any value ?
+No, Permanently void, if you apply void then it becomes method.
+
+Q7. Difference between Constructor and Methods ?
+| Feature         | Constructor                          | Method                                      |
+| --------------- | ------------------------------------ | ------------------------------------------- |
+| **Purpose**     | Initializes an object                | Performs a task or behavior                 |
+| **Name**        | Must be **same as class name**       | Can have **any name**                       |
+| **Return type** | **No return type** (not even void)   | Must have a return type (void or data type) |
+| **Called**      | Automatically when object is created | Explicitly called using object or class     |
+| **Inheritance** | Not inherited, cannot be overridden  | Inherited, can be overridden                |
+| **Overloading** | Allowed (constructor overloading)    | Allowed (method overloading)                |
+| **Example**     | `Car c = new Car("Red");`            | `c.drive();`                                |
+
+
+Q8. can we make constructor private if yes then how it object will be created.?
+👉 Yes , If a constructor is private, then we cannot create an object directly from outside the class using new but There are some common use cases:
+- Singleton Design Pattern
+- Factory Methods  :
+  eg- 
+  class Car {
+    private Car() {}
+    public static Car createCar() {
+        return new Car(); // object created here
+    }}
+    Car c = Car.createCar(); 
+
+
+
+
+
+
+    METHODS  :
+   ---------------
+
+Q1. What is a method in Java?
+👉 A method is a block of code that performs a specific task and can be reused. It is executed when it is called.
+
+Q2. Why do we use methods in Java?
+- To avoid code duplication
+- To make code modular and readable
+- To reuse logic
+
+Q3. Types of methods in Java?
+- Predefined methods (like System.out.println())
+- User-defined methods (methods we create in our class)
+- Static methods (declared with static, belong to class)
+- Instance methods (belong to object)
+- Abstract methods (declared in abstract class/interface, no body)
+- Final methods (cannot be overridden)
+- Synchronized methods (used in multithreading)
+
+Q4. What is method overloading in Java?
+👉 Defining multiple methods in the same class with the same name but different parameters (type/number/order). Resolved at compile-time (compile-time polymorphism).
+
+
+Q5. What is method overriding in Java?
+👉 When a subclass provides its own implementation of a method already present in parent class. Resolved at runtime (runtime polymorphism).
+
+Q6. Can we overload main method in Java?
+👉 Yes, but JVM calls only the standard public static void main(String[] args).Other overloaded versions must be called manually.
+
+Q7. Can we override main method in Java?
+👉 No, because main is static. Static methods cannot be overridden, but they can be hidden (method hiding).
+
+Q8. What is method signature in Java?
+👉 Method signature = method name + parameter list.Return type is not part of signature.
+ eg - void add(int a, int b) 
+
+Q9. Can we overload methods by changing only return type?
+👉 ❌ No, because return type is not part of method signature.
+
+Q10. Can we override static methods in Java?
+👉 ❌ No, static methods are not overridden, they are hidden (method hiding).
+
+Q11. Can we override private methods in Java?
+👉 ❌ No, private methods are not visible to subclass, so cannot be overridden.
+
+Q12. Can we override final methods in Java?
+👉 ❌ No, final methods cannot be overridden.
+
+Q13. Can we overload static methods in Java?
+👉 ✅ Yes, static methods can be overloaded.
+
+Q14. What is method hiding?
+👉 If a subclass defines a static method with the same signature as a static method in superclass, it’s called method hiding, not overriding.
+    Which method runs depends on reference type, not object.
+
+Q15. Can a method be abstract and final together?
+👉 ❌ No, abstract = must be overridden, final = cannot be overridden → contradiction.
+
+Q16. What is a native method?
+👉 A method written in another language (like C/C++) and used in Java via JNI.
+Example: System.gc() internally calls native code.
+
+Q17. What happens if we call a method with wrong number of arguments?
+👉 Compile-time error: method not found.
+
+Q18. What is recursion in methods?
+👉 When a method calls itself to solve a problem.
+Example: factorial calculation.
+
+
+
+
+
+
+
+
 
 
 
