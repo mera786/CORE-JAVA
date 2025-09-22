@@ -1,0 +1,359 @@
+1️⃣ Core Java Basics  :
+#########################
+
+Q1. What is Java?
+Java is a high-level, object-oriented, platform-independent programming language.
+Note:- 
+-> High-level : High-level languages use syntax that is easier for humans to read and write, like English-like keywords (if, for, class, etc.).
+                Example: System.out.println("Hello"); is readable to humans, whereas machine code (10101010...) is not.
+-> platform-independent : Java programs are platform-independent because the bytecode runs on any OS via JVM, so you don’t have to rewrite code for different systems.
+
+
+Q2. What are the features of Java? 
+     -> Object-Oriented – Based on classes and objects for modularity.
+     -> Platform-Independent – Write once, run anywhere using JVM.
+     -> Robust – Strong memory management and error handling.
+     -> Portable – Can run across devices and OS without changes.
+     -> High Performance – Uses JIT compiler for faster execution.
+     -> Multithreaded – Supports multiple threads for concurrent tasks.
+
+Q3. DIFFERENCE BETWEEN JVM,JRE AND JDK ?
+| Component | What it is                                     | Contains                                                                |
+| --------- | ---------------------------------------------- | ----------------------------------------------------------------------- |
+| **JVM**   | Java Virtual Machine, runs bytecode            | Just the JVM itself (executes `.class` files)                           |
+| **JRE**   | Java Runtime Environment, runs Java apps       | **JVM + Core Java Libraries** (like `java.lang`, `java.util`)           |
+| **JDK**   | Java Development Kit, for developing Java apps | **JRE + Development Tools** (`javac`, `jar`, `javadoc`, debugger, etc.) |
+
+
+Q4. Explain new keyword in Java.
+Used to create new object instances and allocate memory on the heap.
+
+Q5. What is the difference between == and equals()?
+ == compares reference (memory).
+ equals() compares content (object value).
+
+Q6. What are wrapper classes in Java?
+Convert primitive data types to objects (Integer, Double, Boolean, etc.)
+
+Q7. Explain Autoboxing and Unboxing?
+Autoboxing: primitive → Wrapper Object automatically.
+           eg- int num = 10;          // primitive
+               Integer obj = num;     // autoboxing happens automatically
+            Note:- You didn’t call new Integer(num), but Java did it behind the scenes.
+Unboxing: Wrapper Object → primitive automatically.
+           eg- Integer obj = 20;      // wrapper object
+               int num = obj;         // unboxing happens automatically
+           Note:- You didn’t call obj.intValue(), but Java did it internally.
+
+Q8. What is a constant in Java?
+A constant whose value cannot change, to declare constant used final keyword. 
+
+Q9. Explain static keyword.
+Belongs to class rather than instance; shared among all objects.
+
+Q10. Explain final keyword ?
+-  final class → cannot be extended.
+-  final method → cannot be overridden.
+-  final variable → constant value.
+
+Q11. Difference between this keyword and super keyword ?
+| Point                     | `this` keyword                                                | `super` keyword                                                       |
+| ------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------- |
+| **1. Refers to**          | Current class object (me)                                     | Parent class object (parent)                                          |
+| **2. Used for variables** | To access current class variables                             | To access parent class variables                                      |
+| **3. Used for methods**   | To call current class methods                                 | To call parent class methods (when overridden)                        |
+| **4. Constructor call**   | Calls another constructor in the same class (`this()`)        | Calls parent class constructor (`super()`)                            |
+| **5. Ambiguity**          | Clears confusion between local variable and instance variable | Clears confusion when child and parent have same variable/method name |
+
+Q12. Explain instanceof keyword.
+Checks whether an object is an instance of a specific class or subclass.
+Example :
+specific class :-
+ List<Object> list = new ArrayList<>();
+        list.add("Java"); 
+        list.add(100); 
+        list.add(new Date());
+
+        for (Object obj : list) {
+            if (obj instanceof String) {
+                System.out.println(obj + " is a String");
+            } else if (obj instanceof Integer) {
+                System.out.println(obj + " is an Integer");
+            } else {
+                System.out.println(obj + " is some other type");
+            }
+subclass :- 
+class Animal {}
+class Dog extends Animal {}
+ public static void main(String[] args) {
+        Animal a = new Animal();
+        Dog d = new Dog();
+        System.out.println(a instanceof Animal); // true
+        System.out.println(d instanceof Dog);    // true
+        System.out.println(d instanceof Animal); // true (Dog is a subclass of Animal)
+        System.out.println(a instanceof Dog);    // false (Animal is not Dog)
+    }
+
+Q13. How many types of variables in java ?
+variables are categorized mainly into three types :
+ a. Local Variables
+ b. Instance Variables (Non-Static Variables)
+ c. Static Variables (Class Variables)
+
+Q14. Difference between Static vs non-static variable ?
+Static variable: 
+- Static variables are also called class variable and belong to class. 
+- Static variables declare outside of method but inside of class using static keyword. 
+- Static variable can be access directly with class name , object creation not mandatory. 
+- Static variable has global access directly with class name. 
+- Not mandatory to initialize. 
+Non-static variable: 
+- Non-static variables are also called instance variable and belong to object. 
+- Non-Static variables declare outside of method but inside of class without using static keyword. 
+- To access non-static variable object creation mandatory. 
+- Non-static doesn’t have global access, after creation object can be accessed. 
+- Not mandatory to initialize.
+
+Q15. Difference between static vs local variable ?
+Static variable: 
+- Static variables are also called class variable and belong to class. 
+- Static variables declare outside of method but inside of class using static keyword. 
+- Static variable can be access directly with class name , object creation not mandatory. 
+- Static variable has global access directly with class name. 
+- Not mandatory to initialize. 
+Local variable: 
+- Local variables are belong to Method/ block-level. 
+- Local variables are declare inside method and should be used only within the method. 
+- Local variables can be accessed directly without object reference or class name. 
+- mandatory to initialize.
+
+Q16. Explain Reference variable ?
+- reference variable can store either null value or object address. 
+- Data type of reference variable is class name. 
+- Reference variable can be treaded as : static ,non-static and local  
+
+Q17. Can we use a static variable in a non-static method?
+ yes
+
+Q18. Can we use a non-static variable in a static method?
+Non-static variables belong to objects. Without an object, a static method cannot directly access instance variables. give compile time error.
+
+
+Q19. WHY JAVA IS NOT 100% OBJECT – ORIENTED ?
+Java is called object-oriented, but not 100% OOP because it has some features that are not objects.
+- Primitive Data Types : Java has 8 primitive types (int, float, double, char, boolean, byte, short, long).In a pure OOP language, everything should be an object.
+- Static Methods and Variables : Static members belong to the class, not to an object. however everything should be tied to an object.
+- Main Method : The main() method is static, It runs without creating an object of the class, which violates pure OOP principles.
+
+Q20. Why is the main() method static in Java?
+By declaring main method as static to allow JVM to call main method directly without creating instance of the class.
+
+Q21. instead of string [] as main method argument can we pass int array ?
+- Main method to have exact signature. 
+- The arguments passed to a Java program via the command line are always treated as strings. Even if you pass numbers, 
+  they are received as strings and must be converted to integers if needed,
+   eg- 
+  public static void main(String[] args) {
+    int[] numbers = new int[args.length];
+    for (int i = 0; i < args.length; i++) {
+        numbers[i] = Integer.parseInt(args[i]);
+    }}
+
+Q22. What is a Default Value in Java?
+Default value is the pre-assigned value,It we don’t store any value of a variable then depending on it’s data type, automatically some value store by compiler, called default value.
+
+
+Q23. Why pointers are not used in Java?
+Because JVM is responsible for implicit memory allocation. To avoid direct access to memory by user. 
+
+Q24. Difference between Compiler, Interpreter and JIT ?
+Compiler :
+- It takes your entire program and converts it into machine language (computer can understand) before running it.
+- Think of the compiler as a translator for the whole book, After translation, you can run it anytime without translating again.
+   eg- javac converts .java → .class.
+Interpreter :
+- It reads one line at a time and immediately executes it.
+- Think of the interpreter as a translator while reading the book,No separate program file is created.
+JIT (Just-In-Time Compiler) :
+- JVM first starts like an interpreter (line by line).
+- Think of JIT as a smart hybrid translator, For parts used a lot (“hot spots”), JIT translates them to machine code to make them run faster.
+  eg- loops or frequently used methods.
+
+Q25. tell methods name present in object class?
+- public final Class<?> getClass()
+- public int hashCode()
+- public boolean equals(Object obj)
+- protected Object clone()
+- public String toString()
+- public final void notify()
+- public final void notifyAll()
+- public final void wait(long timeout) :
+                            - Overloaded forms: public final void wait(long timeout, int nanos) , public final void wait() 
+- protected void finalize()
+
+
+Q26. What is the difference between == operator for primitives and objects?
+- Primitives → value comparison
+- Objects → reference comparison
+
+Q27. What is the difference between abstract class and interface?
+Abstract :
+ - Methods → Can have both abstract methods (no body) and concrete methods (with body).
+ - Fields/Variables → Can have instance variables and static variables.
+ - Multiple Inheritance → ❌ Not possible (a class can extend only one abstract class).
+ - Object Creation → ❌ Cannot create object directly, but subclass objects can be created.
+ - Constructors → ✅ Yes, abstract classes can have constructors (used to initialize fields when subclass object is created).
+  eg - 
+    abstract class Animal {
+    String name;
+   // Abstract class constructor
+    Animal(String name) {
+        this.name = name;
+        System.out.println("Animal constructor called: " + name);
+    }
+
+    class Dog extends Animal {
+    Dog(String name) {
+        // Calls Animal(String name) constructor
+        super(name);
+        System.out.println("Dog constructor called");
+    }
+
+Interface :
+ - An interface in Java is like a contract that only contains method declarations (without implementation) and constants, + Default/Static/Private (Java 8+)
+ - Fields/Variables → Only public static final (constants). No instance variables.
+ - Object Creation → ❌ Cannot create objects. Can only be implemented by a class.
+ - Multiple Inheritance → ✅ Possible (a class can implement multiple interfaces).
+ - Constructors → ❌ Interfaces cannot have constructors.
+
+
+Q28. When to use Abstract class and when to use Interface ?
+👉 Use Interface when you just want to define a contract and multiple inheritance is needed.
+Example → Dog, Car, Printer sab Serializable ho sakte hain (unrelated classes bhi ek interface follow kar sakti hain).
+
+👉 Use Abstract Class when you want to share common code/state among related classes.
+Example → Shape abstract class me ek color field ho sakta hai aur concrete method setColor().
+Circle aur Rectangle us base class ka code reuse karte hain.
+
+Q29. Explain package in Java.
+Packages are just like folder that helps organize your classes, interfaces, enums, and sub-packages into groups.
+
+Q30. Explain Difference Between Primitive vs Non-Primitive Data Types ?
+Primitive :
+- They store simple values directly in memory (stack memory usually).
+- Number of types: 8    byte, short, int, long, float, double, char, boolean
+- can't assign null
+Non-Primitive Data Types :
+- They store references (addresses) to objects, not the actual data in heap memory (actual object) + reference in stack.
+- eg : String, Arrays, Classes, Interfaces, Enums, Objects you create (custom objects)
+- can be assign to null to indicate no object reference.
+
+
+
+
+    CONSTRUCTOR  :
+    ---------------
+Q1. What is a Constructor? and What it does ?
+ Constuctor :
+ - A constructor is a special method in a class.
+ - Name: Must be same as the class name.
+ - No return type (not even void).
+ - Runs automatically when you create an object using new.
+What it does :
+- Its main job is to initialize objects when they are created.
+
+Q2. What are the types of Constructor ?
+DEFAULT/ NON-PARAMETERIZED: 
+- It is automatically created by the compiler if no other constructor is defined. 
+PARAMETRIZED : 
+- It is used to initialize the objects with user defined values. 
+
+
+
+
+
+    GARBAGE COLLECTOR :
+    -------------------
+Q1. What is Garbage Collector in Java?
+In java , garbage collector is a component of JVM which automatically keeps on removing 
+objects from heap memory on regular bases which are not in use which helps to avoid overflow 
+of memory and memory management becomes efficient. 
+
+Q2. Which JVM is most commonly used in Java applications?
+“HOTSPOT” is the most commonly used JVM by oracle, All hotspot’s GC implements generational GC strategy
+
+Q3. What are different Garbage Collectors in HotSpot JVM?
+- Serial GC → Single-threaded, for small apps.
+- Parallel GC → Multi-threaded, high throughput.
+- CMS (Concurrent Mark-Sweep) → Low pause collector (deprecated after Java 9).
+- G1 GC (Garbage First) → Default since Java 9, balances pause + throughput.
+- ZGC / Shenandoah → Ultra-low pause collectors (Java 11+).
+
+Q4. Which Garbage Collector is default in Java 8 vs Java 11 vs Java 17?
+- Java 8 → Parallel GC (default).
+- Java 9+ → G1 GC (default).
+- Java 11+ → G1 GC (default, but ZGC available).
+- Java 17 → G1 GC default, ZGC highly used in modern apps.
+
+Q5. How does Garbage Collection work internally?
+👉 Two steps: Marking (identify unreferenced objects) + Deletion (remove them).
+
+Q6. What is Generational Garbage Collection?
+👉 GC divides heap into Young Generation, Old Generation, and PermGen/Metaspace.
+- Young → short-lived objects
+- Old → long-lived objects
+- PermGen/Metaspace → class metadata
+
+Q7. Why generational strategy?
+👉 Because most objects are short-lived (e.g., method-local variables).
+
+Q8. Can you force Garbage Collection in Java?
+the developer cannot force it, only request it (System.gc() or Runtime.getRuntime().gc()).
+
+Q9. What is difference between finalize() method and Garbage Collector?
+👉 finalize() is called before GC deletes an object (but not guaranteed). It’s deprecated in Java 9+.
+
+Q10. What is memory leak in Java if GC is automatic?
+👉 Memory leak still happens if objects are referenced but never used, so GC cannot collect them. Example: storing objects in a static list but never removing them.
+
+Q11. Does Garbage Collector collect objects from stack?
+👉 No. GC only works on heap memory, not stack.
+
+
+
+
+
+
+
+
+
+1️⃣ Core Java Basics  :
+#########################
+
+
+
+
+1️⃣ Core Java Basics  :
+#########################
+
+
+
+
+1️⃣ Core Java Basics  :
+#########################
+
+
+
+
+1️⃣ Core Java Basics  :
+#########################
+
+
+
+1️⃣ Core Java Basics  :
+#########################
+
+
+
+1️⃣ Core Java Basics  :
+#########################
