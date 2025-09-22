@@ -1,22 +1,86 @@
-                              CORE JAVA QUEZ
+1️⃣ Core Java Basics  :
+               Q1. What is Java?
+               Q2. What are the features of Java? 
+               Q3. DIFFERENCE BETWEEN JVM,JRE AND JDK ?
+               Q4. Explain new keyword in Java.
+               Q5. What is the difference between == and equals()?
+               Q6. What are wrapper classes in Java?
+               Q7. Explain Autoboxing and Unboxing?
+               Q8. What is a constant in Java?
+               Q9. Explain static keyword.
+               Q10. Explain final keyword ?
+               Q11. Difference between this keyword and super keyword ?
+               Q12. Explain instanceof keyword.
+               Q13. How many types of variables in java ?
+               Q14. Difference between Static vs non-static variable ?
+               Q15. Difference between static vs local variable ?
+               Q16. Explain Reference variable ?
+               Q17. Can we use a static variable in a non-static method?
+               Q18. Can we use a non-static variable in a static method?
+               Q19. WHY JAVA IS NOT 100% OBJECT – ORIENTED ?
+               Q20. Why is the main() method static in Java?
+               Q21. instead of string [] as main method argument can we pass int array ?
+               Q22. What is a Default Value in Java?
+               Q23. Why pointers are not used in Java?
+               Q24. Difference between Compiler, Interpreter and JIT ?
+               Q25. tell methods name present in object class?
+               Q26. What is the difference between == operator for primitives and objects?
+               Q27. What is the difference between abstract class and interface?
+               Q28. When to use Abstract class and when to use Interface ?
+               Q29. Explain package in Java.
+               Q30. Explain Difference Between Primitive vs Non-Primitive Data Types ?
+               a.
+               a.
+               a.
+               a.
+               a.
+               a.
+               a.
+    CONSTRUCTOR :
+    ---------------
+               Q1. What is a Constructor? and What it does ?
+               Q2. What are the types of Constructor ?
+               a.
+               a.
+               a.
+               a.
+               a.
+    METHODS    :
+    ------------
+               a.
+               a.
+               a.
+               a.
+               a.
+               a.
+               a.
+    GARBAGE COLLECTOR :
+    -------------------
+               Q1. What is Garbage Collector in Java?
+               Q2. Which JVM is most commonly used in Java applications?
+               Q3. What are different Garbage Collectors in HotSpot JVM?
+               Q4. Which Garbage Collector is default in Java 8 vs Java 11 vs Java 17?
+               Q5. How does Garbage Collection work internally?
+               Q6. What is Generational Garbage Collection?
+               Q7. Why generational strategy?
+               Q8. Can you force Garbage Collection in Java?
+               Q9. What is difference between finalize() method and Garbage Collector?
+               Q10. What is memory leak in Java if GC is automatic?
+               Q11. Does Garbage Collector collect objects from stack?
+               a.
+               a.
+               a.
+               a.
+               a.
+               a.
+               a.
+               a.
+               a.
+               a.
+               a.
 
-(1) Explain New Keyword ?
-(2) Explain Garbage Collector ?
-(2.1) HOW GARBAGE COLLECTION WORKS?
-(2.2) CAN YOU NAME COMMONLY USED ORACLE’S JVM & WHICH GC STRATEGY IS USED BY IT?
-(2.3) WHY MOST GC USES GENERATION GC STRATEGY?
-(3) Static vs non-static variable ?
-(4) static vs local variable ?
-(5) Reference variable ?
-(6) WHAT IS STATIC IN JAVA ?
-(7) WHY MAIN METHOD IS STATIC ?
-(8) INSTEAD OF STRING [] AS MAIN METHOD ARGUMENT CAN WE PASS INT ARRAY ?
-(9) DIFFERENCE BETWEEN PRIMITIVE VS NON-PRIMITIVE DATA TYPES?
-(10) WHAT IS DEFAULT VALUE ?
+
 (11) DIFFERENCE BETWEEN HEAP AND STACK MEMEORY ?
-(12) DIFFERENCE BETWEEN JVM,JRE AND JDK ?
-(13) WHAT IS CONSTRUCTOR AND WHAT IT DOES?
-(14) HOW MANY TYPES OF CONSTRUCTOR ?
 (15) WHAT IS CONSTRUCTOR OVERLOADING & CONSTRUCTOR CHAINING ?
 (17) CAN WE INHERIT CONSTRUCTOR ?
 (18) DOES CONSTRUCTORY RETURN ANY VALUE?
@@ -26,10 +90,8 @@
 (22) CAN WE INHERIT STATIC METHOD ?
 (23) CAN WE OVERRIDE STATIC METHOD?
 (24) CAN WE CREATE MORE THAN ONE MAIN METHOD IN SAME CLASS ?
-(25) CAN YOU EXPLAIN MAIN METHOD SIGNATURE ?
 (26) WHAT IS DATA HIDING ?
 (28) DIFFERENCE BETWEEN SUB CLASS AND NON-SUB CLASS?
-(29) HOW MANY TYPES OF VARIABLE IN JAVA ?
 (30) DIFFERENCE BETWEEN RETURN AND RETURN VALUE?
 (32) WHAT IS TYPE CASTING & HOW MANY TYPES OF IT?
 (33) WHAT IS TYPE CONVERSION?
@@ -43,7 +105,6 @@
 (42) DIFFERENCE BETWEEN IIB AND SIB ?
 (43) HOW WILL YOU PREVENT A CLASS NOT TO BE CLONED?
 (44) CAN WE MAKE CONSTRUCTOR PRIVATE IF YES THEN HOW IT OBJECT WILL BE CREATED.?
-
 (45) WHAT IS DIFFERENCE BETWEEN INTERFACE AND FUNCTIONAL INTERFACE?
 (46) WHAT ARE DESIGN PATTEN?
 (47) EXPLAIN TYPES OF DESIGN PATTERN?
@@ -54,13 +115,7 @@
 (52) WHAT IS SINGLE TON DESIGN PATTERN?
 (53) WHAT IS PROTOTYPE DESIGN PATTERN?
 (54) WHAT IS BUILDER DESIGN PATTERN?
-(55) CAN WE USE STATIC VARIBALE INTO NON-STATIC METHOD?
-(56) CAN WE USE NON-STATIC VARIABLE INTO STATIC METHOD?
-(57) TELL METHODS NAME PRESENT IN OBJECT CLASS?
-(58) WHY WE CREATE DEFAULT CONSTRUCTOR?
-(59) WHY JAVA IS NOT 100% OBJECT – ORIENTED ?
-(60) WHY POINTERS ARE NOT USED IN JAVA?
-(61) WHAT IS JIT /JIT COMPILER IN JAVA?
+(58) WHY WE CREATE DEFAULT CONSTRUCTOR? 
 (62) Can we restrict visibility of derived method in Java ?
 
 
@@ -95,7 +150,7 @@
 (3) WHAT MUTABLE AND IMMUTABLE REFERS IN TERMS OF STRING?
 (4) WHY STRING IS IMMUTABLE?
 (6) STEPS TO CREATE IMMUTABLE CLASS IN JAVA?
-(7) DIFFERENCE BETWEEN EQUALS METHOD AND EQUAL OPERATOR?
+
 (9) EXPLAIN METHOD LIKE, CHARS(), CHARAT(), VALUEOF()?
 (10) EXPLAIN DIFFERENCE BETWEEN STRING, STRINGBUILDER AND STRINGBUFFER?
 (11) WAYS TO CREATE STRINGBUILDER & FEW METHODS OF IT?
