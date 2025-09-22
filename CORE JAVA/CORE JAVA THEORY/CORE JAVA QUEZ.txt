@@ -29,6 +29,11 @@
                Q28. When to use Abstract class and when to use Interface ?
                Q29. Explain package in Java.
                Q30. Explain Difference Between Primitive vs Non-Primitive Data Types ?
+               Q31. Explain Difference between Stack and heap Memeory ?
+               Q32. What is Unreachable Code Error?
+               Q33. Can we create more than one main method in the same class?
+               a.
+               a.
                a.
                a.
                a.
@@ -40,6 +45,15 @@
     ---------------
                Q1. What is a Constructor? and What it does ?
                Q2. What are the types of Constructor ?
+               Q3. Explain Constructor Overloading ?
+               Q4. What is constructor chaining ?
+               Q5. Can Constructor Inherited/override ?
+               Q6. Does Constructor return any value ?
+               Q7. Difference between Constructor and Methods ?
+               Q8. can we make constructor private if yes then how it object will be created.?
+               a.
+               a.
+               a.
                a.
                a.
                a.
@@ -47,6 +61,24 @@
                a.
     METHODS    :
     ------------
+               Q1. What is a method in Java?
+               Q2. Why do we use methods in Java?
+               Q3. Types of methods in Java?
+               Q4. What is method overloading in Java?
+               Q5. What is method overriding in Java?
+               Q6. Can we overload main method in Java?
+               Q7. Can we override main method in Java?
+               Q8. What is method signature in Java?
+               Q9. Can we overload methods by changing only return type?
+               Q10. Can we override static methods in Java?
+               Q11. Can we override private methods in Java?
+               Q12. Can we override final methods in Java?
+               Q13. Can we overload static methods in Java?
+               Q14. What is method hiding?
+               Q15. Can a method be abstract and final together?
+               Q16. What is a native method?
+               Q17. What happens if we call a method with wrong number of arguments?
+               Q18. What is recursion in methods?
                a.
                a.
                a.
@@ -80,16 +112,7 @@
                a.
 
 
-(11) DIFFERENCE BETWEEN HEAP AND STACK MEMEORY ?
-(15) WHAT IS CONSTRUCTOR OVERLOADING & CONSTRUCTOR CHAINING ?
-(17) CAN WE INHERIT CONSTRUCTOR ?
-(18) DOES CONSTRUCTORY RETURN ANY VALUE?
-(19) DIFFERENCE BETWEEN CONSTRUCTORY AND METHOD?
-(20) WHAT IS UNREACHEABLE CODE ERROR ?
 (21) DOES MULTIPLE INHERITANCE ALLOW AT CLASS LEVEL?
-(22) CAN WE INHERIT STATIC METHOD ?
-(23) CAN WE OVERRIDE STATIC METHOD?
-(24) CAN WE CREATE MORE THAN ONE MAIN METHOD IN SAME CLASS ?
 (26) WHAT IS DATA HIDING ?
 (28) DIFFERENCE BETWEEN SUB CLASS AND NON-SUB CLASS?
 (30) DIFFERENCE BETWEEN RETURN AND RETURN VALUE?
@@ -104,7 +127,6 @@
 (41) DIFFERENCE BETWEEN PASS BY VALUE AND PASS BY REFERENCE?
 (42) DIFFERENCE BETWEEN IIB AND SIB ?
 (43) HOW WILL YOU PREVENT A CLASS NOT TO BE CLONED?
-(44) CAN WE MAKE CONSTRUCTOR PRIVATE IF YES THEN HOW IT OBJECT WILL BE CREATED.?
 (45) WHAT IS DIFFERENCE BETWEEN INTERFACE AND FUNCTIONAL INTERFACE?
 (46) WHAT ARE DESIGN PATTEN?
 (47) EXPLAIN TYPES OF DESIGN PATTERN?
