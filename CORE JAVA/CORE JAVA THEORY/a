@@ -800,6 +800,208 @@ Reflection allows you to access private constructors.
       }}
 
 
+Q11. What is Prototype pattern?
+Prototype is a creational design pattern that creates new objects by copying an existing object instead of creating a new instance from scratch.
+
+Q12. Why do we use Prototype pattern?
+ - To avoid expensive object creation. by duplicating objects with existing state.
+ - Supports runtime object creation without knowing the exact class.
+
+Q13. How do you implement Prototype in Java?
+- By implementing Cloneable interface and overriding clone() method.
+
+
+Q14. What is Factory Design Pattern?
+Factory pattern is a creational design pattern that provides an interface to create objects, but lets subclasses decide which class to instantiate.
+
+
+Q15. Why use Factory pattern?
+ - To decouple object creation from usage.
+ - To increase flexibility and maintainability.
+ - Helps follow Open/Closed Principle: new types can be added without modifying existing code.
+
+Q16. What are types of factory pattern ?
+ - Simple Factory (Not a formal GoF pattern) : Provides a method to create objects based on input.
+- Factory Method : Defines an interface for creating objects, but subclasses decide the concrete class.
+- Abstract Factory : Creates families of related objects without specifying their concrete classes.
+
+Q17. How to implement Factory Method?
+  - Define Product Interface – Shape with draw() method.
+  - Create Concrete Products – Circle and Square implement Shape.
+  - Create Factory Class – ShapeFactory has getShape(String type) to return objects based on input.
+  - Use the Factory – In TestFactory.main(), create ShapeFactory, call getShape("CIRCLE"), and invoke draw().
+✅ Key idea: Client code uses the factory to get objects without knowing the exact class.
+
+Q18. Difference between Factory Method and Abstract Factory ?
+| Factory Method                                 | Abstract Factory                                 |
+| ---------------------------------------------- | ------------------------------------------------ |
+| Creates **one product** at a time              | Creates **family of related products**           |
+| Subclasses decide which product to instantiate | Provides an interface for multiple factories     |
+| Example: ShapeFactory                          | Example: GUIFactory (WindowsFactory, MacFactory) |
+
+Q19. What is Abstract Factory pattern?
+Abstract Factory is a creational design pattern that provides an interface to create families of related or dependent objects without specifying their concrete classes.
+
+Q20. Why use Abstract Factory?
+ - To create sets of related objects consistently.
+ - To decouple client code from concrete implementations.
+ - Useful when you want different themes or platforms with a consistent interface.
+
+Q21. How to implement Abstract Factory in Java?
+
+Q22. What is Builder pattern?
+Builder Pattern is a creational design pattern that helps create complex objects step by step. It separates the construction process from the final object, 
+so you can create different types of the object using the same building steps.
+ - Think of building a house. You can build it step by step: lay the foundation, build walls, put the roof, paint, etc.
+ - You can build different types of houses (wooden, concrete) using the same steps, just with different materials.
+ - Key idea: Separate how you build (process) from what you build (representation).
+
+Q23. Why use Builder pattern?
+When an object has many optional settings,
+to avoid having too many constructors,
+and to make creating the object easy to read and use.
+
+Q24. How to implement Builder in Java?
+
+Q25. What is Structural Design Pattern ?
+- A structural design pattern is used to organize or compose classes and objects so they can work together efficiently.
+- Simple way to remember: It’s about how objects and classes are connected.
+
+Q26. what is Behavioral Design Pattern ?
+- A behavioral design pattern is used to manage how objects interact and communicate with each other.
+- Simple way to remember: It’s about behavior and communication.
+
+  
+
+   EXCEPTION :
+   -----------
+
+Q1. Can you explain the exception hierarchy in Java?
+Throwable
+├── Error (serious problems, usually not handled by programs)
+│   ├── LinkageError
+│   │   ├── ClassCircularityError
+│   │   └── NoClassDefFoundError
+│   ├── VirtualMachineError
+│   │   ├── OutOfMemoryError
+│   │   ├── StackOverflowError
+│   │   └── InternalError
+│   └── AssertionError
+│
+└── Exception (problems programs can handle)
+    ├── Checked Exceptions (must be caught or declared)
+    │   ├── IOException
+    │   │   ├── FileNotFoundException
+    │   │   ├── EOFException
+    │   │   ├── MalformedURLException
+    │   │   └── InterruptedIOException
+    │   ├── SQLException
+    │   ├── ClassNotFoundException
+    │   ├── CloneNotSupportedException
+    │   └── TimeoutException
+    │
+    └── Unchecked Exceptions (RuntimeException and its subclasses)
+        ├── RuntimeException
+        │   ├── ArithmeticException
+        │   ├── NullPointerException
+        │   ├── ArrayIndexOutOfBoundsException
+        │   ├── StringIndexOutOfBoundsException
+        │   ├── ClassCastException
+        │   ├── IllegalArgumentException
+        │   │   └── NumberFormatException
+        │   ├── IllegalStateException
+        │   ├── UnsupportedOperationException
+        │   └── IndexOutOfBoundsException
+        │       ├── ArrayIndexOutOfBoundsException
+        │       └── StringIndexOutOfBoundsException
+
+
+Q2: Difference between Error and Exception ?
+| Feature           | Error                                    | Exception                         |
+| ----------------- | ---------------------------------------- | --------------------------------- |
+| Definition        | Serious problems, not meant to be caught | Conditions that can be handled    |
+| Checked/Unchecked | Unchecked                                | Can be checked or unchecked       |
+| Example           | OutOfMemoryError, StackOverflowError     | IOException, NullPointerException |
+
+Q3. What are the Types of Exceptions?
+Checked (compile-time) vs Unchecked (runtime)
+
+Q4. Difference between Checked and Unchecked Exceptions ?
+Checked Exceptions :
+- Definition: Exceptions that the compiler checks at compile-time.
+- You must handle them either using try-catch or throws in method signature.
+- Examples: IOException, SQLException, FileNotFoundException.
+- When it occurs: Usually happens due to external conditions, like reading a file or network operations.
+Unchecked Exceptions:
+- Definition: Exceptions that the compiler does not check at compile-time.
+- Usually happen due to programming errors.
+- Examples: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException.
+- When it occurs: At runtime, when the erroneous code execute
+
+Q5. How do you handle exceptions in Java?
+  a. try-catch : Handle multiple exception types in a single catch using |  eg- catch (ArithmeticException | ArrayIndexOutOfBoundsException e)
+  b. try-catch-finally
+  c. throws keyword : You can declare that a method throws an exception.
+  d. try-with-resources  : Automatically closes resources like files, sockets, DB connections,No need for finally for closing resources.
+    eg- 
+         try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+          System.out.println(br.readLine());
+          } catch (IOException e) {
+          System.out.println("IOException occurred: " + e.getMessage());
+          }
+  e. Rethrowing exceptions/Propagating exceptions : You can rethrow exceptions from catch.
+     eg-
+            try {
+            int result = 10 / 0;
+            } catch (ArithmeticException e) {
+            System.out.println("Handling partially");
+               throw e; // propagate further
+              }
+  f. Custom exceptions : Create your own exception class and handle it using try-catch.
+  eg- 
+    class MyException extends Exception {
+    MyException(String message) { super(message); }
+   }
+  public void test() throws MyException {
+    throw new MyException("Custom Exception");
+   }
+
+Q6. What is try catch ?
+In Java, try-catch is used to handle exceptions, which are unexpected errors that occur during program execution. The try block contains code that might throw an exception, 
+and the catch block contains code to handle that exception so the program can continue running without crashing. This helps in making programs more robust and error-tolerant
+
+Q7. Can we have multiple catch blocks in Java?
+Yes, Java allows multiple catch blocks to handle different exceptions separately. There are two main approaches:
+  a. Traditional approach (before Java 7): You can write multiple catch blocks, each handling a specific exception type: 
+try {
+    // code that may throw exceptions
+} catch (IOException e) {
+    System.out.println("IOException occurred");
+} catch (SQLException e) {
+    System.out.println("SQLException occurred");
+}
+  b. Multi-catch approach (Java 7+): You can combine multiple exception types in a single catch block using the | operator:
+try {
+    // code that may throw exceptions
+} catch (IOException | SQLException e) {
+    System.out.println("IOException or SQLException occurred");
+}
+
+Q8. What is finally block?
+A: Block executed always, whether exception occurs or not. Often used for resource cleanup.
+
+Q9. Can we write finally block without catch block ?
+Yes 👍, we can write a finally block without a catch block,A try block must be followed by either a catch block or a finally block (or both).
+
+Q10. Can we write try block without catch or finally block ?
+No, we cannot write a try block alone without a catch or finally.A try block must be followed by at least one catch block or a finally block.
+
+Q11. Difference between throw and throws ?
+| Keyword  | Purpose                                                      |
+| -------- | ------------------------------------------------------------ |
+| `throw`  | Used to explicitly throw an exception from a method or block |
+| `throws` | Declares exception(s) that a method can throw                |
+
 
 
 
