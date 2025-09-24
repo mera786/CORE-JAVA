@@ -60,11 +60,10 @@
                Q59. How will you prevent a class not to be cloned?
                a.
                a.
+               a.       shallow and deep copy for 3 years experienc is uncompleted.
                a.
                a.
                a.
-               a.
- 
 
     CONSTRUCTOR :
     ---------------
@@ -78,11 +77,6 @@
                Q8. can we make constructor private if yes then how it object will be created.?
                Q9. Why Do We Create a Default Constructor?
                Q10. if constructor and setter do the same work then why constructor or setter ?
-               a.
-               a.
-               a.
-               a.
-               a.
                a.
     METHODS    :
     ------------
@@ -105,12 +99,6 @@
                Q17. What happens if we call a method with wrong number of arguments?
                Q18. What is recursion in methods?
                a.
-               a.
-               a.
-               a.
-               a.
-               a.
-               a.
     GARBAGE COLLECTOR :
     -------------------
                Q1. What is Garbage Collector in Java?
@@ -124,17 +112,7 @@
                Q9. What is difference between finalize() method and Garbage Collector?
                Q10. What is memory leak in Java if GC is automatic?
                Q11. Does Garbage Collector collect objects from stack?
-               a.
-               a.
-               a.
-               a.
-               a.
-               a.
-               a.
-               a.
-               a.
-               a.
-               a.
+
    DESIGN PATTERN :
    -------------------
                Q1. What is Degisn Pattern ?
@@ -147,6 +125,36 @@
                Q8. How to make Singleton thread-safe?
                Q9. When should you not use Singleton?
                Q10. What can break Singleton? 
+               Q11. What is Prototype pattern?
+               Q12. Why do we use Prototype pattern?
+               Q13. How do you implement Prototype in Java?
+               Q14. What is Factory Design Pattern?
+               Q15. Why use Factory pattern?
+               Q16. What are types of factory pattern ?
+               Q17. How to implement Factory Method?
+               Q18. Difference between Factory Method and Abstract Factory ?
+               Q19. What is Abstract Factory pattern?
+               Q20. Why use Abstract Factory?
+               Q21. How to implement Abstract Factory in Java?
+               Q22. What is Builder pattern?
+               Q23. Why use Builder pattern?
+               Q24. How to implement Builder in Java?
+               Q25. What is Structural Design Pattern ?
+               Q26. what is Behavioral Design Pattern ?
+
+   EXCEPTION :
+   -----------
+               Q1. Can you explain the exception hierarchy in Java?
+               Q2: Difference between Error and Exception ?
+               Q3. What are the Types of Exceptions?
+               Q4. Difference between Checked and Unchecked Exceptions ?
+               Q5. How do you handle exceptions in Java?
+               Q6. What is try catch ?
+               Q7. Can we have multiple catch blocks in Java?
+               Q8. What is finally block?
+               Q9. Can we write finally block without catch block ?
+               Q10. Can we write try block without catch or finally block ?
+               Q11. Difference between throw and throws ?
                a.
                a.
                a.
@@ -155,44 +163,9 @@
                a.
                a.
                a.
-               a.
-               a.
-
-(49) HOW MANY TYPES OF CREATIONAL JAVA DESIGN PATTERN?
-(50) WHAT IS FACTORY DESIGN PATTERN?
-(51) WHAT IS ABSTRACT FACTORY PATTERN?
-(52) WHAT IS SINGLE TON DESIGN PATTERN?
-(53) WHAT IS PROTOTYPE DESIGN PATTERN?
-(54) WHAT IS BUILDER DESIGN PATTERN?
 
 
-
-
-(45) java 8.     WHAT IS DIFFERENCE BETWEEN INTERFACE AND FUNCTIONAL INTERFACE?
-(62) oops.    Can we restrict visibility of derived method in Java ?
-(21) OOps. DOES MULTIPLE INHERITANCE ALLOW AT CLASS LEVEL? 
-(39) Hibernate/ JPA   :    IF I WANT SOME FIELD TO STORE INTO DATABASE AS ENCRYPTED FORM HOW WILL BE DONE?
-
-
-
-
-
-
-
-
-                    EXCEPTION 
-
-(1) EXPLAIN HERIRARCY OF EXCEPTION & THROWABLE?
-(2) DIFFERENCE BETWEEN EXCEPTION AND ERROR?
-(3) HOW MANY TYPES OF EXCEPTION EXPLAIN FEW EXCEPTION OF DIFFERENT TYPES?
-(4) WHAT IS TRY CATCH BLOCK ?
-(5) CAN WE WRITE MULTIPLE CATCH BLOCK WITH SINGLE TRY BLOCK?
-(6) CAN WE WRITE FINALLY BLOCK WITHOUT CATCH BLOCK?
-(7) CAN WE WRITE TRY BLOCK WITHOUT CATCH OR FINALLY BLOCK?
-(8) HOW MANY WAYS TO HANDLE EXCEPTION IN JAVA?
-(9) EXPLAIN TRHOW VS THROWS KEYWORD?
 (10) WHAT IS EXCEPTION CLASS?
-(11) HOW EXCEPTION HANDLE BY TRY CATCH BLOCK?
 (12) WHAT IS PRINT STACK TRACE()?
 (13) WHAT IS TRY WITH RESOURCE?
 (14) TRY WITH RESOURCE WHICH ONE INTERFACE USED?
@@ -229,3 +202,13 @@ How to convert String to int in Java?
 How to convert int to String?
 
 Can you convert String to boolean? (Answer: Boolean.parseBoolean("true"))
+
+
+
+
+
+(45) java 8.     WHAT IS DIFFERENCE BETWEEN INTERFACE AND FUNCTIONAL INTERFACE?
+(62) oops.    Can we restrict visibility of derived method in Java ?
+(21) OOps. DOES MULTIPLE INHERITANCE ALLOW AT CLASS LEVEL? 
+(39) Hibernate/ JPA   :    IF I WANT SOME FIELD TO STORE INTO DATABASE AS ENCRYPTED FORM HOW WILL BE DONE?
+
