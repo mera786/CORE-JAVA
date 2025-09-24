@@ -281,6 +281,240 @@ Q33. Can we create more than one main method in the same class?
 No, main method should exact one with same signature for JVM but through overloading concept we can create. but jvm will not call directly, need manual to call 
 
 
+Q34. What is Data Hiding ?
+Data Hiding in Java means restricting direct access to the data (variables) of a class and allowing access only through controlled methods (getters/setters).
+It is mainly achieved using the private access modifier.
+
+
+Q35. Difference between sub class and non-sub class?
+SUB CLASS: 
+ - A sub-class has an inheritance relationship with its super class.  
+ - A class which is derived from another class is called sub-class. 
+NON-SUB CLASS: 
+ - A non-sub class does not have inheritance relationship. 
+ - Without inheritance when we access one class member in another class called non-sub class.
+
+Q36. Difference between 'return' and 'return value' ?
+Return : 
+ - It should be used only inside a void method. 
+ - It is optional to use 
+ - It returns control back to method calling statement. 
+ - It can be used inside main method because main method is void. 
+Return Value: 
+ - It should be used except void method. 
+ - It is mandatory to use. 
+ - It returns both value and control to method calling statement.
+
+Q37. What is type conversion in Java?
+General process of changing one data type into another.It happens implicitly (done by JVM) or explicitly (by programmer).
+but type conversion is the general concept, and casting is one way of doing it. In Java, this happens in two ways:
+- Implicit Type Conversion (Type Promotion / Widening)
+- Explicit Type Conversion (Type Casting / Narrowing)
+
+Q38. Difference between implicit and explicit conversion?
+Implicit :
+- Java automatically converts a smaller data type to a larger data type.
+- No data loss.
+- eg  :
+    int x = 10;
+    double y = x;   // implicit type conversion (widening)
+Explicit Conversion (Type Casting / Narrowing) :
+- You convert larger type → smaller type manually.
+- Data loss may occur.
+- eg
+   int x = 100;
+   int z = (int) y;  // Explicit type conversion (narrowing)
+Note:- So yes ✅, type conversion can also be done by casting (narrowing).
+
+Q39. Which conversions are safe in Java?
+implicit type conversion
+
+Q40. Can int be automatically converted to byte? 
+Answer: No, narrowing requires explicit casting
+
+Q41. Can boolean be converted to int? 
+Answer: No
+
+Q42. Can char be converted to int? 
+Answer: Yes, implicit widening
+
+Q43. What happens when int and double are added?
+the smaller type (int) is promoted to the larger type (double), and the result takes the larger type.
+
+
+Q44. Can we add char + int? What is the result?
+char in Java is internally stored as an integer (Unicode value).When a char is used in arithmetic with an int, the char is promoted to int automatically.
+The result is always an int.
+
+
+Q45. What is type casting?
+👉 Definition: Converting one data type into another is called type casting.
+
+Q46. Difference between type casting and type conversion?
+Answer: Type conversion is general; casting is explicit/manual conversion.
+
+Q47. What is upcasting and downcasting?
+Types of Type Casting:
+ - Primitive Type Casting (between primitive data types like int, double, char).
+ - Reference Type Casting (Class Casting) (between objects/classes).
+    - Primitive Type Casting
+      -----------------------
+      Primitive type casting is of two types:
+       a. Widening (Implicit Casting) :- Smaller → Larger data type,Done automatically by JVM (no data loss).
+          eg- int x = 10;
+              double y = x; 
+       b. Narrowing (Explicit Casting) :- Larger → Smaller data type,Done manually by programmer using (type) casting.May cause data loss.
+           eg- double a = 10.55;
+               int b = (int) a;  
+    - Reference Type Casting
+    -------------------------
+    👉 Casting between objects in the inheritance
+    Class Casting is of two types:
+        a. Upcasting (Implicit) :- Subclass object → Superclass reference,Always safe and automatic.
+           eg- class Animal { 
+                  void sound() { 
+                 System.out.println("Animal sound"); 
+               } }
+               class Dog extends Animal {
+               void sound() { System.out.println("Dog barks"); 
+               } }
+               Animal a = new Dog(); // upcasting (Dog → Animal)
+                      a.sound(); // works
+       b. Downcasting (Explicit) :- Superclass reference → Subclass reference,Must be done manually using (Subclass).Not always safe → may throw ClassCastException at runtime.
+          eg-
+              Animal a = new Dog(); // upcasting
+              Dog d = (Dog) a;      // downcasting (explicit)
+              d.bark();  // works
+              Animal a2 = new Animal();
+              Dog d2 = (Dog) a2;  // ❌ Runtime error: ClassCastException
+
+Q48. Can we cast Animal a = new Cat(); to Dog? 
+Answer: runtime exception
+
+Q49. Why upcasting is safe and downcasting is unsafe?
+Converting a subclass object to a superclass reference.Always safe because the subclass is a type of the superclass.No data loss and done automatically.
+Converting a superclass reference to a subclass reference.Unsafe because the superclass may not actually be an instance of the subclass.Can cause ClassCastException at runtime.Requires explicit casting
+
+Q50. Can you cast int to String directly? 
+Answer: No, must use conversion methods
+
+Q51. Can you cast Object obj = "Hello" to Integer? 
+Answer: ClassCastException
+
+Q52. What are Marker interfaces ? and why it use ?
+- An interface with no methods or fields is called a marker interface.
+- Acts like a tag to the JVM or compiler that the class implementing it should be treated in a special way at runtime. 
+- eg :
+   a. Serializable:- Marks a class as serializable, meaning its objects can be converted into a byte stream
+   b. Cloneable  :- Marks a class as cloneable, meaning objects of this class are allowed to be cloned using the Object.clone() method. Without this, calling clone() throws CloneNotSupportedException.
+
+Q53. What is Blank Field Error ?
+When we make variable static and final , and do not initialize then we get blank field error.
+
+Q54. Difference between Final, Finally and Finalize ?
+| Keyword/Method           | Where used?             | Purpose                   | Can we override?                      |
+| -------------------------| ----------------------- | ------------------------- | ------------------------------------- |
+| **final** (keyword)      | variable, method, class | To restrict changes       | Method: No override; Class: No extend |
+| **finally** (block)      | try-catch block         | Code that must always run | Not applicable                        |
+| **finalize()** (method)  | Method of Object class  | Cleanup before GC         | Yes, can be overridden                |
+
+
+Q55. Explain Difference between Serialization and Deserialization and also transient ?
+Serialization :
+ - Definition → The process of converting an object into a byte stream so it can be saved to a file, database, or sent over a network.
+ - Why? → Java objects live in memory (RAM). Serialization allows persisting or transferring them.
+ - How?
+    a. A class must implement Serializable marker interface.
+    b. Use ObjectOutputStream to write the object.
+Deserialization :
+    - Definition → The process of converting a byte stream back into an object.
+    - How?
+       a. Use ObjectInputStream to read the object.
+transient Keyword :
+     - Definition → Used to skip a field during serialization. That field will not be saved in the byte stream.
+     - Why? → To protect sensitive data (like passwords, security keys, bank details) or non-serializable objects.
+
+Q56. Explain Difference Between PARAMETERS & ARGUMENTS?
+PARAMETERS :
+  - Parameters are like placeholders/variables defined inside the method definition.
+  - They tell the method what kind of values it needs when someone calls it.
+  - Think of parameters as empty boxes waiting to be filled.
+  - eg  :        class Test {
+                 // here 'int a' and 'int b' are PARAMETERS
+                 void add(int a, int b) {
+                  System.out.println(a + b);
+                   }}
+ARGUMENTS :
+   - Arguments are the actual values you pass when calling the method.
+   - They fill the parameters (boxes) with real data.
+   - Think of arguments as the real items you put inside the boxes.
+   - eg  :        public static void main(String[] args) {
+                        Test t = new Test();
+                        // here 5 and 10 are ARGUMENTS
+                         t.add(5, 10);  
+                      }
+
+Q57. Difference Between PASS-BY-VALUE and PASS-BY-REFERENCE?
+PASS-BY-VALUE :
+  - A copy of the actual value is passed to the method.
+  - Changes made inside the method do not affect the original value.
+  - Think: Photocopy of a document → if you write on the copy, the original is safe.
+  - Example: 
+public class Main {
+    public static void main(String[] args) {
+        int x = 5;
+        changeValue(x);
+        System.out.println(x);  // Output: 5 (not changed)
+    }
+    static void changeValue(int num) {
+        num = num + 10;   // change applied to the copy
+    }}
+PASS-BY-REFERENCE :
+   - The reference (address) of the variable is passed.
+   - Changes made inside the method affect the original object.
+   - Think: Giving someone your notebook to write in → whatever they write in it, is still in your notebook.
+   - Example :
+public static void main(String[] args) {
+        int[] nums = {1, 2, 3};
+        changeArray(nums);
+        System.out.println(nums[0]);  // Output: 99 (changed)
+    } 
+  static void changeArray(int[] arr) {
+        arr[0] = 99;  // change applied to original array
+    }}
+Note:- Java is strictly Pass by Value :
+                    a. For primitives (int, double, char, etc.) → value itself is copied.
+                    b. For objects/arrays → the reference (address) value is copied, so both point to the same object. That’s why it looks like pass by reference, but technically it is still pass by value (value of the reference).
+
+
+Q58. Explain Difference between IIB and SIB block ?
+| Feature            | **IIB (Instance Initializer Block)**                                                | **SIB (Static Initializer Block)**                                                |
+| ------------------ | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **Definition**     | A block of code that runs **every time an object is created**.                      | A block of code that runs **only once when the class is loaded**.                 |
+| **Keyword**        | No keyword, just `{ }` inside the class.                                            | No keyword, just `static { }`.                                                    |
+| **Execution Time** | Executes **before the constructor**, each time an object is instantiated.           | Executes **once** when the class is loaded into memory.                           |
+| **Access**         | Can access **instance variables** and **static variables**.                         | Can access **static variables only**; cannot access instance variables directly.  |
+| **Use Case**       | Initialize instance variables or perform common operations for all objects.         | Initialize static variables or perform tasks that should run once for the class.  |
+
+
+Q59. How will you prevent a class not to be cloned?
+- to prevent a class from being cloned, you can override the clone() method from the Object class and throw a CloneNotSupportedException.
+- Key Points:
+       a. Every class in Java inherits the clone() method from Object.
+       b. By default, Object.clone() allows shallow copy.
+       c. To prevent cloning:
+                        (i) Override clone().
+                        (ii) Throw CloneNotSupportedException.
+       d. Optionally, do not implement Cloneable at all. If a class does not implement Cloneable and someone calls clone(), it automatically throws CloneNotSupportedException.
+
+
+
+
+
+
+
+
+
 
 
 
@@ -344,7 +578,29 @@ Q8. can we make constructor private if yes then how it object will be created.?
     }}
     Car c = Car.createCar(); 
 
+Q9. Why Do We Create a Default Constructor?
+- If we just need to create an object without passing values.
+- Sometimes, we want to set initial values when an object is created.  eg - :  class Student {
+                                                                                   String name;
+                                                                                       int age;
+                                                                                     Student() {
+                                                                                         name = "Unknown";
+                                                                                           age = 0;
+                                                                                         }}
+- When you also define parameterized constructors in your class, the compiler will not provide the default one. If you still want to allow object creation without parameters, you need to explicitly create the default constructor yourself.
 
+
+
+Q10. if constructor and setter do the same work then why constructor or setter ?
+👉 Both constructor and setter can assign values to fields of a class.
+| Feature          | Constructor                                 | Setter                                                      |
+| ---------------- | ------------------------------------------- | ----------------------------------------------------------- |
+| **When called**  | At object creation                          | Any time after object creation                              |
+| **Purpose**      | Mandatory initialization                    | Modify/update values                                        |
+| **Reusability**  | Cannot be reused once object is created     | Can be called multiple times                                |
+| **Overloading**  | Can be overloaded                           | Can also be overloaded (method)                             |
+| **Immutability** | Helps create immutable objects (no setters) | Used in mutable objects                                     |
+| **Frameworks**   | Some frameworks prefer default constructor  | Frameworks like Spring use setters for dependency injection |
 
 
 
@@ -477,6 +733,76 @@ Q10. What is memory leak in Java if GC is automatic?
 
 Q11. Does Garbage Collector collect objects from stack?
 👉 No. GC only works on heap memory, not stack.
+
+
+
+    DESIGN PATTERN :
+    -------------------
+
+Q1.  What is Degisn Pattern ?
+   - A design pattern is a well-proven,reusable solution for common software problems not a finished code but a template to solve problems. 
+   - To make code more flexible, maintainable, and scalable,reduce code duplication
+
+Q2. How Many Types Of Design Pattern ?
+    There are 3 types :
+     a. Creational Patterns (Singleton, Prototype, Factory, Builder)
+     b. Structural Patterns (Adapter, Decorator, Proxy, Facade)
+     c. Behavioral Patterns (Observer, Strategy, Command, Chain of Responsibility)
+
+Q3. What is creational Design Pattern?
+Creational design patterns deal with object creation mechanisms, making it flexible and reusable without tightly coupling your code to specific classes.
+
+Q4. How many types of creational design pattern ?
+There are 5 main types of Creational Design Patterns:
+                          - Singleton
+                          - Prototype
+                          - Factory Method
+                          - Abstract Factory
+                          - Builder
+
+Q5. What is Singleton pattern?
+Answer: Ensures a class has only one instance and provides a global access point.
+
+Q6. Why do we use Singleton?
+Answer: To control object creation, save memory, and provide a single shared resource like DB connections, logging, etc.
+
+Q7. How do you implement Singleton in Java?
+There are Multiple ways:
+          a. Eager Initialization
+          b. Lazy Initialization
+          c. Thread-safe (synchronized)
+          d. Double-checked Locking (efficient)
+
+Q8. How to make Singleton thread-safe?
+Use synchronized, double-checked locking, or static inner class
+
+Q9. When should you not use Singleton?
+When you need multiple instances, e.g., in multithreaded contexts where independent instances are required.
+
+Q10. What can break Singleton? 
+Serialization & Reflection are two common ways ?
+ - Serialization : 
+      suppose if you serialize a class's instance to a file and then deserialize it, Java creates a new instance! That violates the Singleton principle (only one instance).
+ - Solution: Use readResolve() method:
+ protected Object readResolve() {
+    return getInstance(); // ensures deserialized object is same instance
+}
+- Reflection :
+Reflection allows you to access private constructors.
+- example :
+  Constructor<Singleton> constructor = Singleton.class.getDeclaredConstructor();
+  constructor.setAccessible(true);
+  Singleton s2 = constructor.newInstance(); // creates a new instance
+- Solution: Prevent it in constructor:
+ private Singleton() {
+    if (INSTANCE != null) {
+        throw new RuntimeException("Use getInstance() method");
+      }}
+
+
+
+
+
 
 
 
