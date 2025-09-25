@@ -1002,6 +1002,238 @@ Q11. Difference between throw and throws ?
 | `throw`  | Used to explicitly throw an exception from a method or block |
 | `throws` | Declares exception(s) that a method can throw                |
 
+Q12. Explain Try-with-Resources in Java ?
+- Try-with-resources is a feature introduced in Java 7 that allows us to automatically close resources (like files, sockets, database connections) after the program is finished using them.
+- It ensures that resources are closed properly, even if an exception occurs, without the need of writing finally blocks manually.
+- If a class implements AutoCloseable, it means its object can be closed automatically (like a file, network connection, or database connection).
+- eg :
+try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
+    String line = br.readLine();
+    System.out.println(line);
+} catch (Exception e) {
+    e.printStackTrace();
+}
+Note:- a. 👉 Yahan BufferedReader already AutoCloseable implement karta hai.
+       b. 👉 Tum apna khud ka class bhi bana sakte ho jo AutoCloseable implement kare:
+class MyResource implements AutoCloseable {
+    public void use() {
+        System.out.println("Using my resource...");
+    }
+
+    @Override
+    public void close() {
+        System.out.println("Closing my resource...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try (MyResource res = new MyResource()) {
+            res.use();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+Q13. Can we write other statements in between try ,catch or finally block? 
+- No, we cannot write any normal statement between try and catch or between catch and finally.
+  Because Java syntax rule kehta hai: catch must immediately follow try, and finally must immediately follow the last catch.
+- eg :
+try {
+    int a = 10/0;
+}
+System.out.println("Hello");  // ❌ Not allowed here
+catch (ArithmeticException e) {
+    System.out.println("Exception handled");
+}
+
+Q14. What happens in try block if an exception occurs?
+- If no exception occurs → saare statements in try block execute ho jaate hain line by line.
+- If an exception occurs → uss point se aage ke statements skip ho jaate hain, aur control catch block me transfer ho jaata hai.
+
+Q15. What happens when main() throws an exception?
+- If exception is not handled inside main.
+- JVM will handle it, and prints : Exception type, Description (message), Stack trace (line number where it happened).
+
+Q16. What do you understand by unreachable catch block error ?
+An unreachable catch block is a catch block that can never be executed, usually because a parent exception is already caught before it.
+eg- 
+try {
+    int a = 10 / 0;
+} catch (Exception e) { // Parent exception
+    System.out.println("Exception caught");
+} catch (ArithmeticException e) { // ❌ Unreachable
+    System.out.println("ArithmeticException caught");
+}
+
+Q17. Explain Exception class ?
+- It is a subclass of Throwable.
+- Exception class is a general class that can handle all types of exceptions (checked and unchecked) because all exceptions are its subclasses.
+- A specific exception (like NullPointerException or ArithmeticException) can only handle that particular type of exception.
+
+Q18. What is Exception Propagation ?
+- Exception Propagation is the process by which an exception is passed (propagated) from the point where it occurs to the higher method in the call stack until it is caught and handled.
+- In simple words, if a method does not handle an exception, it automatically propagates the exception to the method that called it. This continues up the call stack until either the exception is caught or the program terminates.
+
+        
+
+         STRING :
+        -----------
+
+Q1. What is String ?
+- A String is a sequence of characters, like a word, sentence, or any text. In Java, it is an object of the String class.
+- Strings are enclosed in double quotes.
+- Strings are immutable, which means once created, their value cannot be changed.
+- Strings can store letters, numbers, and symbols.
+
+Q2. How many ways to create String ?
+👉 there are two main ways to create a String:
+- Using String Literal :
+                 a. When you create a string using double quotes "", it’s called a string literal.
+                 b. These strings are stored in the String Pool.
+                 c. If the same string already exists in the pool, Java reuses it instead of creating a new object.
+                    eg-  String s1 = "Hello";
+                         String s2 = "Hello"; // s1 and s2 refer to the same object in the String Pool
+ - Using new Keyword :
+                 a. When you create a string using new String(), it always creates a new object in heap memory, even if the same string exists in the String Pool.
+                     eg- String s3 = new String("Hello");
+                         String s4 = new String("Hello"); // s3 and s4 are different objects in heap
+
+Q3. Why String is Immutable ?
+ - Security:
+        a. Strings are used for passwords, usernames, file paths, network connections.
+        b. If someone could change a string, your password or file path could be changed by mistake.
+ - Memory Saving (String Pool):
+        a. Java keeps all string literals in a shared memory area called String Pool.
+        b. If strings were changeable, changing one string would affect all references pointing to it.
+        c. Immutable strings make reusing memory safe and fast.
+ - Thread-Safety:
+         a. Immutable strings are safe to use in multiple threads because their value never changes.
+         b. No need for extra locks or synchronization.
+
+Q4. Tell Steps to Create an Immutable Class in Java ?
+   - Declare the class as final.
+   - Make all fields private and final.
+   - Do not provide setter methods.
+   - Initialize all fields via constructor.
+   - If class has mutable objects, return copies : For example, Date, List, or any object that can be changed. 
+     eg -  private final Date dob;
+                 public Date getDob() {
+                        return new Date(dob.getTime()); // return a copy
+                      }
+   - Provide only getters.
+
+Q5. What is String Pool?
+Special memory area in JVM where string literals are stored to avoid duplicates.
+
+Q6. Difference between == and equals() for String ?
+| Feature              | `==`                                               | `equals()`                                      |
+| -------------------- | -------------------------------------------------- | ----------------------------------------------- |
+| **What it compares** | Memory address (reference)                         | Actual content (characters)                     |
+| **Used for**         | Checking if two variables point to the same object | Checking if two strings have the same text      |
+| **Example**          | `str1 == str2`                                     | `str1.equals(str2)`                             |
+| **Result**           | True only if both refer to same object             | True if text is same, even if different objects |
+
+Q7. Difference between String vs StringBuilder vs StringBuffer ?
+| Class                     | Thread-Safe                                                 | Performance                                           |                                         
+| --------------------------|-------------------------------------------------------------| ------------------------------------------------------|
+| **String**  Immutable     | ✅ Yes (because once created, value never changes, so safe) | Slower if many modifications                          |    
+| **StringBuilder** Mutable | ✅  (can change without creating new object)                | ❌ No (not thread-safe)                               |                                                  | 
+| **StringBuffer** Mutable  | ✅ Yes (thread-safe, uses synchronized methods)             | Slower than StringBuilder (because of synchronization) | 
+
+Q8. How to reverse a string in Java?
+Using StringBuilder.reverse() or manually using loops.
+
+Q9. What does intern() method?
+Returns string from pool if already exists, else adds to pool.
+
+Q10. What does substring() in Java.
+Returns part of string between start and end indexes.
+
+Q11. How to convert String to int and vice versa?
+ - String → int: Integer.parseInt(str)
+ - int → String: String.valueOf(num)
+
+Q12. Explain String.join() in Java 8.
+Joins multiple strings with a delimiter.
+
+Q13.Can you convert String to boolean?
+String str = "true";
+yes, Boolean.parseBoolean(str)); // true
+
+
+
+     OOPs CONCEPT :
+    ---------------
+
+Q1. Explain OOPs pillars with examples.
+ There are main 4 pillars of OOPs :
+     a. Encapsulation
+     b. Abstraction
+     c. Inheritance
+     d. Polymorphism
+
+Q2. What is Encapsulation? Why is it important?
+ - Wrapping data & behavior (Both are wrapped together inside one class (Employee)) together. Achieved using private variables + public getters/setters.
+ - Helps in data hiding and maintaining security.
+ - Example: private double balance; public void deposit(double amt){ ... }.
+
+Q3. Explain Abstraction ?
+Abstraction is the process of hiding internal implementation details and showing only the essential features to the user. In Java, we achieve abstraction using abstract classes and interfaces.
+
+Q4. Difference between Abstraction and Encapsulation?
+Encapsulation:
+  - To hide data from direct access and control it via getters & setters.
+Abstraction :
+  - To focus on what an object does, not how it does it.
+
+Q5. How do we achieve Abstraction in Java?
+using abstract classes and interfaces
+
+Q6. Can we create an object of an abstract class? Why not?
+An abstract class may have abstract methods,If Java allowed you to create an object of such a class, you would have an object with incomplete methods, which makes no sense.Hence, Java prevents it
+
+Q7. Can an abstract class have a constructor?
+yes, Even though you cannot directly create an object of an abstract class, its constructor is called when a subclass object is created.
+
+Q8. Can an abstract class extend another abstract class?
+Yes ✅, an abstract class can extend another abstract class in Java.
+
+Q9. Can an abstract class have concrete (normal) methods?
+yes, An abstract class can have both:
+       - Abstract methods – without implementation.
+       - Concrete methods – with full implementation.
+
+Q10. Can an abstract class have final methods?
+yes, but A method cannot be both abstract and final
+
+Q11. What is the default access modifier for abstract methods?
+Default (no modifier) – visible to subclasses in the same package only.
+
+Q12. Can an interface extend a class? 
+Ans: no
+
+Q13. What is the difference between interface methods before Java 8 and after Java 8?
+       - Java 8 → default & static methods introduced
+       - Java 9 → private methods introduced
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
