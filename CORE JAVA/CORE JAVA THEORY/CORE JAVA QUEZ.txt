@@ -155,25 +155,19 @@
                Q9. Can we write finally block without catch block ?
                Q10. Can we write try block without catch or finally block ?
                Q11. Difference between throw and throws ?
-               a.
-               a.
-               a.
-               a.
-               a.
-               a.
-               a.
-               a.
+               Q12. Explain Try-with-Resources in Java ?
+               Q13. Can we write other statements in between try ,catch or finally block? 
+               Q14. What happens in try block if an exception occurs?
+               Q15. What happens when main() throws an exception?
+               Q16. What do you understand by unreachable catch block error ?
+               Q17. Explain Exception class ?
 
 
-(10) WHAT IS EXCEPTION CLASS?
-(12) WHAT IS PRINT STACK TRACE()?
-(13) WHAT IS TRY WITH RESOURCE?
-(14) TRY WITH RESOURCE WHICH ONE INTERFACE USED?
-(15) CAN WE WRITE ANY OTHER STATEMENTS BETWEEN TRY CATCH OR FINALLY BLOCK?
-(16) DOES REMAINING STATEMENTS IN TRY BLOCK EXECUTES AFTER EXCEPTION OCCURS?
-(17) WHAT HAPPENES WHEN AN EXCEPTION IS THROWN BY MAIN THE MAIN METHOD ?
-(18) WHAT DO YOU UNDERSTAND BY UNREACHABLE CATCH BLOCK ERROR?
-(19) WHAT IS MULTI CATCH BLOCK ?
+
+
+
+
+
 
 
                           STRING
