@@ -112,7 +112,6 @@
                Q9. What is difference between finalize() method and Garbage Collector?
                Q10. What is memory leak in Java if GC is automatic?
                Q11. Does Garbage Collector collect objects from stack?
-
    DESIGN PATTERN :
    -------------------
                Q1. What is Degisn Pattern ?
@@ -141,7 +140,6 @@
                Q24. How to implement Builder in Java?
                Q25. What is Structural Design Pattern ?
                Q26. what is Behavioral Design Pattern ?
-
    EXCEPTION :
    -----------
                Q1. Can you explain the exception hierarchy in Java?
@@ -161,6 +159,56 @@
                Q15. What happens when main() throws an exception?
                Q16. What do you understand by unreachable catch block error ?
                Q17. Explain Exception class ?
+               Q18. What is Exception Propagation ?
+     STRING :
+    -----------
+                Q1. What is String ?
+                Q2. How many ways to create String ?
+                Q3. Why String is Immutable ?
+                Q4. Tell Steps to Create an Immutable Class in Java ?
+                Q5. What is String Pool?
+                Q6. Difference between == and equals() for String ?
+                Q7. Difference between String vs StringBuilder vs StringBuffer ?
+                Q8. How to reverse a string in Java?
+                Q9. What does intern() method?
+                Q10. What does substring() in Java.
+                Q11. How to convert String to int and vice versa?
+                Q12. Explain String.join() in Java 8.
+                Q13.Can you convert String to boolean?
+     OOPs CONCEPT :
+    ---------------
+                Q1. Explain OOPs pillars with examples.
+                Q2. What is Encapsulation? Why is it important?
+                Q3. Explain Abstraction ?
+                Q4. Difference between Abstraction and Encapsulation?
+                Q5. How do we achieve Abstraction in Java?
+                Q6. Can we create an object of an abstract class? Why not?
+                Q7. Can an abstract class have a constructor?
+                Q8. Can an abstract class extend another abstract class?
+                Q9. Can an abstract class have concrete (normal) methods?
+                Q10. Can an abstract class have final methods?
+                Q11. What is the default access modifier for abstract methods?
+                Q12. Can an interface extend a class? 
+                Q13. What is the difference between interface methods before Java 8 and after Java 8?
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
+                a.
 
 
 
@@ -169,33 +217,6 @@
 
 
 
-
-                          STRING
-(1) WHAT IS STRING?
-(2) HOW MANY WAYS TO CREATE STRING?
-(3) WHAT MUTABLE AND IMMUTABLE REFERS IN TERMS OF STRING?
-(4) WHY STRING IS IMMUTABLE?
-(6) STEPS TO CREATE IMMUTABLE CLASS IN JAVA?
-
-(9) EXPLAIN METHOD LIKE, CHARS(), CHARAT(), VALUEOF()?
-(10) EXPLAIN DIFFERENCE BETWEEN STRING, STRINGBUILDER AND STRINGBUFFER?
-(11) WAYS TO CREATE STRINGBUILDER & FEW METHODS OF IT?
-(12) WHAT DOES THE STRING INTERN() METHOD DO?
-
-
-Conversion Between String and Primitive
-
-String → primitive: Integer.parseInt("123"), Double.parseDouble("12.3")
-
-Primitive → String: String.valueOf(123) or Integer.toString(123)
-
-Interview Qs:
-
-How to convert String to int in Java?
-
-How to convert int to String?
-
-Can you convert String to boolean? (Answer: Boolean.parseBoolean("true"))
 
 
 
