@@ -190,26 +190,61 @@
                 Q11. What is the default access modifier for abstract methods?
                 Q12. Can an interface extend a class? 
                 Q13. What is the difference between interface methods before Java 8 and after Java 8?
+                Q14. What is inheritance?
+                Q15. Can constructors be inherited?
+                Q16. Can private members be inherited?
+                Q17. Can protected members be inherited?
+                Q18. Can default (package-private) members be inherited?
+                Q19. Can child class override private, final parent methods?
+                Q20. Tell Types of Inheritance in Java ?
+                Q21. What if parent & child have same fields?
+                Q22. Can a parent reference point to child object?
+                Q23. Can a child reference point to parent object?
+                Q24. Can static methods be overridden? 
+                Q25. What is polymorphism?
+                Q26. What is method overloading?
+                Q27. Can we overload by just changing return type? 
+                Q28. Can we overload static methods? 
+                Q29. Can we overload main method? 
+                Q30. What is method overriding?
+                Q31. What is covariant return type?
+                Q32. Why doesn’t polymorphism apply to fields/variables?
+                Q33. Give a real-world example of polymorphism.?
+                Q34. What happens if both parent and child have static methods with same signature? 
+                Q35. Can we override a synchronized method?
+                Q36. Can we restrict visibility of derived method in Java ?
+                Q37. Define aggregation and composition. How are they different?
+                Q38. Explain SOLID Principles ?
+Java I/O & Serialization :
+---------------------------
+                Q1. What is I/O Stream ?
+                Q2. Why do we need I/O Streams?
+                Q3. How Many Types of I/O Streams ?
+                Q4. What is NIO and NIO.2?
+                Q5. Why is NIO/NIO.2 preferred over old I/O?
+                Q6. What are Channels, Buffers, Path, Files, and FileSystem?
+                Q7. Is Files a class or interface? Where does it come from?
+                Q8. How to read a file in Java?
+                Q9. How to write a file in Java?
+                Q10. Can you create directories or check if a file exists using NIO.2?
+                Q11. What is non-blocking I/O?
+                Q12. Difference between Stream I/O and NIO?
+                Q13. Difference between FileInputStream & FileReader?
+                Q14. Explain Difference between Serialization and Deserialization and also transient ?
+                Q15. What about static fields in serialization?
+                Q16. What is serialVersionUID?
+                Q17. Can we serialize a parent class object if child implements Serializable?
+                Q18. What is MultipartFile ?
+                Q19. Why do we need MultipartFile?
+                Q20. Common Methods of MultipartFile ?
+                Q21. What is the difference between getBytes() and transferTo() in MultipartFile?
+                Q22. How do you validate file uploads?
+                Q23. How to set maximum upload file size in Spring Boot?
                 a.
                 a.
                 a.
                 a.
                 a.
-                a.
-                a.
-                a.
-                a.
-                a.
-                a.
-                a.
-                a.
-                a.
-                a.
-                a.
-                a.
-                a.
-                a.
-
 
 
 
@@ -223,7 +258,5 @@
 
 
 (45) java 8.     WHAT IS DIFFERENCE BETWEEN INTERFACE AND FUNCTIONAL INTERFACE?
-(62) oops.    Can we restrict visibility of derived method in Java ?
-(21) OOps. DOES MULTIPLE INHERITANCE ALLOW AT CLASS LEVEL? 
 (39) Hibernate/ JPA   :    IF I WANT SOME FIELD TO STORE INTO DATABASE AS ENCRYPTED FORM HOW WILL BE DONE?
 
