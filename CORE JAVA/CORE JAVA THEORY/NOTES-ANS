@@ -1219,6 +1219,127 @@ Q13. What is the difference between interface methods before Java 8 and after Ja
        - Java 8 → default & static methods introduced
        - Java 9 → private methods introduced
 
+Q14. What is inheritance?
+Inheritance is an OOP concept where a child class acquires properties (fields) and behaviors (methods) from a parent class. It promotes code reusability.
+
+Q15. Can constructors be inherited?
+A: No, constructors are not inherited, but a child can call a parent constructor using super().
+
+Q16. Can private members be inherited?
+A: Private fields/methods are not inherited, but can be accessed indirectly via public/protected getters/setters.
+
+Q17. Can protected members be inherited?
+A: Yes, accessible in child class (even in different package).
+
+Q18. Can default (package-private) members be inherited?
+A: Only if the child is in the same package.
+
+Q19. Can child class override private, final parent methods?
+A: no, child can't override .
+
+Q20. Tell Types of Inheritance in Java ?
+   - Single Inheritance: Child extends Parent
+   - Multilevel Inheritance: (Grandchild → Child → Parent) but Java does not support multiple class inheritance, but supports via interfaces.
+   - Hierarchical Inheritance: Multiple children extend same parent
+
+Q21. What if parent & child have same fields?
+A: Child hides parent field. Access via:
+    - this.field → child
+    - super.field → parent
+    - Example: 
+class Parent { int x = 10; }
+class Child extends Parent { int x = 20; void show() { System.out.println(x); System.out.println(super.x); } }
+
+Q22. Can a parent reference point to child object?
+A: Yes → Polymorphism
+
+Q23. Can a child reference point to parent object?
+A: No → causes ClassCastException
+
+Q24. Can static methods be overridden? 
+  No, but can be hidden
+
+Q25. What is polymorphism?
+A: Polymorphism means "many forms". In Java, it allows the same method to behave differently based on the situtation.
+   - Compile-time polymorphism: Method overloading
+   - Runtime polymorphism: Method overriding
+
+Q26. What is method overloading?
+A: Defining multiple methods with the same name but different parameter lists (number, type, or differenet no. of arguments).
+
+Q27. Can we overload by just changing return type? 
+    No
+
+Q28. Can we overload static methods? 
+→ Yes
+
+Q29. Can we overload main method? 
+→ Yes, but JVM always calls public static void main(String[] args).
+
+Q30. What is method overriding?
+A: When a child class provides its own implementation of a method defined in the parent class with the same name, parameters, 
+   and return type (or covariant return type). with an intention of reuseability of code called method overriding.
+
+Q31. What is covariant return type?
+The return type of child should be either the same of that parent class or it should be the sub class of the return type of parent class.
+Parent : public Object m1(){};  
+Child : public String m1 () { return “hi”};
+
+Q32. Why doesn’t polymorphism apply to fields/variables?
+A: Because instance variables are resolved at compile time (reference type), not at runtime.
+   because when we do Parent p = new Child();  sop(p.color );  ans=> parent color.
+
+Q33. Give a real-world example of polymorphism.?
+  - Collections API: List list = new ArrayList();
+  - JDBC: Connection con = DriverManager.getConnection(...);
+
+Q34. What happens if both parent and child have static methods with same signature? 
+→ Child method hides parent’s method.
+
+Q35. Can we override a synchronized method?
+→ Yes, synchronization is not part of method signature.
+
+Q36. Can we restrict visibility of derived method in Java ?
+The child method cannot reduce the visibility of the parent method. But it can increase visibility.
+
+Q37. Define aggregation and composition. How are they different?
+Inheritance : (is a relation ).
+Hibernate : (has – A ) :- one to one , one to many , many to many..
+Association (HAS-A):
+Aggregation and composition are nothing but types of association in java where association define the relationship between two classes.
+Image:
+
+   Customer
+      |
+      | (association)
+      |
+     Order
+    /    \
+   o      o
+(agg)   (agg)
+ /        \
+Product   Department
+             |
+             o
+          Employee
+
+Library
+  *
+ (comp)
+   |
+  Book
+
+-> Aggregation : both objects can exist independently .
+Real life ex-
+A "Team" class that contains "Player" objects. Players can exist independently of the Team.
+-> Composition : both objects can’t exist independently . one object can’t exist without owner object.
+Real time ex -
+A "Car" class that contains an "Engine" object. The Engine cannot exist without the Car.
+
+
+
+
+
 
 
 
@@ -1252,27 +1373,3 @@ Q13. What is the difference between interface methods before Java 8 and after Ja
 
 
 
-1️⃣ Core Java Basics  :
-#########################
-
-
-
-
-1️⃣ Core Java Basics  :
-#########################
-
-
-
-
-1️⃣ Core Java Basics  :
-#########################
-
-
-
-1️⃣ Core Java Basics  :
-#########################
-
-
-
-1️⃣ Core Java Basics  :
-#########################
