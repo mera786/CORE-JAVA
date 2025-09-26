@@ -419,22 +419,7 @@ Q54. Difference between Final, Finally and Finalize ?
 | **finalize()** (method)  | Method of Object class  | Cleanup before GC         | Yes, can be overridden                |
 
 
-Q55. Explain Difference between Serialization and Deserialization and also transient ?
-Serialization :
- - Definition → The process of converting an object into a byte stream so it can be saved to a file, database, or sent over a network.
- - Why? → Java objects live in memory (RAM). Serialization allows persisting or transferring them.
- - How?
-    a. A class must implement Serializable marker interface.
-    b. Use ObjectOutputStream to write the object.
-Deserialization :
-    - Definition → The process of converting a byte stream back into an object.
-    - How?
-       a. Use ObjectInputStream to read the object.
-transient Keyword :
-     - Definition → Used to skip a field during serialization. That field will not be saved in the byte stream.
-     - Why? → To protect sensitive data (like passwords, security keys, bank details) or non-serializable objects.
-
-Q56. Explain Difference Between PARAMETERS & ARGUMENTS?
+Q55. Explain Difference Between PARAMETERS & ARGUMENTS?
 PARAMETERS :
   - Parameters are like placeholders/variables defined inside the method definition.
   - They tell the method what kind of values it needs when someone calls it.
@@ -454,7 +439,7 @@ ARGUMENTS :
                          t.add(5, 10);  
                       }
 
-Q57. Difference Between PASS-BY-VALUE and PASS-BY-REFERENCE?
+Q56. Difference Between PASS-BY-VALUE and PASS-BY-REFERENCE?
 PASS-BY-VALUE :
   - A copy of the actual value is passed to the method.
   - Changes made inside the method do not affect the original value.
@@ -487,7 +472,7 @@ Note:- Java is strictly Pass by Value :
                     b. For objects/arrays → the reference (address) value is copied, so both point to the same object. That’s why it looks like pass by reference, but technically it is still pass by value (value of the reference).
 
 
-Q58. Explain Difference between IIB and SIB block ?
+Q57. Explain Difference between IIB and SIB block ?
 | Feature            | **IIB (Instance Initializer Block)**                                                | **SIB (Static Initializer Block)**                                                |
 | ------------------ | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | **Definition**     | A block of code that runs **every time an object is created**.                      | A block of code that runs **only once when the class is loaded**.                 |
@@ -497,7 +482,7 @@ Q58. Explain Difference between IIB and SIB block ?
 | **Use Case**       | Initialize instance variables or perform common operations for all objects.         | Initialize static variables or perform tasks that should run once for the class.  |
 
 
-Q59. How will you prevent a class not to be cloned?
+Q58. How will you prevent a class not to be cloned?
 - to prevent a class from being cloned, you can override the clone() method from the Object class and throw a CloneNotSupportedException.
 - Key Points:
        a. Every class in Java inherits the clone() method from Object.
@@ -506,17 +491,6 @@ Q59. How will you prevent a class not to be cloned?
                         (i) Override clone().
                         (ii) Throw CloneNotSupportedException.
        d. Optionally, do not implement Cloneable at all. If a class does not implement Cloneable and someone calls clone(), it automatically throws CloneNotSupportedException.
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1337,6 +1311,166 @@ Real time ex -
 A "Car" class that contains an "Engine" object. The Engine cannot exist without the Car.
 
 
+Q38. Explain SOLID Principles ?
+👉 SOLID is a set of 5 design principles in object-oriented programming.
+a. S – Single Responsibility Principle (SRP) : 
+                      - A class should do only one job. If one class is doing multiple jobs, changes in one part may break another.
+                      - eg - Controller is only responsible for API endpoints, not business logic. etc
+b. O – Open/Closed Principle (OCP) :
+                      - Code should be open for extension, closed for modification. Means: add new features without changing old code.
+                      - eg- In Spring Boot, we achieve this using interfaces + polymorphism + dependency injection.
+c. L – Liskov Substitution Principle (LSP) :
+                      - Subclasses should be usable anywhere parent is used, without breaking behavior.
+                      - In simple words → Child classes should be able to replace parent classes and behave correctly.
+                      - eg - In Spring Boot, we achieve it by designing interfaces with proper contracts and making sure all implementations behave consistently.
+d. I – Interface Segregation Principle (ISP) :
+                      - Don’t force classes to implement methods they don’t use. Better to have small specific interfaces than one big interface.
+                      - eg- In Spring Boot, we achieve it by designing modular service interfaces.
+D – Dependency Inversion Principle (DIP):
+                      - Classes should depend on interfaces, not concrete classes. This makes code flexible and testable.
+                      - eg - In Spring Boot, we achieve DIP naturally using interfaces + dependency injection.
+
+
+
+Java I/O & Serialization :
+---------------------------
+
+Q1. What is I/O Stream ?
+A Stream in Java is a continuous flow (like water in a pipe) of data between a source and a destination.
+
+Q2. Why do we need I/O Streams?
+In Java, everything is an object, but when we want to read/write data (from console, file, network, DB, etc.), 
+it comes as raw bytes or characters.
+
+Q3. How Many Types of I/O Streams ?
+Java provides three main categories:
+ a.  Byte Streams (java.io) :
+      -  Deal with binary data (images, audio, PDFs, etc.).
+      - Classes: 
+            (i) InputStream (abstract) → FileInputStream, BufferedInputStream, DataInputStream
+            (ii) OutputStream (abstract) → FileOutputStream, BufferedOutputStream, DataOutputStream
+b. Character Streams (java.io) :
+      - Deal with text data (characters, Unicode).
+      - Classes: 
+             (i) Reader (abstract) → FileReader, BufferedReader, InputStreamReader
+             (ii) Writer (abstract) → FileWriter, BufferedWriter, PrintWriter
+      - Note:- Character streams are built on top of byte streams for text handling.
+c. Object Streams (java.io):
+     - Deal with Java objects (serialization/deserialization)
+     - Classes:
+           (i) ObjectOutputStream → serialize objects
+           (ii) ObjectInputStream → deserialize objects
+
+Q4. What is NIO and NIO.2?
+ - NIO = New I/O (Java 1.4) → faster, non-blocking I/O using Channels & Buffers
+ - NIO.2 = New I/O 2 (Java 7) → adds Path, Files, FileSystem, asynchronous I/O, symbolic links, and better file operations
+
+Q5. Why is NIO/NIO.2 preferred over old I/O?
+- Non-blocking for efficient I/O
+- Faster & better memory handling (Buffers)
+- Better file handling with Path and Files
+- Modern, easier API for common operations
+
+Q6. What are Channels, Buffers, Path, Files, and FileSystem?
+| Name       | Type            | Purpose                            |
+| ---------- | --------------- | ---------------------------------- |
+| Channel    | Interface       | Connect to files/sockets for I/O   |
+| Buffer     | Class hierarchy | Memory container for data          |
+| Path       | Interface       | Represents file/directory location |
+| Files      | Class (utility) | Static methods for file operations |
+| FileSystem | Class/Interface | Represents the file system         |
+
+Q7. Is Files a class or interface? Where does it come from?
+A: Files is a utility class in java.nio.file with static methods for operations like read, write, copy, delete.
+
+Q8. How to read a file in Java?
+Old: FileReader, BufferedReader, Scanner.
+Modern: Files.readAllLines(path), Files.lines(path).
+eg:-
+Path path = Paths.get("example.txt");
+List<String> lines = Files.readAllLines(path);
+
+Q9. How to write a file in Java?
+Old: FileWriter, BufferedWriter, PrintWriter.
+Modern: Files.write(path, listOfLines).
+eg:-
+Files.write(path, "Hello NIO.2".getBytes());
+
+Q10. Can you create directories or check if a file exists using NIO.2?
+Files.createDirectories(Paths.get("myDir"));
+boolean exists = Files.exists(Paths.get("example.txt"));
+
+Q11. What is non-blocking I/O?
+In non-blocking I/O, program doesn’t wait for read/write operations to complete. Channels + Selectors allow multiple connections efficiently.
+
+Q12. Difference between Stream I/O and NIO?
+| Feature       | Stream I/O        | NIO                             |
+| ------------- | ----------------- | ------------------------------- |
+| Data handling | Byte/char by char | Buffers                         |
+| I/O mode      | Blocking          | Non-blocking                    |
+| API           | `java.io.*`       | `java.nio.*`, `java.nio.file.*` |
+| File handling | `File`            | `Path`, `Files`                 |
+
+Q13. Difference between FileInputStream & FileReader?
+FileInputStream: byte-based (for binary).
+FileReader: character-based (for text).
+
+Q14. Explain Difference between Serialization and Deserialization and also transient ?
+Serialization :
+ - Definition → The process of converting an object into a byte stream so it can be saved to a file, database, or sent over a network.
+ - Why? → Java objects live in memory (RAM). Serialization allows persisting or transferring them.
+ - How?
+    a. A class must implement Serializable marker interface.
+    b. Use ObjectOutputStream to write the object.
+Deserialization :
+    - Definition → The process of converting a byte stream back into an object.
+    - How?
+       a. Use ObjectInputStream to read the object.
+transient Keyword :
+     - Definition → Used to skip a field during serialization. That field will not be saved in the byte stream.
+     - Why? → To protect sensitive data (like passwords, security keys, bank details) or non-serializable objects.
+
+Q15. What about static fields in serialization?
+Not serialized, as they belong to class, not object.
+
+Q16. What is serialVersionUID?
+  - A unique ID to check class compatibility during deserialization.
+  - Prevents InvalidClassException.
+
+Q17. Can we serialize a parent class object if child implements Serializable?
+Only child is serialized. Parent fields are skipped unless parent also implements Serializable.
+
+Q18. What is MultipartFile ?
+- MultipartFile is an interface in Spring (org.springframework.web.multipart).
+- Used to handle file uploads in HTTP requests (usually from HTML forms or REST clients like Postman).
+
+Q19. Why do we need MultipartFile?
+ - In web apps, files are sent as multipart/form-data requests.
+ - MultipartFile helps to directly access file data in Spring without manually parsing the request.
+
+Q20. Common Methods of MultipartFile ?
+ - getOriginalFilename() → Returns uploaded file name.
+ - getContentType() → MIME type (e.g., image/png).
+ - getBytes() → File content as byte array.
+ - getInputStream() → File content as InputStream.
+ - transferTo(File dest) → Saves uploaded file to server.
+
+Q21. What is the difference between getBytes() and transferTo() in MultipartFile?
+- getBytes() → Loads file content into memory (may cause OOM for large files).
+- transferTo(File dest) → Saves file directly to disk (better for large files).
+
+Q22. How do you validate file uploads?
+ - Check size: file.getSize()
+ - Check type: file.getContentType()
+ - Example:
+if (!file.getContentType().equals("image/png")) {
+    throw new IllegalArgumentException("Only PNG files allowed");
+}
+
+Q23. How to set maximum upload file size in Spring Boot?
+In application.properties:
+            - spring.servlet.multipart.max-file-size=10MB
+            - spring.servlet.multipart.max-request-size=20MB
 
 
 
