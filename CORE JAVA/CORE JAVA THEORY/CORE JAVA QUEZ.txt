@@ -240,23 +240,5 @@ Java I/O & Serialization :
                 Q21. What is the difference between getBytes() and transferTo() in MultipartFile?
                 Q22. How do you validate file uploads?
                 Q23. How to set maximum upload file size in Spring Boot?
-                a.
-                a.
-                a.
-                a.
-                a.
 
-
-
-
-
-
-
-
-
-
-
-
-(45) java 8.     WHAT IS DIFFERENCE BETWEEN INTERFACE AND FUNCTIONAL INTERFACE?
-(39) Hibernate/ JPA   :    IF I WANT SOME FIELD TO STORE INTO DATABASE AS ENCRYPTED FORM HOW WILL BE DONE?
 
