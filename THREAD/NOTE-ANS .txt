@@ -1,5 +1,6 @@
-(1) WHAT IS MULTITASKING?
-############################
+Basics of Multitasking & Threads :
+-------------------------------------
+Q1. WHAT IS MULTITASKING?
 Executing several tasks simultaneously , is concept of multitasking.
 Ex- one student can do multiple task at same time:
 -> Listening the class
@@ -7,8 +8,8 @@ Ex- one student can do multiple task at same time:
 -> Checking phone
 -> Sleeping
 
-**There are two types:**
--------------------------
+Q2. How Many types of MultiTasking ?
+There are two types:
  (a) process based : Executing several tasks simultaneously where each task is a separate independently program(process), is called process based multitasking.
 Ex-
 -> Typing a java program in editor.
@@ -21,8 +22,7 @@ Note: process based multitasking is best suitable for OS level.
 Ex-
 -> Five thousands line of code and again five thousands line of code in one program running simultaneously.
 
-** ADVANTAGE: **
------------------
+Q3. What is ADVANTAGE of MultiTasking?
 (A) Whether it is process based or thread based the main objective of multitasking is to reduce response time of the system and improve performance.
       The main important applications of area are:
 -> To develop multimedia graphic
@@ -32,144 +32,102 @@ Ex-
 (B) When compared with old languages developing multithreaded applications in java is very easy because java provides inbuilt support for multithreading with 
     reach API (thread, runnable, thread group).
 
+Q4. What is a thread and how is it different from a process?
+| Process             | Thread              |
+| ------------------- | ------------------- |
+| Independent memory  | Shares memory       |
+| Heavyweight         | Lightweight         |
+| Slow context switch | Fast context switch |
 
 
-(2) Defining a thread:
-#######################
-We can define a thread in the following two ways:
--> By extending thread class: (look for github code)
-
-
-(3) By implementing runnable interface.:
-#############################################
-We can define a thread by implementing runnable interface.
-- Runnable present in java.lang package, and it contains only one method run method.
-- look for code github.
-- We will get mixed output and we can’t tell exact output.
-
-** CASE STUDY :**
-------------------
-MyRunnable r = new MyRunnable();
-Thread t1 = new Thread();
-Thread t2 = new Thread(r);
-
-Case 1 : 
-t1.start():- a new thread will be created which is responsible for execution of thread class run method, which has empty implementation.
-
-Case 2 :
-T1.run():- no new thread will be created and thread class run method will be executed just like normal method call.
-
-Case 3 :
-T2.start():- a new thread will be created which is responsible for the execution of myRunnable class run method.
-
-Case 4:
-T2.run():- a new thread will not created myRunnbale run method will be executed just like a normal method call.
-
-Case 5:
-r.start():- we will get compile time errro. Saying myRunnable class doesn’t have start capability.
-            Error- ‘can’t find symbol method start() location class MyRunnable.
-Case 6:
-r.run():- no new thread will be created and myRunnable run method will be executed just like normal method call.
-
-
-
-
-(4)Thread schedular:
-######################
-
-(a) it is part of jvm
-(b) it is responsible to schedule the thread that is if multiple threads are waiting to get the chance of execution then
-    in which order threads will be executed is decided by thread schedular.
-(c) We can’t accept exact algorithm followed by thread schedular it is varied from jvm to jvm hence: we can’t expect thread execution order & exact output.
-
-Hence : whenever situation comes to multithreading there is no guarantee for exact output but we can provide several possible outputs.
-The following are output various possible output for the above program:
-| Possible-1   | Possible-2   | Possible-3   | Possible-4   |
-| ------------ | ------------ | ------------ | ------------ |
-| Main thread  | Child thread | Main thread  | Child thread |
-| Main thread  | Child thread | Child thread | Main thread  |
-| …            | …            | …            | …            |
-| Child thread | Main thread  | …            | …            |
-| Child thread | Main thread  | …            | …            |
-
-
-CASE 1 :
---------
--> Difference between t.start() and t.run() method?
-t.start(): 
-in the case of t.stat() a new thread will be created which is the responsible for the execution of run method. But 
-
-t.run(): 
-in the case of t.run() a new thread won’t be created and run method will be executed just like a normal method 
-call by main thread hence in the above program if I replace t.start() with t.run() then output is child thread 10 times
-followed by main thread 10 times this total output produced by only main thread.
-
-CASE 2 :
---------
--> importance of thread class start method:
-Thread class start method is responsible to register the thread with thread schedular and all other mandatory activities
-hence : without executing thread class start method there is no chance of starting a new thread in java 
-        due to this thread class start method is consider as heart of multithreading.
-eg-         start(){
-        -> register this thread with thread schedular.
-        -> perform all other activities.
-        -> invoke run()
-     }
-
-CASE 3 :
---------
--> Overloading of run method:
-It is always possible but thread class start method can invoke no – args run method the other overloaded method we have to call explicitly like a normal method call.
- 
-CASE 4 :
---------
--> If we are not overriding run method :
-If we are not overriding run method then thread class run method will be executed which has empty implementation hence we will not get any output.
-Note: it is highly recommended to override run method otherwise don’t go for multi threading concept.
-
-CASE 5 :
---------
--> Overriding start method:
- if we override start method then our start method will be executed just like a normal method call. And new thread will not be created.
-Note: it is not recommended to override to start method otherwise don’t go for multi threading concept .
-
-CASE 6 :
---------
-->  If your child class has start method then for calling parent start method:
-
-class MyThrad extend Thread{
-
-public void start(){
-super.start();// calling
-sop("start method")
+Q5. How can you create a thread in Java?
+A thread can be created in two main ways:
+    a.  By extending thread class: 
+    --------------------------------
+          - You create a subclass of Thread.
+          - Override the run() method to define the task.
+          - Call start() to execute the thread (not run() directly).
+        eg- 
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread is running");
+    }
 }
 
-public void run(){
-sop("run method");
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.start();  // starts the thread
+    }
 }
 
+    a. By implementing the Runnable interface: 
+    ------------------------------------------
+          - Implement Runnable and provide the run() method.
+          - Pass the Runnable instance to a Thread object and call start().
+      eg-
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Runnable thread running");
+    }
 }
 
-CASE 7 :
---------
--> After starting a thread, again trying to start:
- after starting a thread if we are trying to restart the same thread then we will get run time exception saying ‘illegal thread state exception’. 
-eg. Thread t = new Thread();
-           t.start(); // ok
-            .
-            .
-           t.start(); // illegalThreadStartExecution.
+public class Main {
+    public static void main(String[] args) {
+        Thread t1 = new Thread(new MyRunnable());
+        t1.start();
+    }
+}
 
 
-(5) Which approach is best to define a thread:
-################################################
-Among two ways of defining a thread implements runnable approach is recommended .
-In the first approach our extends thread class, there is no chance of extending any other class hence, 
-we are missing inheritance benefit but in the second approach while implementing runnable interface we can extend any other class 
-hence, we won’t mis any inheritance benefit. Because of above reason implementing runnable interface approach is recommended then extending thread class.
+Q6. What’s the difference between Runnable and Callable?
+| Runnable                       | Callable                    |
+| ------------------------------ | --------------------------- |
+| `void run()`                   | `V call()`                  |
+| No return value                | Returns value               |
+| Cannot throw checked exception | Can throw checked exception |
 
-(6) THREAD CLASS CONSTRUCTORS:
-###############################
+
+Thread Lifecycle & Methods :
+----------------------------
+
+Q1. Can you explain the lifecycle of a thread?
+(new/born(MyThread t = new MyThread())---t.start()--->(ready/runnable)----of Thread Schedular allocate process----> (running)-----if run method completed----(dead).
+                                                                |                                                          |
+                                                                |                                                          |
+                                                                |                                                          |
+                                                                |                                                          |
+                                                                |<-----Thread.yeild()/Thread.sleep/thread.join()----<------|
+
+Q2. What’s the difference between start() and run()?
+start() method:
+ - Belongs to the Thread class.
+ - Creates a new thread and then internally calls the run() method.
+ - After start() is called, the thread moves to the Runnable state, and the JVM thread scheduler decides when it will execute.
+ - Calling start() more than once on the same thread object throws IllegalThreadStateException.
+
+run() method:
+ - Defined in Thread or Runnable.
+ - If called directly, it does not create a new thread; executes like a normal method in the current thread.
+ - Useful when we want to execute the task in the same thread for testing or sequential execution. along with it add this also 
+
+Q3. What will happen if you do overloading of run method ?
+  - When you call start(), the JVM creates a new thread and only invokes run() with no arguments. but
+  - The overloaded run(int x) will not be called automatically — JVM does not know about it. If you want to execute the overloaded you must call it explicitly like a         normal method.
+
+Q4. What happens if you extend Thread but don’t override run()?
+If we don’t override run(), the thread will execute the default run() method in Thread class. If no Runnable was passed, it does nothing. If a Runnable was passed via the constructor, the thread will execute the run() method of that Runnable object.
+
+Q5. What happens if we override the start() method in a Thread class?
+If we override start() and don’t call super.start(), no new thread is created. The overridden start() just executes like a normal method in the current thread, and run() will not be invoked unless we call it explicitly. To preserve normal thread behavior, we should call super.start() inside the overridden method.
+
+Q6. If your child class has overridden the start() method, how will you call the parent class’s start()?
+Inside the child’s start() method, we can call the parent version using super.start(). This ensures that the original thread creation logic in the parent class is executed and the new thread is started.
+
+Q7. What will happen if you start a thread twice?
+A thread can be started only once. If we call start() again on the same thread object, Java throws java.lang.IllegalThreadStateException. To run the thread again, we need to create a new Thread instance and start it.
+
+Q8. WHAT ALL CONSTRUCTOR PRESENT IN THREAD CLASS?
 (a) Thread t = new Thread();
 (b) Thread t = new Thread(Runnable r);
 (c) Thread t = new Thread(String name);
@@ -179,30 +137,20 @@ hence, we won’t mis any inheritance benefit. Because of above reason implement
 (g) Thread t = new Thread(ThreadGroup g, Runnable r, String name);
 (h) Thread t = new Thread(ThreadGroup g, Runnable r, String name, long stackSize);
 
-(7) Getting & setting name of a thread:
-########################################
+Q9. How to set and get thread name ?
 Every thread in java has some name it may be default name generated by jvm or customizer name provided by programmer .
 We can get & set name of a thread by using the following two method of thread class.
 Public final String getName().
 Public final void setName(String name).
-Note: we can get current executing thread object by using Thread.currentThread() method.
-ex-
-class MyThread extends Thread {
+but for setting thread name first need to get current executing thread object by using Thread.currentThread() method. then upon call set method
 
-}
+Q10. What is Thread Schedular ?
+(a) it is part of jvm
+(b) it is responsible to schedule the thread that is if multiple threads are waiting to get the chance of execution then
+    in which order threads will be executed is decided by thread schedular.
+(c) We can’t accept exact algorithm followed by thread schedular it is varied from jvm to jvm hence: we can’t expect thread execution order & exact output.
 
-class Test {
-main (String [] args){
-sop(Thread.currentThread.getName());
-MyThread t = new MyThread();
-sop(t.getName());
-Thread.currentThread().setName("sahil");
-sop(Thread.currentThread.getName());
-}
-}
-
-(8) THREAD PRIORITY:
-##########################
+Q11. What is Thread Priority and How many priority present in thread ?
 Every thread in java has some priority. It may be default priority generated by jvm or customizer priority provided by programmer. 
 The valid range of thread priority is 1 to 10 where 1 is Min priority and 10 is Max priority ,
 thread class defines the following common constants to represents some standard priorities:
@@ -212,18 +160,25 @@ Thread.MAX_PRIORITY – 10
 Thread schedular will use a priority while allocating processor the thread which is having highest priority will get chance first.
 If two threads having same priority then we can’t expect exact exultation order it depends on thread schedular.
 
+Q12. 
 
-Thread class defines the following methods to get & set priority of a thread:
-public final int getPriority();
-public final void setPriority(int p);
 
-Default priority :   Only for the main thread is 5 but for all remaining thread default priority will be inheritated from parent to child 
-                     that is whatever priority parent thread has the same priority will be there for the child thread.
 
-Comment : if we are commenting line 1 then both main and child threads have the same priority 5 and hence we can’t expect executation order and the exact output .
-          If we are not commenting line 1 then main thread has a priority 5 and child thread has priorty 10 hence child thread get the chance first followed 
-          by main thread in this case output is child thread 10 times followed by main thread main thread 10 times.
-Note: some platform won’t provide proper support for thread priority.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 (9) We can prevent a thread execution by using the following methods:
@@ -405,14 +360,7 @@ If a thread don’t want to perform any operations for a particular amount of ti
 
 
 
-(11)Thread life cycle:
-#####################
-(new/born(MyThread t = new MyThread())---t.start()--->(ready/runnable)----of Thread Schedular allocate process----> (running)-----if run method completed----(dead).
-                                                                |                                                          |
-                                                                |                                                          |
-                                                                |                                                          |
-                                                                |                                                          |
-                                                                |<-----Thread.yeild()/Thread.sleep/thread.join()----<------|
+
 
 (12) How a thread can interrupt another thread ?
 #################################################
