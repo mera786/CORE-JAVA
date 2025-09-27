@@ -1,28 +1,50 @@
                                THREAD QUEZ
+Basics of Multitasking & Threads :
+                            Q1. WHAT IS MULTITASKING?
+                            Q2. How Many types of MultiTasking ?
+                            Q3. What is ADVANTAGE of MultiTasking?
+                            Q4. What is a thread and how is it different from a process?
+                            Q5. How can you create a thread in Java?
+                            Q6. What’s the difference between Runnable and Callable?
+Thread Lifecycle & Methods :
+                            Q1. Can you explain the lifecycle of a thread?
+                            Q2. What’s the difference between start() and run()?
+                            Q3. What will happen if you do overloading of run method ?
+                            Q4. What happens if you extend Thread but don’t override run()?
+                            Q5. What happens if we override the start() method in a Thread class?
+                            Q6. If your child class has overridden the start() method, how will you call the parent class’s start()?
+                            Q7. What will happen if you start a thread twice?
+                            Q8. WHAT ALL CONSTRUCTOR PRESENT IN THREAD CLASS?
+                            Q9. How to set and get thread name ?
+                            Q10. What is Thread Schedular ?
+                            Q11. What is Thread Priority and How many priority present in thread ?
+                            a.
+                            a.
+                            a.
+                            a.
+                            a.
+                            a.
+                            a.
+                            a.
+                            a.
+                            a.
+                            a.
+                            a.
 
-(1) WHAT IS MULTITASKING ?
-(2) HOW MANY TYPES OF MULTITASKING?
-(3) ADVANTAGE OF MULTITASKING?
-(4) HOW MANY WAYS TO DEFINE A THREAD?
-(5) WHAT IS THREAD SCHEDULAR?
-(6) DIFFERENCE BETWEEN START() AND RUN() METHOD?
-(7) WHAT IS THE IMPORTANCE OF THREAD CLASS START METHOD?
-(8) WHAT WILL HAPPEN IF WE DO OVERLOADING OF RUN METHOD ?
-(9) WHAT WILL HAPPEN IF WE ARE NOT OVERRIDING RUN METHOD?
-(10) WHAT WILL HAPPEN IF WE ARE OVERRIDING START METHOD?
-(11) IF YOUR CHILD CLASS HAS START METHOD THEN HOW WILL YOU CALL PARENT START METHOD?
-(12)EXPLAIN THREAD LIFE CYCLE?
-(13) AFTER STARTING A THREAD ONCE MORE I WANT TO START THEN WHAT WILL HAPPEN ? 
-(14) WHICH APPROACH IS BEST FOR DEFINNING A THREAD?
-(15) WHAT ALL CONSTRUCTOR PRESENT IN THREAD CLASS?
-(16) FOR SETTING & GETTING THREAD WHICH IS ONE METHOD PRESENT?
-(17) HOW TO GET CURRENT EXECUTING THREAD OBJECT?
-(18) WHAT IS THREAD PRIORITY & HOW MANY PRIORITY PRESENT IN THREAD?
-(19) WHAT IS MAIN METHOD DEFAULT PRIORITY?
+
+
+
+
+
+
+
+
+
+
+
+
+
 (20) TELL SOME METHODS WHICH IS USED TO PREVENT A THREAD EXECUTION?
-(21) WHAT WILL BE IMPACT IN THREAD LIFE CYLE WHEN YEILD METHOD CALLED?
-(22) WHAT WILL BE IMPACT IN THREAD LIFE CYLE WHEN JOIN METHOD CALLED?
-(23) WHAT WILL BE IMPACT IN THREAD LIFE CYLE WHEN SLEEP METHOD CALLED?
 (24) HOW A THREAD CAN INTERRUPT ANOTHER THREAD?
 (25) DIFFERENCE BETWEEN YEILD(), JOIN () & SLEEP() METHOD?
 
