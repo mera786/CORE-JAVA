@@ -160,293 +160,126 @@ Thread.MAX_PRIORITY – 10
 Thread schedular will use a priority while allocating processor the thread which is having highest priority will get chance first.
 If two threads having same priority then we can’t expect exact exultation order it depends on thread schedular.
 
-Q12. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(9) We can prevent a thread execution by using the following methods:
-#######################################################################
+Q12. Tell methods name which are used to prevent a thread from executing?
+Thread execution can be controlled using methods like:
  (a) yield ()
  (b) sleep ()
  (c) join ()
 
-(a) yield ():
---------------
-
-- Yield () method causes to pause current executing thread to give the chance for waiting thread of same priority if there is no waiting thread or 
-  all waiting thread have low priority then same thread can continue it’s execution 
-- If multiple threads are waiting with same priority then which waiting thread will get the chance we can’t expect it’s depends on thread schedular.
-- The thread which is yielded , when it will get the chance once again it’s depends on thread schedular and we can’t expect exactly.
-Public static native void yield();
-
-ex-
-class MyThread extends Thread {
-public void run(){
-for(int i=0; i<10; i++){
-sop("child Thread");
-Thread.yeild();
-}
-}
-}
-
-class ThreadDemo {
-main(String [] args){
-MyThread t = new MyThread();
-t.start();
-for(int i=0; i<10; i++){
-sop("Main Thread");
-}
-}
-}
-
-
-In the above program if we are commenting line 1 then both thread will be executed simultaneously 
-and we can’t expect which thread will complete first. If we are not commenting line 1 then child thread always call yield method 
-because of that main thread will get chance more numbers of times and the chance of completing main thread first is high.
-Note: some platform won’t provide proper support for yield method.
-
-
- (b) sleep ():
---------------
-If a thread don’t want to perform any operation for a particular amount of time then we should go for sleep method.
-Public static void native sleep(long ms ) throws interruptedException
-Public static void native sleep(long ms , int ns ) throws interruptedException
-Note: every sleep method throws interrupted exception , which is checked exception hence whenever
-     we are using sleep method compulsory we should handle interrupted exception either by try catch or by throws keyword otherwise
-     we will get compile time error.
-
-
-
-(c) join ():
-------------
-- if a thread want to wait until completing some other thread then we should go for join method for 
-ex- if a thread t1 want to wait until completing t2 then t1 has to call t2.join() 
-- If t1 execute t2.join() then immediately t1 will be enter into waiting state until t2 completes 
-- Once t2 completes then t1 can continue it’s execution.
-ex 2 - Wedding cards printing(t2) has to wait until venue fixing thread(t1) completion hence t2 has to call t1.join()
-     - Wedding cards distribution threads( t3) has to wait until weeding cards printing thread(t2) completion hence t3 has to call t2.join()
-Public final void join(); // throws interrupted exception
-Public final void join( long milisecond); // throws interrupted exception
-Public final void join(long millisecond, int nainosecond); // throws interrupted exception
-Note: every join method throw interrupted exception which is checked exception hence compulsory we should handle this exception 
-      either by using try catch or by throws keyword otherwise we will get compile time error.
-
-Case 1 : waiting of main thread until completing child thread.
-eg-
-
-class MyThread extends Thread {
-public void run(){
-for(int i=0; i<10; i++){
-sop("child Thread");
-try{
-Thread.sleep(2000);
-}catch(InterruptedException e){
-}
-}
-}
-}
-
-class ThreadDemo {
-main(String [] args){
-MyThread t = new MyThread();
-t.start();
-t.join();
-for(int i=0; i<10; i++){
-sop("Main Thread");
-}
-}
-}
-
-If we comment line 1 then both main and child thread will be executed simultaneously and we can’t expect exact output .
-If we are not commenting line 1 then main thread calls join method on child thread object hence main thread will wait until completing child thread 
-in this case output is sita thread sita thread 10 times followed by rama thread rama thread 10 times.
-
-Case 2: Waiting of child thread until completing main thread.
-
-eg-
-class MyThread extends Thread {
-static ThreadDemo mt;
-public void run(){
-try{
-mt.join();
-}catch(InterruptedException e){
-}
-}
-for(int i=0; i<10; i++){
-sop("child Thread");
-}
-}
-
-class ThreadDemo {
-main(String [] args){
-MyThread t = new MyThread();
-t.start();
-for(int i=0; i<10; i++){
-sop("Main Thread");
-}
-}
-}
-
-In the above example child thread calls join method on main thread object hence child thread has to wait until completing main thread 
-in this case output is main thread main thread… 10 times followed by child thread child thread 10 times.
-
-Case 3 : if main thread calls join method on child thread object and child thread calls join method on main thread object then
-         both threads will wait forever and the program will be stuck/pause(this is something like dead lock).
-
-eg-
-class MyThread extends Thread {
-static ThreadDemo mt;
-public void run(){
-try{
-mt.join();
-}catch(InterruptedException e){
-}
-}
-for(int i=0; i<10; i++){
-sop("child Thread");
-}
-}
-
-class ThreadDemo {
-main(String [] args){
-MyThread t = new MyThread();
-t.start();
-t.join();
-for(int i=0; i<10; i++){
-sop("Main Thread");
-}
-}
-}
-
-Case 4: if a thread calls join method on the same thread itself then the program will be stuck( this is something like dead lock) 
-        in this case thread has to wait infinite amount of time.
-eg-
-class ThreadDemo {
-main(String [] args){
-Thread.currentThread().join();
-}
-}
-
-
-(10) COMPARATION TABLE OF YEILD() , JOIN() & SLEEP() METHODS:
-###############################################################
-
+Q13. Explain Difference between Yield(),  Join() and Sleep() ?
 Yield(): 
-If a thread want to pause it’s execution to give the chance for remaining threads of same priority then we should go for yield() method.
-
+   - If a thread want to pause it’s execution to give the chance for remaining threads of same priority then we should go for yield() method.
 Join():
-If a thread want to wait until completing some other thread then we should go for join method.
-
+   - If a thread want to wait until completing some other thread then we should go for join method.
 Sleep():
-If a thread don’t want to perform any operations for a particular amount of time then we should go for sleep method.
+   - If a thread don’t want to perform any operations for a particular amount of time then we should go for sleep method.
+
+Q14. How can you interrupt a thread?
+ - A thread can interrupt a sleeping thread or waiting thread by using interrupt method of thread class: thread.interrupt()
+ - Always check Thread.isInterrupted() inside thread code.
+
+
+
+Synchronization & Locks :
+--------------------------
+Q1.  What is synchronized in Java?
+A: Ensures that only one thread at a time can execute a block or method. It provides mutual exclusion on the object’s monitor.
+
+Q2. Difference between synchronized method and synchronized block?
+| Aspect | Synchronized Method                            | Synchronized Block                        |
+| ------ | ---------------------------------------------- | ----------------------------------------- |
+| Scope  | Entire method                                  | Specific portion of code                  |
+| Lock   | Locks the object (or class for static methods) | Locks the object specified in parentheses |
+
+
+Q3. What is the volatile keyword?
+Ensures visibility of changes to variables across threads. Threads always read the latest value from main memory, not from CPU cache.
+
+Q4. Explain wait(), notify(), and notifyAll() ?
+ wait() → Puts thread in waiting state and releases lock.
+ notify() → Wakes one waiting thread.
+ notifyAll() → Wakes all waiting threads.
+Note:- Always call wait() inside a loop to handle spurious wakeups.
+
+Q5. What is a deadlock? How can you prevent it?
+   Deadlock → Two or more threads waiting indefinitely for each other’s locks.
+   Prevention:
+       a. Lock ordering
+       b. Use tryLock() with timeout
+       c. Minimize lock scope
+       d. Avoid nested locks if possible
+
+Q6. Difference between sleep() and wait() ?
+| Aspect         | `sleep()`         | `wait()`                   |
+| -------------- | ----------------- | -------------------------- |
+| Releases lock? | No                | Yes                        |
+| Belongs to     | Thread class      | Object class               |
+| Used for       | Pausing execution | Inter-thread communication |
+
+Q7. Can we override synchronized method?
+Yes, but the overriding method can be either synchronized or not. because Synchronization is not inherited automatically.
+
+Q8. Explain the difference between intrinsic lock and explicit lock.
+ Intrinsic lock → Obtained by synchronized keyword; automatically released
+ Explicit lock → Lock interface; must manually unlock
+
+Java Executor Framework & Thread Pools :
+-------------------------------------------
+
+Q1. What is Executor Framework in Java?
+It is a high-level API in java.util.concurrent package that simplifies thread management. Instead of manually creating and managing threads, Executor Framework provides a pool of threads to execute tasks asynchronously.
+
+Q2. What is a Thread Pool?
+A thread pool is a collection of pre-instantiated threads that are ready to execute tasks. It helps in reusing threads, reduces thread creation overhead, and improves performance.
+
+Q3. What are the main interfaces of Executor Framework?
+ - Executor → Executes submitted Runnable tasks.
+ - ExecutorService → Extends Executor, adds lifecycle management (shutdown, terminate).
+ - ScheduledExecutorService → Executes tasks periodically or after a delay.
+
+Q4. Difference between Executor and ExecutorService?
+  - Executor: Only executes Runnable tasks, no lifecycle management.
+  - ExecutorService: Executes Runnable & Callable, allows task submission, shutdown, and returns Future.
+
+Q5. How can you create a thread pool in Java?
+Using Executors factory methods:
+ - ExecutorService fixedPool = Executors.newFixedThreadPool(5);
+ - ExecutorService cachedPool = Executors.newCachedThreadPool();
+ - ExecutorService singlePool = Executors.newSingleThreadExecutor();
+- ScheduledExecutorService scheduledPool = Executors.newScheduledThreadPool(5);
+
+Q6. Difference between FixedThreadPool and CachedThreadPool?
+| Feature       | FixedThreadPool     | CachedThreadPool                    |
+| ------------- | ------------------- | ----------------------------------- |
+| Thread Count  | Fixed number        | Creates threads as needed, can grow |
+| Reuse Threads | Yes                 | Yes                                 |
+| Suitable For  | CPU-intensive tasks | Short-lived, many tasks             |
+
+Q7. Difference between submit() and execute()?
+execute(Runnable r) → No return value, just executes task.
+submit(Runnable r / Callable c) → Returns Future for result and exception handling.
+
+Q8. Difference between shutdown() and shutdownNow()?
+    - shutdown() → Stops accepting new tasks, waits for submitted tasks to finish.
+    - shutdownNow() → Attempts to stop all running tasks and returns a list of pending tasks.
+
+Q9. What are the different thread pool types provided by Executors class?
+    - newFixedThreadPool(int n) → fixed number of threads.
+    - newCachedThreadPool() → grows/shrinks dynamically.
+    - newSingleThreadExecutor() → single worker thread.
+    - newScheduledThreadPool(int n) → executes tasks periodically/delayed.
+
+Q10. How does ThreadPoolExecutor decide when to create a new thread?
+      - If active threads < corePoolSize → create a new thread.
+      - If corePoolSize threads are busy → put task in queue.
+      - If queue is full → create up to maximumPoolSize threads.
+      - If queue full and maxPoolSize reached → task is rejected.
+
+Q11. Can we dynamically change thread pool size?
+Yes, using setCorePoolSize() and setMaximumPoolSize() in ThreadPoolExecutor.
+
+
  
-
-
-
-
-
-(12) How a thread can interrupt another thread ?
-#################################################
-A thread can interrupt a sleeping thread or waiting thread by using interrupt method of thread class
-Public void interrupt
-
-class MyThread extends Thread {
-public void run(){
-try{
-for(int i=0; i<10; i++){
-sop("i am lazy thread");
-Thread.sleep(2000);
-}
-}catch(InterruptedException e){
-sop("i got inturrepted");
-}
-}
-}
-}
-
-class ThreadDemo {
-main(String [] args){
-MyThread t = new MyThread();
-t.start();
-t.inturrpt();
-sop("end of main");
-}
-}
-
-If I comment line 1 then main thread won’t interrupt child thread in this case child thread will execute for loop 10 times.
-If we are not commenting line 1 then main thread interrupt child thread in this case output is :
-End of main thread
-I am lazy thread
-I got interrupted 
-
-
-Note: whenever we are calling interrupt method if the target thread not in sleeping state or waiting state then 
-     there is no impact of interrupt call immediately interrupt call will be waited until target thread enter into sleeping or waiting state 
-     If the target thread enter into sleeping or waiting state then immediately interrupt call interrupt the target thread.
-
-If the target thread never enter into sleeping or waiting state in its life time then 
-there is no impact of interrupt call this is the only case where interrupt call will be wasted.
-eg-
-class MyThread extends Thread {
-public void run(){
-for(int i=0; i<10; i++){
-sop("i am lazy thread");
-}
-sop("i don't to  sleep);
-
-try{
-Thread.sleep(2000);
-}
-}catch(InterruptedException e){
-sop("i got inturrepted");
-}
-}
-}
-}
-
-class ThreadDemo {
-main(String [] args){
-MyThread t = new MyThread();
-t.start();
-t.inturrpt();
-sop("end of main");
-}
-}
-
-In the above example interrupt call waited unitl child thread complete for loop 10 thousands times .
-
-
-
-
-
-
- 
-
- 
-
-
-
-
-
-
-
 
 
 
