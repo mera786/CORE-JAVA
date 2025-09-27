@@ -1,43 +1,90 @@
                               JAVA 8 QUEZ
 
-(1) WHY JAVA 8 ? MAIN AGENDA BEHIND JAVA 8?
-(2) WHAT ARE NEW FEATURES WHICH GOT INTRODUCED IN JAVA 8?
-(3) WHAT ARE MAIN ADVANTAGES USING JAVA 8?
-(4) WHAT IS LAMBDA EXPRESSION?
-(5) WHAT ARE FUNCTIONAL INTERFACES?
-(6) HOW LAMBDA EXPRESSION AND FUNCTIONAL INTERFACE RELATED?
-(7) CAN YOU CREATE YOUR OWN FUNCTIONAL INTERFACE?
-(8) WHAT IS METHOD REFERENCE IN JAVA?
-(9) WHAT ARE DEFUALT METHODS?
-(10) IS IT NECESSARY TO OVERRIDE DEFAULT METHOD?
-(11) IS DEFAULT KEYWORD ONE OF THE ACCESS MODIFIER?
-(12) HOW DEFAULT METHOD OF INTERFACE CAUSE AMBIGUITY PROBLEM AND HOW TO RESOLVE IT?
-(13) CAN YOU USE HASHCODE () DEFAULT IMPLEMENTATION IN INTERFACE ?
-(14) WHY STATIC METHOD WERE INTRODUCE IN JAVA 8 ?
-(15) ARE STATIC METHOD METHODS AVIABLE FOR IMPLEMENTED CLASSES BY DEFAULT ?
-(16) WHAT ARE PREDICATE & WHENT TO USE PREDICATE?
-(17) WHAT IS THE ADVANTAGE OF PREDICATES ?  
-(18) WHAT IS PREDICATE JOINING?
-(19) WHAT ARE FUNCTIONS?
-(20) WHAT IS THE DIFFERENCE BETWEEN PREDICATE & FUNCTION ?
-(21) WHAT IS FUNCTION CHAINING?
-(22) WHAT IS CONSUMER FUNCTIONAL INTERFACE?
-(23) WHAT IS CONSUMER CHAINING ?
-(24) WHAT IS SUPPLIER FUNTIONAL INTERFACE?
-(25) USE OF BICONSUMER, BIFUNCTION, BIPREDICATE AND WHY NO BISUPPLIER?
-(26) IF WE WANT TO OPERATE ON 3 ARGUMENTS THEN TRIPREDICATE IS THERE OR TRI FUNCTION, TRISUPPLIER?
-(27) WHAT ARE STREAMS?
-(28) Tell ways to create stream from different- different collection of object?
-(29) difference between stream (java 1.8 ) and java.io.stream ?
-(30) DIFFERENCE BETWEEN STREAM JAVA 1.8 AND COLLECTION?
-(31) WHAT IS DIFFERENCE BETWEEN FILTER AND MAP?
-(32) WHY DO WE NEED STATIC METHOD IN INTERFACE ?
-
-
-
-(45) java 8.     WHAT IS DIFFERENCE BETWEEN INTERFACE AND FUNCTIONAL INTERFACE?
-(39) Hibernate/ JPA   :    IF I WANT SOME FIELD TO STORE INTO DATABASE AS ENCRYPTED FORM HOW WILL BE DONE?
-
+BASIC JAVA 8 FEATURES :
+-----------------------
+                  Q1. What are the main features introduced in Java 8?
+                  a.
+                  a.
+                  a.
+                  a.
+Lambda Expressions :
+--------------------
+                  Q1. What is a lambda expression?
+                  Q2. What is the syntax of a lambda expression?
+                  Q3. Can we overload a lambda expression?
+                  Q4. how lambda expression and functional interface related ?
+FUNCTIONAL INTERFACES :
+-----------------------
+                  Q1. What is a functional interface?
+                  Q2. What are the built-in Java 8 functional interfaces?
+                  Q3. Can functional interface have multiple default methods?
+                  Q4. What is @FunctionalInterface annotation?
+                  Q5. Can you create your own functional interface?
+                  Q6. What is the difference between Interface and Functional Interface?
+                  Q7. What is Predicate in Java 8?
+                  Q8. Can you create your own Predicate?
+                  Q9. Can you combine multiple Predicates?
+                  Q10. What is the difference between Predicate<T> and Function<T, R>?
+                  Q11. Can Predicate be used outside Streams?
+                  Q12. Difference between Predicate and BiPredicate?
+                  Q13. What is Function in Java 8?
+                  Q14. What are the Difference between andThen() and compose() in Function?
+                  Q15. What is Function.identity()?
+                  Q16. What is the difference between Function<T,R> and Consumer<T>?
+                  Q17. What is Consumer in Java 8?
+                  Q18. What is andThen() in Consumer?
+                  Q19. Can Consumers be combined like Functions?
+                  Q20. Can Consumer be used outside Streams?
+                  Q21. What is Supplier in Java 8?
+                  Q22. Where do we use Supplier in real projects?
+                  Q23. How do you use Supplier with Optional?
+STREAM API :
+-------------
+                  Q1. What is a Stream?
+                  Q2. Difference Between Collection and Stream in Java 8 ?
+                  Q3. Explain Stream operations?
+                  Q4. What is lazy evaluation in stream ? like this ?
+                  Q5. Parallel vs sequential streams?
+                  Q6. Tell Stream short-circuit operations?
+                  Q7. What is the difference between map() and flatMap()?
+                  Q8. What is the difference between Collection API and Stream API iteration?
+                  Q9. Can a stream be reused?
+                  Q10. What happens if we call only intermediate operations without terminal operation?
+                  Q11. How do you remove duplicates using streams?
+                  Q12: How to sort objects using streams?
+                  Q13. How do you convert a list to a map using streams?
+                  Q14. How do you group data using streams?
+                  Q15. Difference between forEach() and forEachOrdered()?
+                  Q16. What is the difference between reduce() and collect()?
+                  Q17. Can we use stream on infinite data?
+                  Q18. What is the difference between findFirst() and findAny()?
+                  Q19. How can you create a Stream from different types of collections in Java 8?
+                  Q20. What is the difference between java.util.stream.Stream (Java 8) and java.io.Stream?
+Optional Class:
+---------------
+                  Q1. What is Optional/ Optional class?
+                  Q2. What are the Methods of Optional?
+                  Q3. Difference between orElse and orElseGet?
+                  Q4. Difference between Optional.of() and Optional.ofNullable()?
+                  Q5. Difference between get() and orElseThrow() ?
+Default Methods in Interface:
+-----------------------------
+                  Q1. What is a default method?
+                  Q2. What is a static method in interface?
+                  Q3. Can default methods override Object class methods?
+                  Q4. Is it necessary to always override default method ?
+                  Q5. How can a default method in an interface cause an ambiguity problem in Java 8? How do you resolve it?
+                  Q6. Why do we need static methods in an interface in Java 8?
+                  Q7. Are static methods in interfaces available to implementing classes by default?
+                  Q8. Is default keyword an access modifier in Java 8?
+                  Q9. What is a method reference in Java 8?
+New Date-Time API (java.time) :
+-------------------------------
+                    Q1. Why new Date/Time API?
+                    Q2. What are the Key classes for Date & Time API ?
+                    Q3. Example for LocalDate ?
+                    Q4. Way for Formatting ?
+                    Q5. Parsing from string ?
 
 
 
