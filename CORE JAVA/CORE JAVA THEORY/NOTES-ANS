@@ -18,11 +18,11 @@ Q2. What are the features of Java?
      -> Multithreaded – Supports multiple threads for concurrent tasks.
 
 Q3. DIFFERENCE BETWEEN JVM,JRE AND JDK ?
-| Component | What it is                                     | Contains                                                                |
-| --------- | ---------------------------------------------- | ----------------------------------------------------------------------- |
-| **JVM**   | Java Virtual Machine, runs bytecode            | Just the JVM itself (executes `.class` files)                           |
-| **JRE**   | Java Runtime Environment, runs Java apps       | **JVM + Core Java Libraries** (like `java.lang`, `java.util`)           |
-| **JDK**   | Java Development Kit, for developing Java apps | **JRE + Development Tools** (`javac`, `jar`, `javadoc`, debugger, etc.) |
+| Component | What it is                                     | Contains                                                                                                           |
+| --------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **JVM**   | Java Virtual Machine, runs bytecode            | Just the JVM itself (executes `.class` files), componenet contains : classloader, execution engine, memory area    |
+| **JRE**   | Java Runtime Environment, runs Java apps       | **JVM + Core Java Libraries** (like `java.lang`, `java.util`)                                                      |
+| **JDK**   | Java Development Kit, for developing Java apps | **JRE + Development Tools** (`javac`, `jar`, `javadoc`, debugger, etc.)                                            |
 
 
 Q4. Explain new keyword in Java.
