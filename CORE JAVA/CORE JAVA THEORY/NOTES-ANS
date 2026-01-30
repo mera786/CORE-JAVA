@@ -28,9 +28,6 @@ Q3. DIFFERENCE BETWEEN JVM,JRE AND JDK ?
 Q4. Explain new keyword in Java.
 Used to create new object instances and allocate memory on the heap.
 
-Q5. What is the difference between == and equals()?
- == compares reference (memory).
- equals() compares content (object value).
 
 Q6. What are wrapper classes in Java?
 Convert primitive data types to objects (Integer, Double, Boolean, etc.)
@@ -56,14 +53,6 @@ Q10. Explain final keyword ?
 -  final method → cannot be overridden.
 -  final variable → constant value.
 
-Q11. Difference between this keyword and super keyword ?
-| Point                     | `this` keyword                                                | `super` keyword                                                       |
-| ------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------- |
-| **1. Refers to**          | Current class object (me)                                     | Parent class object (parent)                                          |
-| **2. Used for variables** | To access current class variables                             | To access parent class variables                                      |
-| **3. Used for methods**   | To call current class methods                                 | To call parent class methods (when overridden)                        |
-| **4. Constructor call**   | Calls another constructor in the same class (`this()`)        | Calls parent class constructor (`super()`)                            |
-| **5. Ambiguity**          | Clears confusion between local variable and instance variable | Clears confusion when child and parent have same variable/method name |
 
 Q12. Explain instanceof keyword.
 Checks whether an object is an instance of a specific class or subclass.
@@ -196,44 +185,7 @@ Q26. What is the difference between == operator for primitives and objects?
 - Primitives → value comparison
 - Objects → reference comparison
 
-Q27. What is the difference between abstract class and interface?
-Abstract :
- - Methods → Can have both abstract methods (no body) and concrete methods (with body).
- - Fields/Variables → Can have instance variables and static variables.
- - Multiple Inheritance → ❌ Not possible (a class can extend only one abstract class).
- - Object Creation → ❌ Cannot create object directly, but subclass objects can be created.
- - Constructors → ✅ Yes, abstract classes can have constructors (used to initialize fields when subclass object is created).
-  eg - 
-    abstract class Animal {
-    String name;
-   // Abstract class constructor
-    Animal(String name) {
-        this.name = name;
-        System.out.println("Animal constructor called: " + name);
-    }
 
-    class Dog extends Animal {
-    Dog(String name) {
-        // Calls Animal(String name) constructor
-        super(name);
-        System.out.println("Dog constructor called");
-    }
-
-Interface :
- - An interface in Java is like a contract that only contains method declarations (without implementation) and constants, + Default/Static/Private (Java 8+)
- - Fields/Variables → Only public static final (constants). No instance variables.
- - Object Creation → ❌ Cannot create objects. Can only be implemented by a class.
- - Multiple Inheritance → ✅ Possible (a class can implement multiple interfaces).
- - Constructors → ❌ Interfaces cannot have constructors.
-
-
-Q28. When to use Abstract class and when to use Interface ?
-👉 Use Interface when you just want to define a contract and multiple inheritance is needed.
-Example → Dog, Car, Printer sab Serializable ho sakte hain (unrelated classes bhi ek interface follow kar sakti hain).
-
-👉 Use Abstract Class when you want to share common code/state among related classes.
-Example → Shape abstract class me ek color field ho sakta hai aur concrete method setColor().
-Circle aur Rectangle us base class ka code reuse karte hain.
 
 Q29. Explain package in Java.
 Packages are just like folder that helps organize your classes, interfaces, enums, and sub-packages into groups.
@@ -254,7 +206,7 @@ Q31. Explain Difference between Stack and heap Memeory ?
 Stack Memory :
 ---------------
 - What it stores:
-   a. Primitive variables (like int, char, boolean)
+   a. Primitive variables (like int, char, boolean) like, int a =5; so Stack me 5 store hota hai.
    b. References to objects (not the object itself)
 - How it works:
    a. LIFO (Last In First Out) → last thing added is removed first
@@ -305,38 +257,6 @@ Return Value:
  - It is mandatory to use. 
  - It returns both value and control to method calling statement.
 
-Q37. What is type conversion in Java?
-General process of changing one data type into another.It happens implicitly (done by JVM) or explicitly (by programmer).
-but type conversion is the general concept, and casting is one way of doing it. In Java, this happens in two ways:
-- Implicit Type Conversion (Type Promotion / Widening)
-- Explicit Type Conversion (Type Casting / Narrowing)
-
-Q38. Difference between implicit and explicit conversion?
-Implicit :
-- Java automatically converts a smaller data type to a larger data type.
-- No data loss.
-- eg  :
-    int x = 10;
-    double y = x;   // implicit type conversion (widening)
-Explicit Conversion (Type Casting / Narrowing) :
-- You convert larger type → smaller type manually.
-- Data loss may occur.
-- eg
-   int x = 100;
-   int z = (int) y;  // Explicit type conversion (narrowing)
-Note:- So yes ✅, type conversion can also be done by casting (narrowing).
-
-Q39. Which conversions are safe in Java?
-implicit type conversion
-
-Q40. Can int be automatically converted to byte? 
-Answer: No, narrowing requires explicit casting
-
-Q41. Can boolean be converted to int? 
-Answer: No
-
-Q42. Can char be converted to int? 
-Answer: Yes, implicit widening
 
 Q43. What happens when int and double are added?
 the smaller type (int) is promoted to the larger type (double), and the result takes the larger type.
@@ -350,8 +270,6 @@ The result is always an int.
 Q45. What is type casting?
 👉 Definition: Converting one data type into another is called type casting.
 
-Q46. Difference between type casting and type conversion?
-Answer: Type conversion is general; casting is explicit/manual conversion.
 
 Q47. What is upcasting and downcasting?
 Types of Type Casting:
@@ -388,15 +306,6 @@ Types of Type Casting:
               Animal a2 = new Animal();
               Dog d2 = (Dog) a2;  // ❌ Runtime error: ClassCastException
 
-Q48. Can we cast Animal a = new Cat(); to Dog? 
-Answer: runtime exception
-
-Q49. Why upcasting is safe and downcasting is unsafe?
-Converting a subclass object to a superclass reference.Always safe because the subclass is a type of the superclass.No data loss and done automatically.
-Converting a superclass reference to a subclass reference.Unsafe because the superclass may not actually be an instance of the subclass.Can cause ClassCastException at runtime.Requires explicit casting
-
-Q50. Can you cast int to String directly? 
-Answer: No, must use conversion methods
 
 Q51. Can you cast Object obj = "Hello" to Integer? 
 Answer: ClassCastException
@@ -476,7 +385,7 @@ Q57. Explain Difference between IIB and SIB block ?
 | Feature            | **IIB (Instance Initializer Block)**                                                | **SIB (Static Initializer Block)**                                                |
 | ------------------ | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | **Definition**     | A block of code that runs **every time an object is created**.                      | A block of code that runs **only once when the class is loaded**.                 |
-| **Keyword**        | No keyword, just `{ }` inside the class.                                            | No keyword, just `static { }`.                                                    |
+| **Keyword**        | No keyword, just `{ }` inside the class.                                            |  just `static { }`.                                                          |
 | **Execution Time** | Executes **before the constructor**, each time an object is instantiated.           | Executes **once** when the class is loaded into memory.                           |
 | **Access**         | Can access **instance variables** and **static variables**.                         | Can access **static variables only**; cannot access instance variables directly.  |
 | **Use Case**       | Initialize instance variables or perform common operations for all objects.         | Initialize static variables or perform tasks that should run once for the class.  |
@@ -599,22 +508,11 @@ Q3. Types of methods in Java?
 - Final methods (cannot be overridden)
 - Synchronized methods (used in multithreading)
 
-Q4. What is method overloading in Java?
-👉 Defining multiple methods in the same class with the same name but different parameters (type/number/order). Resolved at compile-time (compile-time polymorphism).
 
-
-Q5. What is method overriding in Java?
-👉 When a subclass provides its own implementation of a method already present in parent class. Resolved at runtime (runtime polymorphism).
-
-Q6. Can we overload main method in Java?
-👉 Yes, but JVM calls only the standard public static void main(String[] args).Other overloaded versions must be called manually.
-
-Q7. Can we override main method in Java?
-👉 No, because main is static. Static methods cannot be overridden, but they can be hidden (method hiding).
 
 Q8. What is method signature in Java?
 👉 Method signature = method name + parameter list.Return type is not part of signature.
- eg - void add(int a, int b) 
+ eg - add(int a, int b) 
 
 Q9. Can we overload methods by changing only return type?
 👉 ❌ No, because return type is not part of method signature.
@@ -710,348 +608,6 @@ Q11. Does Garbage Collector collect objects from stack?
 
 
 
-    DESIGN PATTERN :
-    -------------------
-
-Q1.  What is Degisn Pattern ?
-   - A design pattern is a well-proven,reusable solution for common software problems not a finished code but a template to solve problems. 
-   - To make code more flexible, maintainable, and scalable,reduce code duplication
-
-Q2. How Many Types Of Design Pattern ?
-    There are 3 types :
-     a. Creational Patterns (Singleton, Prototype, Factory, Builder)
-     b. Structural Patterns (Adapter, Decorator, Proxy, Facade)
-     c. Behavioral Patterns (Observer, Strategy, Command, Chain of Responsibility)
-
-Q3. What is creational Design Pattern?
-Creational design patterns deal with object creation mechanisms, making it flexible and reusable without tightly coupling your code to specific classes.
-
-Q4. How many types of creational design pattern ?
-There are 5 main types of Creational Design Patterns:
-                          - Singleton
-                          - Prototype
-                          - Factory Method
-                          - Abstract Factory
-                          - Builder
-
-Q5. What is Singleton pattern?
-Answer: Ensures a class has only one instance and provides a global access point.
-
-Q6. Why do we use Singleton?
-Answer: To control object creation, save memory, and provide a single shared resource like DB connections, logging, etc.
-
-Q7. How do you implement Singleton in Java?
-There are Multiple ways:
-          a. Eager Initialization
-          b. Lazy Initialization
-          c. Thread-safe (synchronized)
-          d. Double-checked Locking (efficient)
-
-Q8. How to make Singleton thread-safe?
-Use synchronized, double-checked locking, or static inner class
-
-Q9. When should you not use Singleton?
-When you need multiple instances, e.g., in multithreaded contexts where independent instances are required.
-
-Q10. What can break Singleton? 
-Serialization & Reflection are two common ways ?
- - Serialization : 
-      suppose if you serialize a class's instance to a file and then deserialize it, Java creates a new instance! That violates the Singleton principle (only one instance).
- - Solution: Use readResolve() method:
- protected Object readResolve() {
-    return getInstance(); // ensures deserialized object is same instance
-}
-- Reflection :
-Reflection allows you to access private constructors.
-- example :
-  Constructor<Singleton> constructor = Singleton.class.getDeclaredConstructor();
-  constructor.setAccessible(true);
-  Singleton s2 = constructor.newInstance(); // creates a new instance
-- Solution: Prevent it in constructor:
- private Singleton() {
-    if (INSTANCE != null) {
-        throw new RuntimeException("Use getInstance() method");
-      }}
-
-
-Q11. What is Prototype pattern?
-Prototype is a creational design pattern that creates new objects by copying an existing object instead of creating a new instance from scratch.
-
-Q12. Why do we use Prototype pattern?
- - To avoid expensive object creation. by duplicating objects with existing state.
- - Supports runtime object creation without knowing the exact class.
-
-Q13. How do you implement Prototype in Java?
-- By implementing Cloneable interface and overriding clone() method.
-
-
-Q14. What is Factory Design Pattern?
-Factory pattern is a creational design pattern that provides an interface to create objects, but lets subclasses decide which class to instantiate.
-
-
-Q15. Why use Factory pattern?
- - To decouple object creation from usage.
- - To increase flexibility and maintainability.
- - Helps follow Open/Closed Principle: new types can be added without modifying existing code.
-
-Q16. What are types of factory pattern ?
- - Simple Factory (Not a formal GoF pattern) : Provides a method to create objects based on input.
-- Factory Method : Defines an interface for creating objects, but subclasses decide the concrete class.
-- Abstract Factory : Creates families of related objects without specifying their concrete classes.
-
-Q17. How to implement Factory Method?
-  - Define Product Interface – Shape with draw() method.
-  - Create Concrete Products – Circle and Square implement Shape.
-  - Create Factory Class – ShapeFactory has getShape(String type) to return objects based on input.
-  - Use the Factory – In TestFactory.main(), create ShapeFactory, call getShape("CIRCLE"), and invoke draw().
-✅ Key idea: Client code uses the factory to get objects without knowing the exact class.
-
-Q18. Difference between Factory Method and Abstract Factory ?
-| Factory Method                                 | Abstract Factory                                 |
-| ---------------------------------------------- | ------------------------------------------------ |
-| Creates **one product** at a time              | Creates **family of related products**           |
-| Subclasses decide which product to instantiate | Provides an interface for multiple factories     |
-| Example: ShapeFactory                          | Example: GUIFactory (WindowsFactory, MacFactory) |
-
-Q19. What is Abstract Factory pattern?
-Abstract Factory is a creational design pattern that provides an interface to create families of related or dependent objects without specifying their concrete classes.
-
-Q20. Why use Abstract Factory?
- - To create sets of related objects consistently.
- - To decouple client code from concrete implementations.
- - Useful when you want different themes or platforms with a consistent interface.
-
-Q21. How to implement Abstract Factory in Java?
-
-Q22. What is Builder pattern?
-Builder Pattern is a creational design pattern that helps create complex objects step by step. It separates the construction process from the final object, 
-so you can create different types of the object using the same building steps.
- - Think of building a house. You can build it step by step: lay the foundation, build walls, put the roof, paint, etc.
- - You can build different types of houses (wooden, concrete) using the same steps, just with different materials.
- - Key idea: Separate how you build (process) from what you build (representation).
-
-Q23. Why use Builder pattern?
-When an object has many optional settings,
-to avoid having too many constructors,
-and to make creating the object easy to read and use.
-
-Q24. How to implement Builder in Java?
-
-Q25. What is Structural Design Pattern ?
-- A structural design pattern is used to organize or compose classes and objects so they can work together efficiently.
-- Simple way to remember: It’s about how objects and classes are connected.
-
-Q26. what is Behavioral Design Pattern ?
-- A behavioral design pattern is used to manage how objects interact and communicate with each other.
-- Simple way to remember: It’s about behavior and communication.
-
-  
-
-   EXCEPTION :
-   -----------
-
-Q1. Can you explain the exception hierarchy in Java?
-Throwable
-├── Error (serious problems, usually not handled by programs)
-│   ├── LinkageError
-│   │   ├── ClassCircularityError
-│   │   └── NoClassDefFoundError
-│   ├── VirtualMachineError
-│   │   ├── OutOfMemoryError
-│   │   ├── StackOverflowError
-│   │   └── InternalError
-│   └── AssertionError
-│
-└── Exception (problems programs can handle)
-    ├── Checked Exceptions (must be caught or declared)
-    │   ├── IOException
-    │   │   ├── FileNotFoundException
-    │   │   ├── EOFException
-    │   │   ├── MalformedURLException
-    │   │   └── InterruptedIOException
-    │   ├── SQLException
-    │   ├── ClassNotFoundException
-    │   ├── CloneNotSupportedException
-    │   └── TimeoutException
-    │
-    └── Unchecked Exceptions (RuntimeException and its subclasses)
-        ├── RuntimeException
-        │   ├── ArithmeticException
-        │   ├── NullPointerException
-        │   ├── ArrayIndexOutOfBoundsException
-        │   ├── StringIndexOutOfBoundsException
-        │   ├── ClassCastException
-        │   ├── IllegalArgumentException
-        │   │   └── NumberFormatException
-        │   ├── IllegalStateException
-        │   ├── UnsupportedOperationException
-        │   └── IndexOutOfBoundsException
-        │       ├── ArrayIndexOutOfBoundsException
-        │       └── StringIndexOutOfBoundsException
-
-
-Q2: Difference between Error and Exception ?
-| Feature           | Error                                    | Exception                         |
-| ----------------- | ---------------------------------------- | --------------------------------- |
-| Definition        | Serious problems, not meant to be caught | Conditions that can be handled    |
-| Checked/Unchecked | Unchecked                                | Can be checked or unchecked       |
-| Example           | OutOfMemoryError, StackOverflowError     | IOException, NullPointerException |
-
-Q3. What are the Types of Exceptions?
-Checked (compile-time) vs Unchecked (runtime)
-
-Q4. Difference between Checked and Unchecked Exceptions ?
-Checked Exceptions :
-- Definition: Exceptions that the compiler checks at compile-time.
-- You must handle them either using try-catch or throws in method signature.
-- Examples: IOException, SQLException, FileNotFoundException.
-- When it occurs: Usually happens due to external conditions, like reading a file or network operations.
-Unchecked Exceptions:
-- Definition: Exceptions that the compiler does not check at compile-time.
-- Usually happen due to programming errors.
-- Examples: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException.
-- When it occurs: At runtime, when the erroneous code execute
-
-Q5. How do you handle exceptions in Java?
-  a. try-catch : Handle multiple exception types in a single catch using |  eg- catch (ArithmeticException | ArrayIndexOutOfBoundsException e)
-  b. try-catch-finally
-  c. throws keyword : You can declare that a method throws an exception.
-  d. try-with-resources  : Automatically closes resources like files, sockets, DB connections,No need for finally for closing resources.
-    eg- 
-         try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
-          System.out.println(br.readLine());
-          } catch (IOException e) {
-          System.out.println("IOException occurred: " + e.getMessage());
-          }
-  e. Rethrowing exceptions/Propagating exceptions : You can rethrow exceptions from catch.
-     eg-
-            try {
-            int result = 10 / 0;
-            } catch (ArithmeticException e) {
-            System.out.println("Handling partially");
-               throw e; // propagate further
-              }
-  f. Custom exceptions : Create your own exception class and handle it using try-catch.
-  eg- 
-    class MyException extends Exception {
-    MyException(String message) { super(message); }
-   }
-  public void test() throws MyException {
-    throw new MyException("Custom Exception");
-   }
-
-Q6. What is try catch ?
-In Java, try-catch is used to handle exceptions, which are unexpected errors that occur during program execution. The try block contains code that might throw an exception, 
-and the catch block contains code to handle that exception so the program can continue running without crashing. This helps in making programs more robust and error-tolerant
-
-Q7. Can we have multiple catch blocks in Java?
-Yes, Java allows multiple catch blocks to handle different exceptions separately. There are two main approaches:
-  a. Traditional approach (before Java 7): You can write multiple catch blocks, each handling a specific exception type: 
-try {
-    // code that may throw exceptions
-} catch (IOException e) {
-    System.out.println("IOException occurred");
-} catch (SQLException e) {
-    System.out.println("SQLException occurred");
-}
-  b. Multi-catch approach (Java 7+): You can combine multiple exception types in a single catch block using the | operator:
-try {
-    // code that may throw exceptions
-} catch (IOException | SQLException e) {
-    System.out.println("IOException or SQLException occurred");
-}
-
-Q8. What is finally block?
-A: Block executed always, whether exception occurs or not. Often used for resource cleanup.
-
-Q9. Can we write finally block without catch block ?
-Yes 👍, we can write a finally block without a catch block,A try block must be followed by either a catch block or a finally block (or both).
-
-Q10. Can we write try block without catch or finally block ?
-No, we cannot write a try block alone without a catch or finally.A try block must be followed by at least one catch block or a finally block.
-
-Q11. Difference between throw and throws ?
-| Keyword  | Purpose                                                      |
-| -------- | ------------------------------------------------------------ |
-| `throw`  | Used to explicitly throw an exception from a method or block |
-| `throws` | Declares exception(s) that a method can throw                |
-
-Q12. Explain Try-with-Resources in Java ?
-- Try-with-resources is a feature introduced in Java 7 that allows us to automatically close resources (like files, sockets, database connections) after the program is finished using them.
-- It ensures that resources are closed properly, even if an exception occurs, without the need of writing finally blocks manually.
-- If a class implements AutoCloseable, it means its object can be closed automatically (like a file, network connection, or database connection).
-- eg :
-try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
-    String line = br.readLine();
-    System.out.println(line);
-} catch (Exception e) {
-    e.printStackTrace();
-}
-Note:- a. 👉 Yahan BufferedReader already AutoCloseable implement karta hai.
-       b. 👉 Tum apna khud ka class bhi bana sakte ho jo AutoCloseable implement kare:
-class MyResource implements AutoCloseable {
-    public void use() {
-        System.out.println("Using my resource...");
-    }
-
-    @Override
-    public void close() {
-        System.out.println("Closing my resource...");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        try (MyResource res = new MyResource()) {
-            res.use();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-
-Q13. Can we write other statements in between try ,catch or finally block? 
-- No, we cannot write any normal statement between try and catch or between catch and finally.
-  Because Java syntax rule kehta hai: catch must immediately follow try, and finally must immediately follow the last catch.
-- eg :
-try {
-    int a = 10/0;
-}
-System.out.println("Hello");  // ❌ Not allowed here
-catch (ArithmeticException e) {
-    System.out.println("Exception handled");
-}
-
-Q14. What happens in try block if an exception occurs?
-- If no exception occurs → saare statements in try block execute ho jaate hain line by line.
-- If an exception occurs → uss point se aage ke statements skip ho jaate hain, aur control catch block me transfer ho jaata hai.
-
-Q15. What happens when main() throws an exception?
-- If exception is not handled inside main.
-- JVM will handle it, and prints : Exception type, Description (message), Stack trace (line number where it happened).
-
-Q16. What do you understand by unreachable catch block error ?
-An unreachable catch block is a catch block that can never be executed, usually because a parent exception is already caught before it.
-eg- 
-try {
-    int a = 10 / 0;
-} catch (Exception e) { // Parent exception
-    System.out.println("Exception caught");
-} catch (ArithmeticException e) { // ❌ Unreachable
-    System.out.println("ArithmeticException caught");
-}
-
-Q17. Explain Exception class ?
-- It is a subclass of Throwable.
-- Exception class is a general class that can handle all types of exceptions (checked and unchecked) because all exceptions are its subclasses.
-- A specific exception (like NullPointerException or ArithmeticException) can only handle that particular type of exception.
-
-Q18. What is Exception Propagation ?
-- Exception Propagation is the process by which an exception is passed (propagated) from the point where it occurs to the higher method in the call stack until it is caught and handled.
-- In simple words, if a method does not handle an exception, it automatically propagates the exception to the method that called it. This continues up the call stack until either the exception is caught or the program terminates.
-
-        
 
          STRING :
         -----------
@@ -1136,199 +692,6 @@ Joins multiple strings with a delimiter.
 Q13.Can you convert String to boolean?
 String str = "true";
 yes, Boolean.parseBoolean(str)); // true
-
-
-
-     OOPs CONCEPT :
-    ---------------
-
-Q1. Explain OOPs pillars with examples.
- There are main 4 pillars of OOPs :
-     a. Encapsulation
-     b. Abstraction
-     c. Inheritance
-     d. Polymorphism
-
-Q2. What is Encapsulation? Why is it important?
- - Wrapping data & behavior (Both are wrapped together inside one class (Employee)) together. Achieved using private variables + public getters/setters.
- - Helps in data hiding and maintaining security.
- - Example: private double balance; public void deposit(double amt){ ... }.
-
-Q3. Explain Abstraction ?
-Abstraction is the process of hiding internal implementation details and showing only the essential features to the user. In Java, we achieve abstraction using abstract classes and interfaces.
-
-Q4. Difference between Abstraction and Encapsulation?
-Encapsulation:
-  - To hide data from direct access and control it via getters & setters.
-Abstraction :
-  - To focus on what an object does, not how it does it.
-
-Q5. How do we achieve Abstraction in Java?
-using abstract classes and interfaces
-
-Q6. Can we create an object of an abstract class? Why not?
-An abstract class may have abstract methods,If Java allowed you to create an object of such a class, you would have an object with incomplete methods, which makes no sense.Hence, Java prevents it
-
-Q7. Can an abstract class have a constructor?
-yes, Even though you cannot directly create an object of an abstract class, its constructor is called when a subclass object is created.
-
-Q8. Can an abstract class extend another abstract class?
-Yes ✅, an abstract class can extend another abstract class in Java.
-
-Q9. Can an abstract class have concrete (normal) methods?
-yes, An abstract class can have both:
-       - Abstract methods – without implementation.
-       - Concrete methods – with full implementation.
-
-Q10. Can an abstract class have final methods?
-yes, but A method cannot be both abstract and final
-
-Q11. What is the default access modifier for abstract methods?
-Default (no modifier) – visible to subclasses in the same package only.
-
-Q12. Can an interface extend a class? 
-Ans: no
-
-Q13. What is the difference between interface methods before Java 8 and after Java 8?
-       - Java 8 → default & static methods introduced
-       - Java 9 → private methods introduced
-
-Q14. What is inheritance?
-Inheritance is an OOP concept where a child class acquires properties (fields) and behaviors (methods) from a parent class. It promotes code reusability.
-
-Q15. Can constructors be inherited?
-A: No, constructors are not inherited, but a child can call a parent constructor using super().
-
-Q16. Can private members be inherited?
-A: Private fields/methods are not inherited, but can be accessed indirectly via public/protected getters/setters.
-
-Q17. Can protected members be inherited?
-A: Yes, accessible in child class (even in different package).
-
-Q18. Can default (package-private) members be inherited?
-A: Only if the child is in the same package.
-
-Q19. Can child class override private, final parent methods?
-A: no, child can't override .
-
-Q20. Tell Types of Inheritance in Java ?
-   - Single Inheritance: Child extends Parent
-   - Multilevel Inheritance: (Grandchild → Child → Parent) but Java does not support multiple class inheritance, but supports via interfaces.
-   - Hierarchical Inheritance: Multiple children extend same parent
-
-Q21. What if parent & child have same fields?
-A: Child hides parent field. Access via:
-    - this.field → child
-    - super.field → parent
-    - Example: 
-class Parent { int x = 10; }
-class Child extends Parent { int x = 20; void show() { System.out.println(x); System.out.println(super.x); } }
-
-Q22. Can a parent reference point to child object?
-A: Yes → Polymorphism
-
-Q23. Can a child reference point to parent object?
-A: No → causes ClassCastException
-
-Q24. Can static methods be overridden? 
-  No, but can be hidden
-
-Q25. What is polymorphism?
-A: Polymorphism means "many forms". In Java, it allows the same method to behave differently based on the situtation.
-   - Compile-time polymorphism: Method overloading
-   - Runtime polymorphism: Method overriding
-
-Q26. What is method overloading?
-A: Defining multiple methods with the same name but different parameter lists (number, type, or differenet no. of arguments).
-
-Q27. Can we overload by just changing return type? 
-    No
-
-Q28. Can we overload static methods? 
-→ Yes
-
-Q29. Can we overload main method? 
-→ Yes, but JVM always calls public static void main(String[] args).
-
-Q30. What is method overriding?
-A: When a child class provides its own implementation of a method defined in the parent class with the same name, parameters, 
-   and return type (or covariant return type). with an intention of reuseability of code called method overriding.
-
-Q31. What is covariant return type?
-The return type of child should be either the same of that parent class or it should be the sub class of the return type of parent class.
-Parent : public Object m1(){};  
-Child : public String m1 () { return “hi”};
-
-Q32. Why doesn’t polymorphism apply to fields/variables?
-A: Because instance variables are resolved at compile time (reference type), not at runtime.
-   because when we do Parent p = new Child();  sop(p.color );  ans=> parent color.
-
-Q33. Give a real-world example of polymorphism.?
-  - Collections API: List list = new ArrayList();
-  - JDBC: Connection con = DriverManager.getConnection(...);
-
-Q34. What happens if both parent and child have static methods with same signature? 
-→ Child method hides parent’s method.
-
-Q35. Can we override a synchronized method?
-→ Yes, synchronization is not part of method signature.
-
-Q36. Can we restrict visibility of derived method in Java ?
-The child method cannot reduce the visibility of the parent method. But it can increase visibility.
-
-Q37. Define aggregation and composition. How are they different?
-Inheritance : (is a relation ).
-Hibernate : (has – A ) :- one to one , one to many , many to many..
-Association (HAS-A):
-Aggregation and composition are nothing but types of association in java where association define the relationship between two classes.
-Image:
-
-   Customer
-      |
-      | (association)
-      |
-     Order
-    /    \
-   o      o
-(agg)   (agg)
- /        \
-Product   Department
-             |
-             o
-          Employee
-
-Library
-  *
- (comp)
-   |
-  Book
-
--> Aggregation : both objects can exist independently .
-Real life ex-
-A "Team" class that contains "Player" objects. Players can exist independently of the Team.
--> Composition : both objects can’t exist independently . one object can’t exist without owner object.
-Real time ex -
-A "Car" class that contains an "Engine" object. The Engine cannot exist without the Car.
-
-
-Q38. Explain SOLID Principles ?
-👉 SOLID is a set of 5 design principles in object-oriented programming.
-a. S – Single Responsibility Principle (SRP) : 
-                      - A class should do only one job. If one class is doing multiple jobs, changes in one part may break another.
-                      - eg - Controller is only responsible for API endpoints, not business logic. etc
-b. O – Open/Closed Principle (OCP) :
-                      - Code should be open for extension, closed for modification. Means: add new features without changing old code.
-                      - eg- In Spring Boot, we achieve this using interfaces + polymorphism + dependency injection.
-c. L – Liskov Substitution Principle (LSP) :
-                      - Subclasses should be usable anywhere parent is used, without breaking behavior.
-                      - In simple words → Child classes should be able to replace parent classes and behave correctly.
-                      - eg - In Spring Boot, we achieve it by designing interfaces with proper contracts and making sure all implementations behave consistently.
-d. I – Interface Segregation Principle (ISP) :
-                      - Don’t force classes to implement methods they don’t use. Better to have small specific interfaces than one big interface.
-                      - eg- In Spring Boot, we achieve it by designing modular service interfaces.
-D – Dependency Inversion Principle (DIP):
-                      - Classes should depend on interfaces, not concrete classes. This makes code flexible and testable.
-                      - eg - In Spring Boot, we achieve DIP naturally using interfaces + dependency injection.
 
 
 
