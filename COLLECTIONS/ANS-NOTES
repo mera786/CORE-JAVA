@@ -82,7 +82,7 @@ To resolve this, Java uses chaining (LinkedList) and from Java 8 onwards, it use
 Q10. Difference between Equals and hashcode method ?
 equals():
 - It is used to compare two objects for equality.
-- By default (from Object class), it compares memory addresses (reference equality).
+- By default (from Object class), it compares memory addresses  (reference equality).
 - But we can override it to compare content of objects (e.g., comparing id or name fields in a class)
 hashCode():
 - It returns an integer hash value representing the object’s memory address (by default).
