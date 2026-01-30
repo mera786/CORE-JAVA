@@ -81,23 +81,23 @@ public class Main {
 
 
 Q6. What’s the difference between Runnable and Callable?
-| Runnable                       | Callable                    |
-| ------------------------------ | --------------------------- |
-| `void run()`                   | `V call()`                  |
-| No return value                | Returns value               |
-| Cannot throw checked exception | Can throw checked exception |
-
+| Runnable                              | Callable                               |
+| ------------------------------------- | -------------------------------------- |
+| `void run()`                          | `V call()`                             |
+| Tumhe kuch kaam thread me chalana ho  | Tumhe kuch kaam thread me chalana ho   |
+| Return value nahi chahiye             | Thread se result chahiye               |
+| Checked exception handle nahi karna   | Checked exception throw karna ho       |
 
 Thread Lifecycle & Methods :
 ----------------------------
 
 Q1. Can you explain the lifecycle of a thread?
-(new/born(MyThread t = new MyThread())---t.start()--->(ready/runnable)----of Thread Schedular allocate process----> (running)-----if run method completed----(dead).
-                                                                |                                                          |
-                                                                |                                                          |
-                                                                |                                                          |
-                                                                |                                                          |
-                                                                |<-----Thread.yeild()/Thread.sleep/thread.join()----<------|
+(new/born(MyThread t = new MyThread())---t.start()--->(ready/runnable)----of Thread Schedular allocate CPU core / processor----> (running)-----if run method completed----(dead).
+                                                                |                                                                    |
+                                                                |                                                                    |
+                                                                |                                                                    |
+                                                                |                                                                    |
+                                                                |<-----Thread.yeild()/Thread.sleep/thread.join()----<----------------|
 
 Q2. What’s the difference between start() and run()?
 start() method:
@@ -169,14 +169,102 @@ Thread execution can be controlled using methods like:
 Q13. Explain Difference between Yield(),  Join() and Sleep() ?
 Yield(): 
    - If a thread want to pause it’s execution to give the chance for remaining threads of same priority then we should go for yield() method.
+Ex :
+class MyThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println(Thread.currentThread().getName() + " : " + i);
+            Thread.yield(); // give chance to other threads
+        }
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        MyThread t2 = new MyThread();
+
+        t1.start();
+        t2.start();
+    }
+}
+
+
 Join():
    - If a thread want to wait until completing some other thread then we should go for join method.
+Ex-
+class MyThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Child Thread: " + i);
+        }
+    }
+}
+
+public class Test {
+    public static void main(String[] args) throws Exception {
+
+        MyThread t = new MyThread();
+        t.start();
+
+        t.join(); // main thread waits for t to finish
+
+        System.out.println("Main Thread Finished");
+    }
+}
+
+
 Sleep():
    - If a thread don’t want to perform any operations for a particular amount of time then we should go for sleep method.
+Ex-
+class MyThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("Running: " + i);
+            try {
+                Thread.sleep(2000); // 2 seconds
+            } catch (InterruptedException e) {}
+        }
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        t.start();
+    }
+}
+
+
 
 Q14. How can you interrupt a thread?
  - A thread can interrupt a sleeping thread or waiting thread by using interrupt method of thread class: thread.interrupt()
  - Always check Thread.isInterrupted() inside thread code.
+Ex-
+class MyThread extends Thread {
+
+    public void run() {
+        try {
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("Running... " + i);
+                Thread.sleep(2000); // sleeping
+            }
+        } catch (InterruptedException e) {
+            System.out.println("Thread Interrupted while sleeping!");
+        }
+    }
+}
+
+public class Test {
+    public static void main(String[] args) throws Exception {
+
+        MyThread t = new MyThread();
+        t.start();
+
+        Thread.sleep(3000); // main thread waits 3 sec
+        t.interrupt();      // interrupt child thread
+    }
+}
 
 
 
@@ -184,6 +272,48 @@ Synchronization & Locks :
 --------------------------
 Q1.  What is synchronized in Java?
 A: Ensures that only one thread at a time can execute a block or method. It provides mutual exclusion on the object’s monitor.
+Example:
+Without synchronized (Problem) :
+class Counter {
+    int count = 0;
+
+    void increment() {
+        count++;
+    }
+}
+
+public class Test {
+    public static void main(String[] args) throws Exception {
+        Counter c = new Counter();
+
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) c.increment();
+        });
+
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) c.increment();
+        });
+
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join();
+
+        System.out.println(c.count);
+    }
+}
+❌ Output (Wrong, Race Condition): 1987 (or random)
+
+With synchronized (Correct) :
+class Counter {
+    int count = 0;
+
+    synchronized void increment() {
+        count++;
+    }
+}
+
+
 
 Q2. Difference between synchronized method and synchronized block?
 | Aspect | Synchronized Method                            | Synchronized Block                        |
@@ -194,6 +324,54 @@ Q2. Difference between synchronized method and synchronized block?
 
 Q3. What is the volatile keyword?
 Ensures visibility of changes to variables across threads. Threads always read the latest value from main memory, not from CPU cache.
+Example:
+❌ Problem Without volatile (Visibility Issue) :
+class MyThread extends Thread {
+
+    boolean stop = false;   // ❌ NOT volatile
+
+    public void run() {
+        while (!stop) {
+            // do some work
+        }
+        System.out.println("Thread Stopped");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) throws Exception {
+        MyThread t = new MyThread();
+        t.start();
+
+        Thread.sleep(2000);
+        t.stop = true;   // main thread sets stop flag
+    }
+}
+❌ Problem: Thread may never stop, Because stop value cached ho sakta hai CPU register me, not updated.
+
+✅ Correct Example with volatile :
+class MyThread extends Thread {
+
+    volatile boolean stop = false; // ✅ volatile
+
+    public void run() {
+        while (!stop) {
+            // working
+        }
+        System.out.println("Thread Stopped");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) throws Exception {
+        MyThread t = new MyThread();
+        t.start();
+
+        Thread.sleep(2000);
+        t.stop = true; // visible immediately to thread
+    }
+}
+
 
 Q4. Explain wait(), notify(), and notifyAll() ?
  wait() → Puts thread in waiting state and releases lock.
