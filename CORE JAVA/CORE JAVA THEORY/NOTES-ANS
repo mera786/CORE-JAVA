@@ -270,8 +270,6 @@ The result is always an int.
 Q45. What is type casting?
 👉 Definition: Converting one data type into another is called type casting.
 
-
-Q47. What is upcasting and downcasting?
 Types of Type Casting:
  - Primitive Type Casting (between primitive data types like int, double, char).
  - Reference Type Casting (Class Casting) (between objects/classes).
@@ -283,12 +281,14 @@ Types of Type Casting:
               double y = x; 
        b. Narrowing (Explicit Casting) :- Larger → Smaller data type,Done manually by programmer using (type) casting.May cause data loss.
            eg- double a = 10.55;
-               int b = (int) a;  
-    - Reference Type Casting
+               int b = (int) a; 
+
+Q47. What is upcasting and downcasting?  Note:- up and down casting terms used in during reference type casting means object wale me.
+    - Reference Type Casting  
     -------------------------
     👉 Casting between objects in the inheritance
     Class Casting is of two types:
-        a. Upcasting (Implicit) :- Subclass object → Superclass reference,Always safe and automatic.
+        a. Upcasting (Implicit casting) :- Subclass object → Superclass reference,Always safe and automatic.
            eg- class Animal { 
                   void sound() { 
                  System.out.println("Animal sound"); 
@@ -318,7 +318,10 @@ Q52. What are Marker interfaces ? and why it use ?
    b. Cloneable  :- Marks a class as cloneable, meaning objects of this class are allowed to be cloned using the Object.clone() method. Without this, calling clone() throws CloneNotSupportedException.
 
 Q53. What is Blank Field Error ?
-When we make variable static and final , and do not initialize then we get blank field error.
+- When we make variable static and final , and do not initialize then we get blank field error.
+- Java compiler never prints “Blank Field Error” word.
+- Teachers / Interview books call it Blank Final Field Error. 
+- rather it WILL show a compile-time error.
 
 Q54. Difference between Final, Finally and Finalize ?
 | Keyword/Method           | Where used?             | Purpose                   | Can we override?                      |
@@ -450,7 +453,7 @@ Q7. Difference between Constructor and Methods ?
 
 
 Q8. can we make constructor private if yes then how it object will be created.?
-👉 Yes , If a constructor is private, then we cannot create an object directly from outside the class using new but There are some common use cases:
+👉 Yes , If a constructor is private, then we can not create an object directly from outside the class using new but There are some common use cases:
 - Singleton Design Pattern
 - Factory Methods  :
   eg- 
