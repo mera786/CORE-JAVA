@@ -81,6 +81,7 @@ public class Main {
 
 
 Q6. What’s the difference between Runnable and Callable?
+Runnable aur Callable dono Functional Interface hote hain.
 | Runnable                              | Callable                               |
 | ------------------------------------- | -------------------------------------- |
 | `void run()`                          | `V call()`                             |
@@ -323,7 +324,7 @@ Q2. Difference between synchronized method and synchronized block?
 
 
 Q3. What is the volatile keyword?
-Ensures visibility of changes to variables across threads. Threads always read the latest value from main memory, not from CPU cache.
+Ensures visibility of changes to variables across threads. so that Threads always read the latest value from main memory, not from CPU cache.
 Example:
 ❌ Problem Without volatile (Visibility Issue) :
 class MyThread extends Thread {
