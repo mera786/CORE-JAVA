@@ -3,7 +3,7 @@
 
 Q1. What is Java?
 Java is a high-level, object-oriented, platform-independent programming language.
-Note:- 
+Note:-  
 -> High-level : High-level languages use syntax that is easier for humans to read and write, like English-like keywords (if, for, class, etc.).
                 Example: System.out.println("Hello"); is readable to humans, whereas machine code (10101010...) is not.
 -> platform-independent : Java programs are platform-independent because the bytecode runs on any OS via JVM, so you don’t have to rewrite code for different systems.
