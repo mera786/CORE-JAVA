@@ -35,8 +35,8 @@ Q3. What is ADVANTAGE of MultiTasking?
 Q4. What is a thread and how is it different from a process?
 | Process             | Thread              |
 | ------------------- | ------------------- |
-| Independent memory  | Shares memory       |
-| Heavyweight         | Lightweight         |
+|Independent resources|Shares same resources|
+| Heavyweight         | Lightweight         | (bcz hr process ka apna address hoga but thread has same addresse of the processes)
 | Slow context switch | Fast context switch |
 
 
